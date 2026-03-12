@@ -1272,7 +1272,7 @@ div#modal-pagamento.ativo {
 }
 
 .popover-title {
-	background: rgba(255, 255, 255, 0.1);
+	background: rgba(0, 0, 0, 0.1);
 	border: 0;
 	color: var(--brand-color);
 }
@@ -1430,7 +1430,7 @@ div#modal-pagamento.ativo {
 
 .popup-sob-consulta {
 background: var(--white);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 0;
     width: 100%;
     box-sizing: border-box;
@@ -3094,7 +3094,7 @@ section.faq-section {
 	flex-direction: column;
 	padding: 40px 0;
 	gap: 24px;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .faq-pergunta {
