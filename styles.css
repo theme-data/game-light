@@ -85,7 +85,7 @@ input:focus {
 /* --------------- ícones */
 .icon-shopping-cart::before {
    content: "";
-   background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/cart.svg) center no-repeat;
+   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/user.svg) center no-repeat;
    background-size: 100%;
    width: 24px;
    height: 24px;
@@ -93,7 +93,7 @@ input:focus {
 
 .icon-user::before {
    content: "";
-   background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/user.svg) center no-repeat;
+   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/user.svg) center no-repeat;
    background-size: 100%;
    width: 24px;
    height: 24px;
@@ -101,7 +101,7 @@ input:focus {
 
 .icon-search::before {
    content: "";
-   background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/search.svg) center no-repeat;
+   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/search.svg) center no-repeat;
    background-size: 100%;
    width: 24px;
    height: 24px;
@@ -117,7 +117,7 @@ input:focus {
 
 #cabecalho {
    background: var(--white);
-   border-bottom: 1px solid rgba(255, 255, 255, .1);
+   border-bottom: 1px solid rgba(0, 0, 0, .1);
    position: sticky;
    z-index: 10000;
    top: 0;
@@ -315,7 +315,7 @@ a.h-user {
    left: 0;
    opacity: 1;
    margin: 0;
-   background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/chevron-left.svg) center no-repeat;
+   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/chevron-left.svg) center no-repeat;
    width: 40px;
    height: 40px;
    background-color: var(--brand-color);
@@ -326,7 +326,7 @@ a.h-user {
    right: 0;
    position: relative;
    margin: 0;
-   background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/chevron-right.svg) center no-repeat;
+   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/chevron-right.svg) center no-repeat;
    width: 40px;
    height: 40px;
    background-color: var(--brand-color);
@@ -539,7 +539,7 @@ a.h-user {
 
 .listagem .acoes-produto .botao-comprar i:before {
    content: "";
-   background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/add_shopping_cart.svg) center no-repeat;
+   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/add_shopping_cart.svg) center no-repeat;
    background-size: 100%;
 }
 
@@ -604,7 +604,7 @@ a.h-user {
    content: "";
    width: 24px;
    height: 24px;
-   background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/chevron-right-white.svg);
+   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/chevron-right.svg);
    display: block;
 }
 
@@ -612,7 +612,7 @@ a.h-user {
    content: "";
    width: 24px;
    height: 24px;
-   background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/chevron-left-white.svg);
+   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/chevron-left.svg);
    display: block;
 }
 
@@ -1070,7 +1070,7 @@ ul.whatsapp-dropdown-menu li {
 
 .icon-instagram::before {
    content: "";
-   background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/instagram.svg) center no-repeat;
+   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/instagram.svg) center no-repeat;
    width: 16px;
    height: 16px;
    background-size: 100%;
@@ -1183,7 +1183,7 @@ div#modal-pagamento.ativo {
    content: "";
    width: 20px;
    height: 20px;
-   background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/check.svg )center no-repeat;
+   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/check.svg )center no-repeat;
 }
 
 #formCalcularCep .btn {
@@ -1318,7 +1318,7 @@ div#modal-pagamento.ativo {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	background: url(https://cdn.awsli.com.br/2942/2942228/arquivos/chevron-down-white.svg)
+	background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/chevron-down.svg)
 		95% no-repeat;
 	padding: 0 20px;
 }
@@ -1357,7 +1357,7 @@ div#modal-pagamento.ativo {
 }
 
 .compre-junto__produto--grade::before {
-    background: url(https://cdn.awsli.com.br/2942/2942228/arquivos/add.svg) center no-repeat;
+    background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/add.svg) center no-repeat;
     background-color: #fff;
     width: 40px;
     height: 40px;
@@ -1558,7 +1558,7 @@ background: var(--white);
       content: '';
       width: 20px;
       height: 20px;
-      background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/filter_alt.svg)
+      background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/filter_alt.svg)
          center no-repeat;
       background-size: 100%;
       margin-left: 10px;
@@ -1632,7 +1632,7 @@ background: var(--white);
       content: '';
       width: 20px;
       height: 20px;
-      background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/close.svg)
+      background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/close.svg)
          center no-repeat;
       background-size: 100%;
       display: block;
@@ -1782,7 +1782,7 @@ background: var(--white);
    .finalizar-compra .span12 a.botao {
        background: var(--white) !important;
        color: var(--black) !important;
-       border: 1px solid rgba(255, 255, 255, .1);
+       border: 1px solid rgba(0, 0, 0, .1);
    }
    
    .finalizar-compra .span12 .botao.grande {
@@ -1968,7 +1968,7 @@ background: var(--white);
    height: 48px !important;
    padding: 0 16px !important;
    border-radius: 0 !important;
-   border: 1px solid rgba(255, 255, 255, .1) !important;
+   border: 1px solid rgba(0, 0, 0, .1) !important;
    font-family: "Chakra Petch", sans-serif;
 }
 
@@ -2008,7 +2008,7 @@ textarea {
    color: var(--black) !important;
    padding: 10px 16px !important;
    border-radius: 0 !important;
-   border: 1px solid rgba(255, 255, 255, .1) !important;
+   border: 1px solid rgba(0, 0, 0, .1) !important;
    font-family: "Chakra Petch", sans-serif;
 }
 
@@ -2181,7 +2181,7 @@ div#exibirFormasPagamento .btn.btn-small {
    content: "";
    width: 24px;
    height: 24px;
-   background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/chevron-right-white.svg);
+   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/chevron-right-white.svg);
    display: block;
 }
 
@@ -2193,7 +2193,7 @@ div#exibirFormasPagamento .btn.btn-small {
    content: "";
    width: 24px;
    height: 24px;
-   background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/chevron-left-white.svg);
+   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/chevron-left.svg);
    display: block;
 }
 
@@ -2873,7 +2873,7 @@ a.atalho-menu {
 
 .compre-junto__produto--principal::after {
 	color: #607081;
-	background: url(https://cdn.awsli.com.br/2942/2942228/arquivos/add.svg) center
+	background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/add.svg) center
 		no-repeat;
 	background-color: #fff;
 	width: 40px;
