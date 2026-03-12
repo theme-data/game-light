@@ -33,6 +33,11 @@ h6,
   color: var(--black);
 }
 
+
+.fundo-secundario, .fundo-secundario *, .fundo-secundario *:hover, .fundo-secundario:hover, .fundo-secundario.botao:hover {
+   color: var(--black);
+}
+
 .cor-secundaria {
    color: var(--black);
 }
@@ -273,6 +278,10 @@ a.h-user {
    gap: 24px;
 }
 
+span.bn-t-title {
+   color: var(--white);
+}
+
 .bn-text-price {
    display: flex;
    flex-direction: column;
@@ -365,9 +374,9 @@ a.h-user {
    gap: 24px;
 }
 
-.mini-banner .modulo.span4:nth-child(3) {
+/* .mini-banner .modulo.span4:nth-child(3) {
    display: none!important;
-}
+} */
 
 .mini-banner .modulo.span4 {
    width: 100%;
@@ -1032,7 +1041,7 @@ ul.whatsapp-dropdown-menu li {
 
 
 .barra-inicial {
-   background: #272727;
+   background: #f1f1f1;
    height: 40px;
 }
 
