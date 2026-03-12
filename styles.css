@@ -85,7 +85,7 @@ input:focus {
 /* --------------- ícones */
 .icon-shopping-cart::before {
    content: "";
-   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/user.svg) center no-repeat;
+   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/cart.svg) center no-repeat;
    background-size: 100%;
    width: 24px;
    height: 24px;
