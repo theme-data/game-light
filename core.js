@@ -32,7 +32,7 @@ $(document).ready(function(){
   $('.banner.cheio .flex-direction-nav').prepend($('.banner.cheio .flex-control-nav'));
   
   // $('.selos li:first-child img').attr('src','https://cdn.awsli.com.br/2830/2830294/arquivos/site-protegido.svg');
-  $('#rodape>div:last-child .conteiner .row-fluid div:not(.span12)').before(`<div class="feito-pixelset"><a href="https://www.pixelset.com.br/" class="pixel-logo" target="_blank"><img src="https://pages.greatpages.com.br/www.pixelset.com.br/1768577291/imagens/desktop/3485744_1_176857398507036064.svg" alt="Pixelset"></a></div>`)
+  $('#rodape>div:last-child .conteiner .row-fluid div:not(.span12)').before(`<div class="feito-pixelset"><a href="https://www.pixelset.com.br/" class="pixel-logo" target="_blank"><img src="https://cdn.awsli.com.br/2942/2942234/arquivos/pixel-set.svg" alt="Pixelset"></a></div>`)
   $('#rodape>div:last-child .row-fluid > div:last-child').attr('style','')
   
 
