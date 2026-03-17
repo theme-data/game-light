@@ -68,7 +68,10 @@ $(document).ready(function(){
   });
   
 
-  $('.pagina-inicial .vitrine-' + miniBannerPosicao + '+ul').after($('.mini-banner'));
+  if (CONFIG.miniBannerPosicao) {
+    $('.pagina-inicial .vitrine-' + CONFIG.miniBannerPosicao + ' + ul')
+      .after($('.mini-banner'));
+  }
 
   
   // Variáveis editáveis para as informações do atendimento
