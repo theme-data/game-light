@@ -374,6 +374,10 @@ span.bn-t-title {
    gap: 24px;
 }
 
+.mini-banner .flex-direction-nav {
+   display: none;
+}
+
 /* .mini-banner .modulo.span4:nth-child(3) {
    display: none!important;
 } */
@@ -2208,7 +2212,7 @@ div#exibirFormasPagamento .btn.btn-small {
    content: "";
    width: 24px;
    height: 24px;
-   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/chevron-right-white.svg);
+   background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/chevron-right.svg);
    display: block;
 }
 
