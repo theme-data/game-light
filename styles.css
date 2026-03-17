@@ -3060,7 +3060,7 @@ section.depoimentos-video {
    width: 100%;
    text-align: center;
    height: 38px;
-   background: rgba(0, 0, 0, 0.4);
+   background: rgba(255, 255, 255, 0.7);
    backdrop-filter: blur(5px);
    display: flex;
    align-items: center;
@@ -3068,6 +3068,7 @@ section.depoimentos-video {
    font-size: 14px;
    text-transform: uppercase;
    color: var(--black);
+   font-weight: 600;
 }
 
 .listagem-item.prod-cat-24033243 .imagem-produto:after {
