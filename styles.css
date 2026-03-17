@@ -937,7 +937,7 @@ ul.whatsapp-dropdown-menu {
     bottom: 56px;
     background: var(--white);
     width: 100%;
-    border: 1px solid rgba(255,255,255,.1);
+    border: 1px solid rgba(0,0,0,.1);
     padding: 24px;
     box-sizing: border-box;
     font-size: 16px;
@@ -1239,7 +1239,7 @@ div#modal-pagamento.ativo {
    text-align: left;
    margin: 0;
    padding: 48px;
-   border-right: 1px solid rgba(255,255,255,.1);
+   border-right: 1px solid rgba(0,0,0,.1);
 }
 
 .produto .conteiner-imagem>div:first-child {
@@ -1460,7 +1460,7 @@ background: var(--white);
 #consulte-form .consulte-fechar {
     background: var(--white)!important;
     color: var(--black)!important;
-    border: 1px solid rgba(255,255,255,.1);
+    border: 1px solid rgba(0,0,0,.1);
 }
 
 .listagem-item.produto-adicionado .bandeiras-produto .adicionado-carrinho {
@@ -1878,7 +1878,7 @@ background: var(--white);
 }
 
 .checkout-alerta-seguro {
-   background: rgba(255,255,255,.1);
+   background: rgba(0,0,0,.1);
    border: 1px solid rgba(255,255,255,.2);
 }
 
@@ -2008,7 +2008,7 @@ background: var(--white);
 }
 
 .formas .accordion-heading {
-   background: rgba(255,255,255,.1);
+   background: rgba(0,0,0,.1);
 }
 
 .campos-pedido legend {
@@ -2269,7 +2269,7 @@ div#exibirFormasPagamento .btn.btn-small {
 }
 
 .abas-conta li.active a {
-   background: rgba(255,255,255,.1);
+   background: rgba(0,0,0,.1);
 }
 
 .abas-conta li a {
@@ -3303,7 +3303,7 @@ li.categoria-mais {
 .pagination ul>.active>a {
    background: var(--white);
    border: 1px solid var(--brand-color);
-   color: #fff;
+   color: var(--brand-color);
 }
 
 .pagination ul>li>a {
@@ -3315,7 +3315,7 @@ li.categoria-mais {
    display: flex;
    align-items: center;
    justify-content: center;
-   color: #fff;
+   color: var(--black);
    border-radius: 0!important;
    font-weight: 600;
    font-size: 14px;
@@ -3338,25 +3338,10 @@ li.categoria-mais {
 
 .pagina-pagina .conteudo p, .pagina-pagina .conteudo span, .pagina-pagina .conteudo b, .pagina-pagina .conteudo h1, .pagina-pagina .conteudo h2, .pagina-pagina .conteudo h3, .pagina-pagina .conteudo h4, .pagina-pagina .conteudo strong {
    background-color: transparent !important;
-   color: #fff;
 }
-
-#descricao span, #descricao strong, #descricao p, #descricao b, #descricao h1, #descricao h2, #descricao h3, #descricao h4, #descricao h5 {
-   color: #fff!important;
-}
-
-#_sincero_widget * {
-   color: #fff;
-}
-
-.review-card {}
 
 div#_trustvox_colt .review-card {
     background: none;
     border: 1px solid rgba(255,255,255,.2);
     border-radius: 0;
-}
-
-div#_trustvox_colt .review-card * {
-    color: #fff;
 }
