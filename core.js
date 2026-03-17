@@ -52,8 +52,6 @@ $(document).ready(function(){
       </ul>
   </div>
   `;
-  
-  $('.pagina-inicial .vitrine-'+miniBannerPosicao+'+ul').after($('.mini-banner'));
 
   $('#rodape .institucional .lista-redes').after(whatsappDropdownHtml);
   
@@ -68,6 +66,10 @@ $(document).ready(function(){
           $menu.slideUp(150);
       }
   });
+  
+
+  $('.pagina-inicial .vitrine-' + miniBannerPosicao + '+ul').after($('.mini-banner'));
+
   
   // Variáveis editáveis para as informações do atendimento
   const atendimento = CONFIG.atendimento || {};
