@@ -429,7 +429,6 @@ span.bn-t-title {
 }
 
 .listagem .listagem-item {
-   margin: 0 20px 0 0 !important;
    padding: 0;
    transition: all .4s;
 }
