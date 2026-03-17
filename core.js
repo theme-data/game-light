@@ -53,6 +53,8 @@ $(document).ready(function(){
   </div>
   `;
   
+  $('.pagina-inicial .vitrine-'+miniBannerPosicao+'+ul').after($('.mini-banner'));
+
   $('#rodape .institucional .lista-redes').after(whatsappDropdownHtml);
   
   // Quando clicar no botão troca a classe do dropdown para abrir/fechar
