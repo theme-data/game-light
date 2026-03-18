@@ -368,64 +368,7 @@ if (CONFIG.bannerVitrine) {
 
   
 
-  /* =========================
-   🖼️ IMAGENS EDITÁVEIS
-==========================*/
-const imagensDepoimentos = CONFIG.imagensDepoimentos || [];
-
-/* =========================
-   🧱 MONTA HTML DINÂMICO
-==========================*/
-
-let slides = '';
-
-imagensDepoimentos.forEach((img) => {
-  slides += `
-    <div class="depoimento-item">
-      <div class="imagem-wrapper">
-        <img src="${img}" alt="Depoimento" loading="lazy" />
-      </div>
-    </div>
-  `;
-});
-
-const htmlSlider = `
-  <section class="depoimentos-imagem">
-    <div class="container">
-      <h2>Depoimentos</h2>
-      <p>Veja o que nossos clientes estão falando dos produtos.</p>
-
-      <div class="slider-depoimentos">
-        ${slides}
-      </div>
-    </div>
-  </section>
-`;
-
-/* =========================
-   📍 INSERE NO DOM
-==========================*/
-
-$('.pagina-inicial .vitrine-lancamento+ul').after(htmlSlider);
-
-/* =========================
-   🎯 INICIA SLICK
-==========================*/
-
-$('.slider-depoimentos').slick({
-  slidesToShow: 5,
-  slidesToScroll: 1,
-  arrows: true,
-  dots: false,
-  infinite: true,
-  adaptiveHeight: false,
-  responsive: [
-    {
-      breakpoint: 768,
-      settings: { slidesToShow: 2 },
-    },
-  ],
-});
+  
   
   // FAQ
   
