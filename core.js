@@ -754,5 +754,25 @@ if (CONFIG.bannerVitrine) {
       }
     ]
   });
+
+  //ALERTA DIGITAL 
+
+  if (typeof CONFIG === "undefined") return;
+
+  var conf = CONFIG.alertaProduto || {};
+  var icon = conf.icon || "";
+  var texto = conf.texto || "";
+
+  var $target = $('.pagina-produto .produto .info-principal-produto');
+
+  if ($target.length && !$('.alert-envio-digital').length) {
+    $target.after(`
+      <div class="alert-envio-digital">
+        ${icon ? `<i><img src="${icon}" alt=""></i>` : ``}
+        ${texto}
+      </div>
+    `);
+  }
+
   
 });
