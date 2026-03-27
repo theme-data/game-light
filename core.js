@@ -171,6 +171,7 @@ $(document).ready(function(){
         speed: 400,
         draggable: true,
         adaptiveHeight: false,
+        mobileFirst: true, 
   
         responsive: [
           {
