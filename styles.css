@@ -2369,7 +2369,7 @@ div#exibirFormasPagamento .btn.btn-small {
 
 @media screen and (max-width: 768px) {
 
-   .listagem .listagem-linha {
+   .pagina-inicial .listagem .listagem-linha {
       width: 50%!important;
    }
 
