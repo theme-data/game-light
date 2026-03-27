@@ -713,5 +713,49 @@ if (CONFIG.bannerVitrine) {
   
   //Fim mobile
   }
-  
+
+
+  if (typeof CONFIG === "undefined") return;
+
+  var tarja = CONFIG.tarja || [];
+
+  var tarjaItems = tarja.map(function(t){
+    return `
+      <div class="t-item">
+        <img src="${t.icon}" alt="${t.titulo}">
+        <div class="t-text">
+          <strong>${t.titulo}</strong>
+          <span>${t.texto}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  $('.pagina-inicial .secao-banners').after(`
+    <div class="t-bar">
+      <div class="t-slide">
+        ${tarjaItems}
+      </div>
+    </div>
+  `);
+
+  $('.t-slide').slick({
+    slidesToShow: 4,
+    arrows: false,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 0,
+    speed: 4000,
+    cssEase: 'linear',
+    pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
   });
+  
+});

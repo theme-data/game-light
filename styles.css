@@ -300,6 +300,7 @@ span.bn-t-title {
 
 .secao-banners .conteiner {
    padding: 16px;
+   max-width: 1700px;
 }
 
 .banner .flex-control-paging li a {
