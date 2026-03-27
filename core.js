@@ -737,7 +737,7 @@ if (CONFIG.bannerVitrine) {
     // fallback de inserção (mobile às vezes muda estrutura)
     var $target = $('.pagina-inicial .secao-banners');
     if (!$target.length) {
-      $target = $('secao-banners');
+      $target = $('.secao-banners');
     }
     if (!$target.length) {
       $target = $('body');
