@@ -2594,6 +2594,8 @@ a.atalho-menu {
 
 #rodape>div:last-child .row-fluid {
    flex-direction: column;
+   justify-content: center;
+   align-items: center;
 }
 
 #rodape .pagamento-selos {
@@ -2962,6 +2964,81 @@ a.atalho-menu {
 .tabela-carrinho .form-horizontal .controls .input-append input {
    width: 100%;
 }
+
+
+#rodape .institucional .row-fluid .titulo {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   cursor: pointer;
+   padding: 20px;
+   margin-bottom: 20px;
+   background: rgba(0, 0, 0, .05);
+}
+
+.chev {
+ font-size: 12px;
+ transition: transform .3s;
+}
+
+.titulo.open .chev {
+ transform: rotate(180deg);
+}
+
+.links-rodape ul,
+.atendimento-rodape ul,
+.visible-phone ul {
+ display: none;
+}
+
+.links-rodape ul.open,
+.atendimento-rodape ul.open,
+.visible-phone ul.open {
+ display: block;
+}
+
+.chev img {
+   max-width: 18px;
+}
+
+#rodape .institucional .lista-redes ul {
+   justify-content: center;
+}
+
+.whatsapp-dropdown {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+
+#rodape .institucional .lista-redes ul {
+   justify-content: center;
+}
+
+.whatsapp-dropdown {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+
+.span4.pagamento, .span4.selos {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.span4.pagamento *, .span4.selos * {
+   justify-content: center;
+   text-align: center;
+   display: flex;
+}
+
+#rodape>div:last-child .row-fluid > .span12 > p {
+   text-align: center;
+}
+
+#rodape .pagamento-selos .titulo {margin-top: 30px;}
 
 }
 

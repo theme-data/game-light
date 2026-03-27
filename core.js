@@ -679,6 +679,26 @@ if (CONFIG.bannerVitrine) {
   
   $('.h-menu').before($('#cabecalho .conteudo-topo .inferior .span4.hidden-phone > .carrinho'));
 
+    // adiciona o ícone
+    $('.links-rodape .titulo, .atendimento-rodape .titulo, .visible-phone .titulo')
+    .each(function(){
+      if (!$(this).find('.chev').length) {
+        $(this).append('<span class="chev"><img src="https://cdn.awsli.com.br/2942/2942234/arquivos/chevron_fdown.svg"/></span>');
+      }
+    });
+
+  // toggle no click
+  $('.links-rodape .titulo, .atendimento-rodape .titulo, .visible-phone .titulo')
+    .on('click', function(){
+
+      var $parent = $(this).parent();
+      var $ul = $parent.find('ul');
+
+      $ul.toggleClass('open');
+      $(this).toggleClass('open');
+
+    });
+
   
   //Fim mobile
   }
