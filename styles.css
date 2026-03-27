@@ -2368,6 +2368,10 @@ div#exibirFormasPagamento .btn.btn-small {
 
 @media screen and (max-width: 768px) {
 
+   .listagem .listagem-linha {
+      width: 50%!important;
+   }
+
    .pagina-busca .ordenar-listagem.topo {
       padding: 0 0 20px;
   }
