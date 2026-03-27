@@ -1730,7 +1730,7 @@ background: var(--white);
    .caixa-sombreada {
       border: 0;
       box-shadow: none;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.05);
       padding: 40px;
    }
    
@@ -1995,7 +1995,7 @@ background: var(--white);
 }
 
 .dados-cadastro * {
-   color: #fff;
+   color: var(--black);
 }
 
 .control-group.erro .control-label, .control-group.erro .help-block, .control-group.erro .help-inline {
@@ -2063,7 +2063,7 @@ div#exibirFormasPagamento .btn.btn-small {
 }
 
 .li-box-payment .accordion-inner {
-   background: #292929;
+   background: #fff;
 }
 
 .li-box-payment .accordion-inner * {
@@ -2159,9 +2159,9 @@ div#exibirFormasPagamento .btn.btn-small {
 }
 
 #barraNewsletter {
-    box-shadow: none;
-    background: #1e1e1e;
-    border-top: 1px solid rgba(255,255,255,.2);
+   box-shadow: none;
+   background: #fff;
+   border-top: 1px solid rgba(0, 0, 0, .2);
 }
 
 .carrinho .carrinho-interno {
@@ -3057,6 +3057,11 @@ a.atalho-menu {
    font-weight: 600;
 }
 
+.carrinho-checkout .identificacao .form-horizontal .control-group {
+   display: flex;
+   flex-direction: column;
+}
+
 }
 
 
@@ -3071,8 +3076,8 @@ a.atalho-menu {
 
 
   .identificacao .control-group .submit-email.botao.principal {
-   max-width: 100%;
-   margin-top: 10px;
+   max-width: fit-content;
+   margin-top: 0px;
 }
 
    .listagem .listagem-item:hover {
