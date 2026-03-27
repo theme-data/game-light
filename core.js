@@ -714,70 +714,45 @@ if (CONFIG.bannerVitrine) {
   //Fim mobile
   }
 
+  var tarja = CONFIG.tarja || [];
 
-  function initTarja(){
-
-    if (typeof CONFIG === "undefined") return;
-    if ($('.t-bar').length) return; // evita duplicar
-
-    var tarja = CONFIG.tarja || [];
-
-    var tarjaItems = tarja.map(function(t){
-      return `
-        <div class="t-item">
-          <img src="${t.icon}" alt="${t.titulo}">
-          <div class="t-text">
-            <strong>${t.titulo}</strong>
-            <span>${t.texto}</span>
-          </div>
-        </div>
-      `;
-    }).join('');
-
-    // fallback de inserção (mobile às vezes muda estrutura)
-    var $target = $('.pagina-inicial .secao-banners');
-    if (!$target.length) {
-      $target = $('.secao-banners');
-    }
-    if (!$target.length) {
-      $target = $('body');
-    }
-
-    $target.after(`
-      <div class="t-bar">
-        <div class="t-slide">
-          ${tarjaItems}
+  var tarjaItems = tarja.map(function(t){
+    return `
+      <div class="t-item">
+        <img src="${t.icon}" alt="${t.titulo}">
+        <div class="t-text">
+          <strong>${t.titulo}</strong>
+          <span>${t.texto}</span>
         </div>
       </div>
-    `);
+    `;
+  }).join('');
 
-    if (typeof $.fn.slick === "function") {
-      $('.t-slide').slick({
-        slidesToShow: 4,
-        arrows: false,
-        infinite: true,
-        autoplay: true,
-        autoplaySpeed: 0,
-        speed: 4000,
-        cssEase: 'linear',
-        pauseOnHover: false,
-        responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 1
-            }
-          }
-        ]
-      });
-    }
-  }
+  $('.pagina-inicial .secao-banners').after(`
+    <div class="t-bar">
+      <div class="t-slide">
+        ${tarjaItems}
+      </div>
+    </div>
+  `);
 
-  // roda normal
-  initTarja();
-
-  // garante execução no mobile (lazy load / ajax)
-  setTimeout(initTarja, 1000);
-  setTimeout(initTarja, 2000);
+  $('.t-slide').slick({
+    slidesToShow: 4,
+    arrows: false,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 0,
+    speed: 4000,
+    cssEase: 'linear',
+    pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
   
 });
