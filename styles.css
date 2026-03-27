@@ -3358,3 +3358,45 @@ div#_trustvox_colt .review-card {
     border: 1px solid rgba(255,255,255,.2);
     border-radius: 0;
 }
+
+
+/* TARJA AUTOMATICA */
+
+.t-bar {
+   max-width: 1500px;
+   padding: 24px;
+   margin: 20px auto 0;
+}
+
+.t-item {
+   display: flex!important;
+   gap: 10px;
+}
+
+.t-item .t-text {
+   display: flex;
+   flex-direction: column;
+}
+
+.t-item .t-text strong {
+   font-size: 18px;
+}
+
+.t-item .t-text span {
+   font-size: 14px;
+}
+
+.t-slide img {max-width: 24px;max-height: 24px;}
+
+.t-slide .slick-track {
+   display: flex;
+   align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+
+   .t-item {
+      justify-content: center;
+  }
+
+}
