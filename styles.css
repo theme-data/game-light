@@ -2415,8 +2415,10 @@ div#exibirFormasPagamento .btn.btn-small {
    }
 
    #listagemProdutos .banner.hidden-phone {
-      display: block !important;
-   }
+      display: flex !important;
+      flex-direction: column;
+      gap: 20px;
+  }
 
    .banner.tarja img {
       width: 100%;
