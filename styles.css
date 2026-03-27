@@ -707,6 +707,7 @@ span.bn-t-title {
 
 .atributos ul li a:hover, .atributos ul li.active a {
    border: 1px solid var(--brand-color);
+    background: var(--brand-color);
 }
 
 .atributos ul li a:hover *, .atributos ul li.active a * {
@@ -3039,6 +3040,22 @@ a.atalho-menu {
 }
 
 #rodape .pagamento-selos .titulo {margin-top: 30px;}
+
+.produto .acoes-produto .preco-produto > div:first-child {
+   flex-direction: column;
+   gap: 0;
+   align-items: baseline;
+}
+
+.produto .comprar .botao-comprar {
+   line-height: normal;
+}
+
+.atributos ul li.active a span {
+   display: flex;
+   color: var(--white);
+   font-weight: 600;
+}
 
 }
 
