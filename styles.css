@@ -1002,11 +1002,19 @@ ul.whatsapp-dropdown-menu li {
 }
 
 .produto .comprar > .botao.botao-comprar {
-	height: 60px !important;
-	font-size: 14px;
-	text-transform: uppercase;
-	font-weight: bold;
-	text-shadow: none;
+   height: 80px !important;
+   font-size: 24px;
+   text-transform: uppercase;
+   font-weight: bold;
+   display: flex;
+   text-shadow: none;
+   flex-direction: column;
+}
+
+.produto .comprar > .botao.botao-comprar:after {
+   font-size: 12px;
+   content: "Compra 100% segura";
+   font-weight: 600;
 }
 
 .produto .comprar > .botao.botao-comprar i {
@@ -1167,7 +1175,7 @@ div#modal-pagamento.ativo {
 
 .modal-conteudo {
    padding: 40px;
-   background: #272727;
+   background: var(--white);
    width: 500px;
 }
 
@@ -1180,7 +1188,7 @@ div#modal-pagamento.ativo {
 
 .modal-header .fechar-modal {
    background: none;
-   color: #fff;
+   color: var(--black);
    font-size: 20px;
 }
 
@@ -3399,4 +3407,20 @@ div#_trustvox_colt .review-card {
       justify-content: center;
   }
 
+}
+
+/* ALERTA ENVIO DIGITAL */
+
+.alert-envio-digital {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 10px 10px!important;
+   background: rgba(0,0,0,.05);
+   border: 1px solid var(--black)!important;
+   gap: 10px;
+   font-size: 14px;
+   font-weight: 600;
+   color: #000;
+   margin-top: 20px!important;
 }
