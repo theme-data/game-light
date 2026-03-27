@@ -711,7 +711,7 @@ span.bn-t-title {
 }
 
 .atributos ul li a:hover *, .atributos ul li.active a * {
-   color: var(--brand-color);
+   color: var(--white);
 }
 
 .atributos ul li.active a span:after {
@@ -3506,7 +3506,6 @@ div#_trustvox_colt .review-card {
    justify-content: center;
    padding: 10px 10px!important;
    background: rgba(0,0,0,.05);
-   border: 1px solid var(--black)!important;
    gap: 10px;
    font-size: 14px;
    font-weight: 600;
