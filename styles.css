@@ -1149,7 +1149,7 @@ ul.whatsapp-dropdown-menu li {
 }
 
 .modal {
-   background: #272727;
+   background: var(--white);
    z-index: 999999;
 }
 
@@ -1659,7 +1659,7 @@ background: var(--white);
    }
    
    .modal .close {
-      color: #fff;
+      color: #000;
       font-size: 0;
       opacity: 1;
       display: flex;
