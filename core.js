@@ -714,45 +714,67 @@ if (CONFIG.bannerVitrine) {
   //Fim mobile
   }
 
-  var tarja = CONFIG.tarja || [];
+  // Tenta várias vezes criar o slide de tarja até conseguir (em caso de slow loads ou falhas)
+  function insertTarjaSlider(attempt) {
+    attempt = attempt || 1;
 
-  var tarjaItems = tarja.map(function(t){
-    return `
-      <div class="t-item">
-        <img src="${t.icon}" alt="${t.titulo}">
-        <div class="t-text">
-          <strong>${t.titulo}</strong>
-          <span>${t.texto}</span>
+    var tarja = CONFIG.tarja || [];
+
+    var tarjaItems = tarja.map(function(t){
+      return `
+        <div class="t-item">
+          <img src="${t.icon}" alt="${t.titulo}">
+          <div class="t-text">
+            <strong>${t.titulo}</strong>
+            <span>${t.texto}</span>
+          </div>
         </div>
-      </div>
-    `;
-  }).join('');
+      `;
+    }).join('');
 
-  $('.pagina-inicial .secao-banners').after(`
-    <div class="t-bar">
-      <div class="t-slide">
-        ${tarjaItems}
-      </div>
-    </div>
-  `);
+    // Só adiciona se não existir ainda (para evitar duplicação em tentativas múltiplas)
+    if (!$('.t-bar').length && $('.pagina-inicial .secao-banners').length) {
+      $('.pagina-inicial .secao-banners').after(`
+        <div class="t-bar">
+          <div class="t-slide">
+            ${tarjaItems}
+          </div>
+        </div>
+      `);
+    }
 
-  $('.t-slide').slick({
-    slidesToShow: 4,
-    arrows: false,
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 0,
-    speed: 4000,
-    cssEase: 'linear',
-    pauseOnHover: false,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1
+    // Inicializa só se .t-slide existe e o slick ainda não foi aplicado
+    var $tSlide = $('.t-slide');
+    if ($tSlide.length && !$tSlide.hasClass('slick-initialized')) {
+      try {
+        $tSlide.slick({
+          slidesToShow: 4,
+          arrows: false,
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 0,
+          speed: 4000,
+          cssEase: 'linear',
+          pauseOnHover: false,
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1
+              }
+            }
+          ]
+        });
+      } catch (e) {
+        // Se der erro, tenta novamente depois de um tempo
+        if (attempt < 10) {
+          setTimeout(function() { insertTarjaSlider(attempt + 1); }, 400);
         }
       }
-    ]
-  });
+    } else if ((!$tSlide.length || !$tSlide.hasClass('slick-initialized')) && attempt < 10) {
+      setTimeout(function() { insertTarjaSlider(attempt + 1); }, 400);
+    }
+  }
+  insertTarjaSlider();
   
 });
