@@ -715,47 +715,69 @@ if (CONFIG.bannerVitrine) {
   }
 
 
-  if (typeof CONFIG === "undefined") return;
+  function initTarja(){
 
-  var tarja = CONFIG.tarja || [];
+    if (typeof CONFIG === "undefined") return;
+    if ($('.t-bar').length) return; // evita duplicar
 
-  var tarjaItems = tarja.map(function(t){
-    return `
-      <div class="t-item">
-        <img src="${t.icon}" alt="${t.titulo}">
-        <div class="t-text">
-          <strong>${t.titulo}</strong>
-          <span>${t.texto}</span>
+    var tarja = CONFIG.tarja || [];
+
+    var tarjaItems = tarja.map(function(t){
+      return `
+        <div class="t-item">
+          <img src="${t.icon}" alt="${t.titulo}">
+          <div class="t-text">
+            <strong>${t.titulo}</strong>
+            <span>${t.texto}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // fallback de inserção (mobile às vezes muda estrutura)
+    var $target = $('.pagina-inicial .secao-banners');
+    if (!$target.length) {
+      $target = $('secao-banners');
+    }
+    if (!$target.length) {
+      $target = $('body');
+    }
+
+    $target.after(`
+      <div class="t-bar">
+        <div class="t-slide">
+          ${tarjaItems}
         </div>
       </div>
-    `;
-  }).join('');
+    `);
 
-  $('.pagina-inicial .secao-banners').after(`
-    <div class="t-bar">
-      <div class="t-slide">
-        ${tarjaItems}
-      </div>
-    </div>
-  `);
+    if (typeof $.fn.slick === "function") {
+      $('.t-slide').slick({
+        slidesToShow: 4,
+        arrows: false,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 0,
+        speed: 4000,
+        cssEase: 'linear',
+        pauseOnHover: false,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+        ]
+      });
+    }
+  }
 
-  $('.t-slide').slick({
-    slidesToShow: 4,
-    arrows: false,
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 0,
-    speed: 4000,
-    cssEase: 'linear',
-    pauseOnHover: false,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1
-        }
-      }
-    ]
-  });
+  // roda normal
+  initTarja();
+
+  // garante execução no mobile (lazy load / ajax)
+  setTimeout(initTarja, 1000);
+  setTimeout(initTarja, 2000);
   
 });
