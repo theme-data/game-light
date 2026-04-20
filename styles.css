@@ -3421,6 +3421,7 @@ div#_trustvox_colt .review-card {
 .t-item {
    display: flex!important;
    gap: 10px;
+   align-items: center;
 }
 
 .t-item .t-text {
@@ -3429,11 +3430,11 @@ div#_trustvox_colt .review-card {
 }
 
 .t-item .t-text strong {
-   font-size: 18px;
+   font-size: 16px;
 }
 
 .t-item .t-text span {
-   font-size: 14px;
+   font-size: 12px;
 }
 
 .t-slide img {max-width: 24px;max-height: 24px;}
@@ -3469,4 +3470,15 @@ div#_trustvox_colt .review-card {
 .span12.banner.tarja {
    display: flex;
    justify-content: center;
+}
+
+.tarja-img {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: rgba(0, 0, 0, .05);
+   width: 48px;
+   height: 48px;
+   border-radius: 8px;
+   flex: none;
 }

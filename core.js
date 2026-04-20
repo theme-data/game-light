@@ -665,8 +665,11 @@ if (CONFIG.bannerVitrine) {
   });
 
   // MOVE TARJA
-  var vitrineTarja = CONFIG.vitrineTarja || [];
-  $(`.pagina-inicial .vitrine-${vitrineTarja}`).before($('.banner.tarja'));
+  var vitrineTarja = CONFIG.vitrineTarja?.idVitrine;
+
+  if (vitrineTarja) {
+    $(`.pagina-inicial .vitrine-${vitrineTarja}`).before($('.banner.tarja'));
+  }
 
   //ALERTA DIGITAL 
 
