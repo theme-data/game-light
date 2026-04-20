@@ -3091,6 +3091,62 @@ a.atalho-menu {
 
 }
 
+
+#listagemProdutos section.depoimentos-video .slick-track {
+	width: max-content!important;	
+}
+
+.depoimentos-video .container {
+    margin: 0;
+    width: 100%;
+}
+
+.depoimento-item {
+  padding: 0 8px;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #111;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+}
+
+/* setas */
+.slider-depoimentos .slick-prev,
+.slider-depoimentos .slick-next {
+  width: 44px;
+  height: 44px;
+  background: var(--white);
+  border: 1px solid var(--brand-color);
+  z-index: 5;
+}
+
+.slider-depoimentos {
+    width: 100%;
+}
+
+section.depoimentos-video {
+    width: 100%;
+}
+
+.depoimentos-video h2 {
+    font-size: 28px;
+}
+
+.depoimentos-video p {
+    font-size: 16px;
+    margin-bottom: 32px;
+}
+
+
 /* Badges nos produtos */
 .listagem-item .imagem-produto:after {
    content: "";
