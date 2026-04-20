@@ -3465,3 +3465,8 @@ div#_trustvox_colt .review-card {
    color: #000;
    margin-top: 20px!important;
 }
+
+.span12.banner.tarja {
+   display: flex;
+   justify-content: center;
+}

@@ -664,6 +664,10 @@ if (CONFIG.bannerVitrine) {
     ]
   });
 
+  // MOVE TARJA
+  var vitrineTarja = CONFIG.vitrineTarja || [];
+  $(`.pagina-inicial .vitrine-${vitrineTarja}`).before($('.banner.tarja'));
+
   //ALERTA DIGITAL 
 
   if (typeof CONFIG === "undefined") return;
