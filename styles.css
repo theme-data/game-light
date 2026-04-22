@@ -3141,9 +3141,10 @@ a.atalho-menu {
 /* FAQ */
 
 .faq-container {
-	padding: 0 48px;
+	padding: 0 32px;
    max-width: 1500px;
    margin: 0 auto;
+   box-sizing: border-box;
 }
 
 section.faq-section {
@@ -3165,11 +3166,14 @@ section.faq-section {
 }
 
 .faq-item {
-	display: flex;
-	flex-direction: column;
-	padding: 40px 0;
-	gap: 24px;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+   display: flex;
+   flex-direction: column;
+   padding: 24px;
+   gap: 24px;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+   background: rgba(0, 0, 0, .05);
+   border-radius: 10px;
+   margin-bottom: 14px;
 }
 
 .faq-pergunta {
@@ -3236,12 +3240,13 @@ section.faq-section {
 }
 
 .beneficios-container {
-	padding: 48px;
+	padding: 32px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
    max-width: 1500px;
    margin: 0 auto;
+   box-sizing: border-box;
 }
 
 .beneficio-item .beneficio-texto strong {
