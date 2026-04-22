@@ -2378,6 +2378,11 @@ div#exibirFormasPagamento .btn.btn-small {
 
 @media screen and (max-width: 768px) {
 
+   .c-item a {
+      height: 100px;
+      border-radius: 8px;
+   }
+
    .pagina-inicial .listagem .listagem-linha {
       width: 50%!important;
    }
