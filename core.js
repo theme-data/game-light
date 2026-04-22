@@ -695,8 +695,8 @@ if (CONFIG.bannerVitrine) {
 
   var textoAlertBar = CONFIG.alertBar || {};
 
-  if (alertBar.mensagem) {
-    $(`.barra-inicial`)
+  if (textoAlertBar.mensagem) {
+    $('.barra-inicial')
       .replaceWith(`
         <div class="alert-bar">
           <span>${textoAlertBar.mensagem}</span>
