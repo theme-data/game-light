@@ -138,7 +138,7 @@ $(document).ready(function(){
           {
               breakpoint: 768,
               settings: {
-                  slidesToShow: 2
+                  slidesToShow: 4
               }
           }
       ]
@@ -216,7 +216,7 @@ $(document).ready(function(){
     $('.ordenar-listagem .row-fluid > .span6').removeClass('span6');
     
     
-    $(document).ready(function () {
+  $(document).ready(function () {
   
       /* ======================================================
          1. CRIA BOTÃO FILTRAR
