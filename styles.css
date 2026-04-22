@@ -3480,6 +3480,16 @@ div#_trustvox_colt .review-card {
 .span12.banner.tarja {
    display: flex;
    justify-content: center;
+   margin: 0;
+}
+
+.span12.banner.tarja > a {
+   flex: 1;
+   margin: 0 !important;
+}
+
+.span12.banner.tarja > a picture, .span12.banner.tarja > a img {
+   width: 100%;
 }
 
 .tarja-img {

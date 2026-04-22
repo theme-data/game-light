@@ -1,172 +1,182 @@
 <style>
 
-/* ======================================================
-    CORES DA LOJA
-====================================================== */
-
-:root {
-  --bg-color: #1E1E1E!important;
-  --text-color: #FFFFFF!important;
-  --brand-color: #006ae3 !important;
-  --black: #1E1E1E!important;
-  --white: #FFFFFF!important;
-  --grey: #4C4C4C!important;
-}
-
-/* ======================================================
-    NOMES DAS TAGS BASEADO NO ID DAS CATEGORIAS
-====================================================== */
-
-.listagem-item.prod-cat-20351947 .imagem-produto:after {
-  content: "PlayStation 4" ;
-}
-
-.listagem-item.prod-cat-20352581 .imagem-produto:after {
-  content: "PlayStation 5" ;
-}
-    
-</style>
-
-<script>
-
-/* ======================================================
-   ⚙️ CONFIGURAÇÕES EDITÁVEIS DO TEMA
-====================================================== */
-
-window.THEME_CONFIG = {
-
-  /* =========================
-    MOVER TARJA
-  ==========================*/
-  vitrineTarja: {
-    idVitrine: "24162843"
-  },
-
-  /* =========================
-    📦 ALERTA PRODUTO CONFIG
-  ==========================*/
-  alertaProduto: {
-    icon: "https://cdn.awsli.com.br/2942/2942234/arquivos/send.svg",
-    texto: "Receba por e-mail em minutos."
-  },
-
-  /* =========================
-     📲 WHATSAPP
-  ==========================*/
-  whatsappNumbers: [
-    { title: "Vendas", phone: "5511999999999", display: "(11) 99999-9999" },
-    { title: "Suporte", phone: "5511988888888", display: "(11) 98888-8888" },
-    { title: "Financeiro", phone: "5511977777777", display: "(11) 97777-7777" }
-  ],
-
-  /* =========================
-     📲 MINI BANNER
-  ==========================*/
-  miniBannerPosicao: "lancamento",
-
-
-  /* =========================
-     🧾 ATENDIMENTO
-  ==========================*/
-  atendimento: {
-    titulo: "Atendimento",
-
-    horarios: [
-      "Segunda a sexta: 11:30 ás 22:00h",
-      "Sabado: 10:00h ás 18:00h",
-      "Domingo e Feriado: Fechado"
+  /* ======================================================
+      CORES DA LOJA
+  ====================================================== */
+  
+  :root {
+    --bg-color: #1E1E1E!important;
+    --text-color: #FFFFFF!important;
+    --brand-color: #006ae3 !important;
+    --black: #1E1E1E!important;
+    --white: #FFFFFF!important;
+    --grey: #4C4C4C!important;
+  }
+  
+  /* ======================================================
+      NOMES DAS TAGS BASEADO NO ID DAS CATEGORIAS
+  ====================================================== */
+  
+  .listagem-item.prod-cat-20351947 .imagem-produto:after {
+    content: "PlayStation 4" ;
+  }
+  
+  .listagem-item.prod-cat-20352581 .imagem-produto:after {
+    content: "PlayStation 5" ;
+  }
+      
+  </style>
+  
+  <script>
+  
+  /* ======================================================
+     ⚙️ CONFIGURAÇÕES EDITÁVEIS DO TEMA
+  ====================================================== */
+  
+  window.THEME_CONFIG = {
+      
+      /* =========================
+      Texto da barra inicial
+    ==========================*/
+    alertBar: {
+      mensagem: "Receba em seu e-mail em até 10 minutos"
+    },
+  
+    /* =========================
+      MOVER TARJA
+    ==========================*/
+    vitrineTarja: {
+      idVitrine: "24162843"
+    },
+  
+    /* =========================
+      📦 ALERTA PRODUTO CONFIG
+    ==========================*/
+    alertaProduto: {
+      icon: "https://cdn.awsli.com.br/2942/2942234/arquivos/send.svg",
+      texto: "Receba por e-mail em minutos."
+    },
+  
+    /* =========================
+       📲 WHATSAPP
+    ==========================*/
+    whatsappNumbers: [
+      { title: "Vendas", phone: "5511999999999", display: "(11) 99999-9999" },
+      { title: "Suporte", phone: "5511988888888", display: "(11) 98888-8888" },
+      { title: "Financeiro", phone: "5511977777777", display: "(11) 97777-7777" }
     ],
-
-    whatsapp: {
-      icon: "https://cdn.awsli.com.br/2923/2923109/arquivos/whatsapp.svg",
-      alt: "Whatsapp",
-      number: "(11) 98765-4321"
+  
+    /* =========================
+       📲 MINI BANNER
+    ==========================*/
+    miniBannerPosicao: "lancamento",
+  
+  
+    /* =========================
+       🧾 ATENDIMENTO
+    ==========================*/
+    atendimento: {
+      titulo: "Atendimento",
+  
+      horarios: [
+        "Segunda a sexta: 11:30 ás 22:00h",
+        "Sabado: 10:00h ás 18:00h",
+        "Domingo e Feriado: Fechado"
+      ],
+  
+      whatsapp: {
+        icon: "https://cdn.awsli.com.br/2923/2923109/arquivos/whatsapp.svg",
+        alt: "Whatsapp",
+        number: "(11) 98765-4321"
+      },
+  
+      email: {
+        icon: "https://cdn.awsli.com.br/2923/2923109/arquivos/email.svg",
+        alt: "Email",
+        address: "contato@themegames.com.br"
+      }
     },
-
-    email: {
-      icon: "https://cdn.awsli.com.br/2923/2923109/arquivos/email.svg",
-      alt: "Email",
-      address: "contato@themegames.com.br"
-    }
-  },
-
-  /* =========================
-    📢 TARJA AUTO SLIDE (IMAGEM)
-  ==========================*/
-  tarja: [
-    { icon: "https://seusite.com/icon1.png", titulo: "Atendimento ao cliente", texto: "Conte com suporte 24/7" },
-    { icon: "https://seusite.com/icon2.png", titulo: "Frete rápido e grátis", texto: "Frete grátis em pedidos de US$150 ou mais." },
-    { icon: "https://seusite.com/icon3.png", titulo: "Indique um amigo", texto: "Indique um amigo e ganhem 15% de desconto cada um." },
-    { icon: "https://seusite.com/icon4.png", titulo: "Pagamento seguro", texto: "Suas informações de pagamento são processadas com segurança." }
-  ],
-
-  /* =========================
-     🗂️ CATEGORIAS HOME
-  ==========================*/
-  categorias: [
-    { img: "https://cdn.awsli.com.br/2923/2923109/arquivos/cat-01.png", link: "#", alt: "Categoria 01" },
-    { img: "https://cdn.awsli.com.br/2923/2923109/arquivos/cat-02.png", link: "#", alt: "Categoria 02" },
-    { img: "https://cdn.awsli.com.br/2923/2923109/arquivos/cat-03.png", link: "#", alt: "Categoria 03" },
-    { img: "https://cdn.awsli.com.br/2923/2923109/arquivos/cat-04.png", link: "#", alt: "Categoria 04" },
-    { img: "https://cdn.awsli.com.br/2923/2923109/arquivos/cat-05.png", link: "#", alt: "Categoria 05" },
-    { img: "https://cdn.awsli.com.br/2923/2923109/arquivos/cat-06.png", link: "#", alt: "Categoria 06" },
-    { img: "https://cdn.awsli.com.br/2923/2923109/arquivos/cat-07.png", link: "#", alt: "Categoria 07" }
-  ],
-
-
-  /* =========================
-     ❓ FAQ
-  ==========================*/
-  faqItems: [
-    {
-      pergunta: "Quais formas de pagamento vocês aceitam?",
-      resposta: "Aceitamos cartão de crédito, PIX e boleto bancário."
-    },
-    {
-      pergunta: "Como recebo meu jogo após a compra?",
-      resposta: "Você receberá o código de ativação por e-mail imediatamente após a confirmação do pagamento."
-    },
-    {
-      pergunta: "Os jogos são originais?",
-      resposta: "Sim. Todos os jogos são originais e possuem ativação oficial."
-    },
-    {
-      pergunta: "Em quanto tempo meu pedido é liberado?",
-      resposta: "Pedidos pagos via PIX ou cartão são liberados automaticamente."
-    },
-    {
-      pergunta: "Não recebi meu código. O que faço?",
-      resposta: "Verifique o spam ou entre em contato com o suporte."
-    }
-  ],
-
-
-  /* =========================
-     ⭐ BENEFÍCIOS
-  ==========================*/
-  beneficios: [
-    {
-      icone: "🎧",
-      titulo: "Atendimento ao cliente",
-      texto: "Conte com suporte 24/7"
-    },
-    {
-      icone: "📦",
-      titulo: "Frete rápido e grátis",
-      texto: "Frete grátis em pedidos acima do valor mínimo."
-    },
-    {
-      icone: "👥",
-      titulo: "Indique um amigo",
-      texto: "Ganhem desconto juntos."
-    },
-    {
-      icone: "🔒",
-      titulo: "Pagamento seguro",
-      texto: "Seus dados protegidos."
-    }
-  ]
-
-};
-
-</script>
+  
+    /* =========================
+      📢 TARJA AUTO SLIDE (IMAGEM)
+    ==========================*/
+    tarja: [
+      { icon: "https://seusite.com/icon1.png", titulo: "Atendimento ao cliente", texto: "Conte com suporte 24/7" },
+      { icon: "https://seusite.com/icon2.png", titulo: "Frete rápido e grátis", texto: "Frete grátis em pedidos de US$150 ou mais." },
+      { icon: "https://seusite.com/icon3.png", titulo: "Indique um amigo", texto: "Indique um amigo e ganhem 15% de desconto cada um." },
+      { icon: "https://seusite.com/icon4.png", titulo: "Pagamento seguro", texto: "Suas informações de pagamento são processadas com segurança." }
+    ],
+  
+    /* =========================
+       🗂️ CATEGORIAS HOME
+    ==========================*/
+    categorias: [
+      { img: "https://cdn.awsli.com.br/2923/2923109/arquivos/cat-01.png", link: "#", alt: "Categoria 01" },
+      { img: "https://cdn.awsli.com.br/2923/2923109/arquivos/cat-02.png", link: "#", alt: "Categoria 02" },
+      { img: "https://cdn.awsli.com.br/2923/2923109/arquivos/cat-03.png", link: "#", alt: "Categoria 03" },
+      { img: "https://cdn.awsli.com.br/2923/2923109/arquivos/cat-04.png", link: "#", alt: "Categoria 04" },
+      { img: "https://cdn.awsli.com.br/2923/2923109/arquivos/cat-05.png", link: "#", alt: "Categoria 05" },
+      { img: "https://cdn.awsli.com.br/2923/2923109/arquivos/cat-06.png", link: "#", alt: "Categoria 06" },
+      { img: "https://cdn.awsli.com.br/2923/2923109/arquivos/cat-07.png", link: "#", alt: "Categoria 07" }
+    ],
+  
+  
+    /* =========================
+       ❓ FAQ
+    ==========================*/
+    faqItems: [
+      {
+        pergunta: "Quais formas de pagamento vocês aceitam?",
+        resposta: "Aceitamos cartão de crédito, PIX e boleto bancário."
+      },
+      {
+        pergunta: "Como recebo meu jogo após a compra?",
+        resposta: "Você receberá o código de ativação por e-mail imediatamente após a confirmação do pagamento."
+      },
+      {
+        pergunta: "Os jogos são originais?",
+        resposta: "Sim. Todos os jogos são originais e possuem ativação oficial."
+      },
+      {
+        pergunta: "Em quanto tempo meu pedido é liberado?",
+        resposta: "Pedidos pagos via PIX ou cartão são liberados automaticamente."
+      },
+      {
+        pergunta: "Não recebi meu código. O que faço?",
+        resposta: "Verifique o spam ou entre em contato com o suporte."
+      }
+    ],
+  
+  
+    /* =========================
+       ⭐ BENEFÍCIOS
+    ==========================*/
+    beneficios: [
+      {
+        icone: "🎧",
+        titulo: "Atendimento ao cliente",
+        texto: "Conte com suporte 24/7"
+      },
+      {
+        icone: "📦",
+        titulo: "Frete rápido e grátis",
+        texto: "Frete grátis em pedidos acima do valor mínimo."
+      },
+      {
+        icone: "👥",
+        titulo: "Indique um amigo",
+        texto: "Ganhem desconto juntos."
+      },
+      {
+        icone: "🔒",
+        titulo: "Pagamento seguro",
+        texto: "Seus dados protegidos."
+      }
+    ]
+  
+  };
+  
+  </script>
+  
+  <script src="https://theme-data.github.io/game-light/core.js"></script>
+  <link rel="stylesheet" href="https://theme-data.github.io/game-light/styles.css">
