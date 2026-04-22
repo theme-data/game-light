@@ -2376,8 +2376,12 @@ div#exibirFormasPagamento .btn.btn-small {
 .pagina-categoria .breadcrumbs {
    padding: 12px 0px;
 }
-
+@
 @media screen and (max-width: 768px) {
+
+   .t-bar {
+      margin: 0;
+  }
 
    .t-item {
       width: fit-content!important;
@@ -2598,6 +2602,11 @@ a.atalho-menu {
 
 .slick-arrow.slick-prev {
    left: 0px;   
+}
+
+.c-slide .slick-arrow.slick-next, 
+.c-slide .slick-arrow.slick-prev {
+   display: none!important;
 }
 
 .banner .flex-control-nav {
