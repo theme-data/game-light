@@ -2379,6 +2379,10 @@ div#exibirFormasPagamento .btn.btn-small {
 
 @media screen and (max-width: 768px) {
 
+   .t-item {
+      width: fit-content!important;
+   }
+
    .c-item a {
       height: 100px;
       border-radius: 8px;
@@ -3507,4 +3511,18 @@ div#_trustvox_colt .review-card {
    height: 48px;
    border-radius: 8px;
    flex: none;
+}
+
+.alert-bar {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 36px;
+   background: var(--brand-color);
+}
+
+.alert-bar span {
+   color: var(--white);
+   font-weight: 500;
+   font-size: 14px;
 }
