@@ -718,6 +718,7 @@ span.bn-t-title {
    padding: 12px 10px;
    box-sizing: border-box;
    margin: 0;
+   border-radius: 6px;
 }
 
 .atributos ul li a * {
@@ -2849,7 +2850,9 @@ a.atalho-menu {
    right: 0;
    z-index: 9999999999999;
    padding: 40px;
-   margin: 0;
+   margin: 20px auto;
+   box-sizing: border-box;
+   width: 90%;
 }
 
 .finalizar-compra .span12 a.botao {
@@ -3541,6 +3544,7 @@ div#_trustvox_colt .review-card {
 
 .span12.banner.tarja > a picture, .span12.banner.tarja > a img {
    width: 100%;
+   border-radius: 8px;
 }
 
 .tarja-img {
@@ -3570,4 +3574,8 @@ div#_trustvox_colt .review-card {
 
 .banner.cheio+.row-fluid {
    margin: 0;
+}
+
+.mini-banner .flexslider .slides img {
+   border-radius: 8px;
 }
