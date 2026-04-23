@@ -321,10 +321,6 @@ span.bn-t-title {
    box-sizing: border-box;
 }
 
-.logo a img {
-   right: auto;
-}
-
 .banner .flex-control-paging li a {
    background: #fff;
    opacity: .6;
@@ -606,6 +602,7 @@ span.bn-t-title {
    align-items: center;
    justify-content: center;
    background: rgba(0,0,0,.05);
+   border-radius: 8px;
 }
 
 .c-slide .slick-track {
@@ -2399,6 +2396,18 @@ div#exibirFormasPagamento .btn.btn-small {
 
 @media screen and (max-width: 768px) {
 
+   #cabecalho .conteiner {
+      padding: 16px;
+   }
+
+   .secao-banners .conteiner {
+      padding: 16px;
+  }
+
+  .t-bar {
+   padding: 16px 0;
+}
+
    .t-bar {
       margin: 0;
   }
@@ -3115,6 +3124,10 @@ a.atalho-menu {
 
 
 @media screen and (min-width: 768px) {
+
+   .logo a img {
+      right: auto;
+   }
 
    .identificacao .control-group input {
       box-shadow: none;
