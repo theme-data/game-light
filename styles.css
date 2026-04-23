@@ -842,7 +842,8 @@ span.bn-t-title {
 }
 
 #rodape .institucional .conteiner {
-	padding: 48px 56px;
+	padding: 32px;
+   box-sizing: border-box;
 }
 
 
@@ -887,9 +888,12 @@ span.bn-t-title {
 }
 
 #rodape>div:last-child {
-    background: var(--white)!important;
-    border: 0!Important;
-    padding: 48px 48px 32px!important;
+   background: var(--white) !important;
+   border: 0!Important;
+   padding: 32px !important;
+   max-width: 1500px;
+   margin: 0 auto;
+   box-sizing: border-box;
 }
 
 #rodape>div:last-child .row-fluid {
@@ -927,7 +931,10 @@ span.bn-t-title {
 }
 
 #rodape .pagamento-selos {
-    padding: 48px;
+   padding: 32px;
+   margin: 0 auto;
+   max-width: 1500px;
+   box-sizing: border-box;
 }
 
 .span4.pagamento, .span4.selos {
@@ -2161,7 +2168,7 @@ div#exibirFormasPagamento .btn.btn-small {
 }
 
 #barraNewsletter.posicao-rodape .componente .interno {
-    padding: 32px 48px;
+    padding: 32px;
 }
 
 #barraNewsletter .componente input[type="text"] {
