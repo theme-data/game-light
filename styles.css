@@ -3129,6 +3129,10 @@ a.atalho-menu {
    flex-direction: column;
 }
 
+.listagem > ul:not(.produtos-carrossel) .listagem-linha {
+   width: 100% !important;
+}
+
 }
 
 
