@@ -405,6 +405,12 @@ span.bn-t-title {
 .mini-banner .modulo.span4 {
    width: 100%;
    margin: 0;
+   position: relative;
+}
+
+.sem-banner .caixa-vazia {
+   width: 100%;
+   box-sizing: border-box;
 }
 
 .mini-banner {
