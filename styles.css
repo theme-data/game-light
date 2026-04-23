@@ -2405,7 +2405,7 @@ div#exibirFormasPagamento .btn.btn-small {
   }
 
   .t-bar {
-   padding: 16px 0;
+   padding: 16px 0!important;
 }
 
    .t-bar {
