@@ -3164,11 +3164,11 @@ a.atalho-menu {
    .listagem .listagem-item:hover {
       background: #fff;
    }
-   
+/*    
    .listagem .listagem-item:hover .info-produto * {
       color: #000!important;
       font-weight: 500;
-   }
+   } */
 
 }
 
