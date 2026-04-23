@@ -704,5 +704,65 @@ if (CONFIG.bannerVitrine) {
       `);
   }
 
+  var vitrineDestaque = CONFIG.vitrineDestaque || {};
+  var id = vitrineDestaque.idVitrine;
+  
+  if (id) {
+    var css = `
+      .vitrine-${id} + ul .listagem-linha li .listagem-item {
+        display: flex;
+      }
+  
+      .vitrine-${id} + ul .listagem-linha > div > ul {
+        display: grid;
+        width: 100% !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+  
+      .vitrine-${id} + ul .listagem-linha {
+        width: 100% !important;
+      }
+  
+      .vitrine-${id} + ul .listagem-linha li {
+        width: 100% !important;
+        border-radius: 8px;
+        border: 1px solid #d8d8d8 !important;
+        box-sizing: border-box;
+      }
+  
+      .vitrine-${id} + ul .listagem-linha li .listagem-item .imagem-produto {
+        max-width: 120px;
+      }
+  
+      .listagem .produtos-carrossel .listagem-linha li .listagem-item .info-produto {
+        width: 100%;
+      }
+  
+      .vitrine-${id} + ul .flex-direction-nav {
+        display: none;
+      }
+  
+      .vitrine-${id} + ul .listagem-linha > div > ul .bandeiras-produto {
+        display: none;
+      }
+  
+      @media screen and (max-width: 768px) {
+        .pagina-inicial .vitrine-${id} + ul .listagem-linha {
+          width: 100% !important;
+        }
+  
+        .vitrine-${id} + ul .listagem-linha > div > ul {
+          grid-template-columns: 1fr;
+        }
+      }
+    `;
+  
+    $('<style>')
+      .prop('type', 'text/css')
+      .html(css)
+      .appendTo('head');
+  }
+
   
 });

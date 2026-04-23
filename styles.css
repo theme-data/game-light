@@ -195,6 +195,7 @@ input:focus {
    font-size: 12px;
    font-weight: 600;
    margin: 0;
+   border-radius: 999px;
 }
 
 .logo a {
@@ -961,7 +962,8 @@ button.whatsapp-btn {
     border: 1px solid var(--brand-color);
     padding: 12px 32px;
     margin-top: 10px;
-   color: var(--black)
+   color: var(--black);
+   border-radius: 6px;
 }
 
 button.whatsapp-btn i {
@@ -2172,6 +2174,10 @@ div#exibirFormasPagamento .btn.btn-small {
     display: none;
 }
 
+#barraNewsletter .componente .botao {
+   padding: 20px;
+}
+
 #barraNewsletter .componente div.newsletter-cadastro {
     display: flex;
     flex: 1;
@@ -2239,6 +2245,7 @@ div#exibirFormasPagamento .btn.btn-small {
    align-items: center;
    justify-content: center;
    opacity: 1;
+   border-radius: 6px;
 }
 
 .listagem .flex-direction-nav .flex-next {
@@ -3352,8 +3359,9 @@ section.faq-section {
 }
 
 .categoria-mais > a {
-	font-size: 16px;
-	color: var(--black)!important;
+   font-size: 14px;
+   color: var(--black) !important;
+   font-weight: 600;
 }
 
 ul.submenu-mais {
