@@ -453,12 +453,12 @@ span.bn-t-title {
 }
 
 .listagem .titulo-categoria {
-   font-size: 28px;
+   font-size: 24px;
    background: none !important;
    padding: 0 !important;
    display: flex;
    flex-direction: column;
-   align-items: flex-start;
+   align-items: center;
    justify-content: center;
    border: 0;
    margin: 48px 0 32px !important;
@@ -650,7 +650,7 @@ span.bn-t-title {
 }
 
 .c-slide-title {
-   font-size: 28px;
+   font-size: 24px;
    font-weight: bold;
    margin: 0;
 }
@@ -660,6 +660,7 @@ span.bn-t-title {
    flex-direction: column;
    gap: 0;
    margin: 48px 0 32px !important;
+   text-align: center;
 }
 
 .c-slide-subtitle {
@@ -3183,7 +3184,7 @@ section.faq-section {
 }
 
 .faq-container h2 {
-	font-size: 28px;
+	font-size: 24px;
 	margin: 0;
 }
 
