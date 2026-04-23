@@ -3374,11 +3374,12 @@ section.faq-section {
    font-weight: 600;
 }
 
-ul.submenu-mais {
-	position: absolute;
-	background: var(--white);
-	top: 60px;
-	display: none;
+.submenu-mais {
+   position: absolute;
+   background: var(--white);
+   top: 60px;
+   display: none;
+   box-shadow: 0 15px 30px rgba(0, 0, 0, .3);
 }
 
 li.categoria-mais {
