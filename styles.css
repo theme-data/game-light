@@ -3440,13 +3440,12 @@ div#_trustvox_colt .review-card {
     border-radius: 0;
 }
 
-
 /* TARJA AUTOMATICA */
 
 .t-bar {
    max-width: 1500px;
    padding: 24px;
-   margin: 20px auto 0;
+   margin: 0 auto;
    box-sizing: border-box;
 }
 
@@ -3541,4 +3540,8 @@ div#_trustvox_colt .review-card {
    color: var(--white);
    font-weight: 500;
    font-size: 14px;
+}
+
+.banner.cheio+.row-fluid {
+   margin: 0;
 }
