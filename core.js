@@ -735,7 +735,7 @@ if (CONFIG.bannerVitrine) {
         max-width: 120px;
       }
   
-      .listagem .produtos-carrossel .listagem-linha li .listagem-item .info-produto {
+      .vitrine-${id} + ul .listagem-linha li .listagem-item .info-produto {
         width: 100%;
       }
   
@@ -745,6 +745,10 @@ if (CONFIG.bannerVitrine) {
   
       .vitrine-${id} + ul .listagem-linha > div > ul .bandeiras-produto {
         display: none;
+      }
+
+      .vitrine-${id} + ul .flex-direction-nav {
+        display: none!important;
       }
   
       @media screen and (max-width: 768px) {
