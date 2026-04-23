@@ -3587,3 +3587,17 @@ div#_trustvox_colt .review-card {
 .mini-banner .flexslider .slides img {
    border-radius: 8px;
 }
+
+
+a.pixel-logo:before {
+   content: "Desenvolvido por:";
+}
+
+#rodape > div:last-child .row-fluid > div:last-child::before {
+   content: "Conheça a plataforma:";
+}
+
+#rodape > div:last-child .row-fluid > div:last-child {
+   display: flex;
+   flex-direction: column;
+}
