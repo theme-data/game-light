@@ -2419,6 +2419,36 @@ div#exibirFormasPagamento .btn.btn-small {
 }
 
 @media screen and (max-width: 768px) {
+   .produto-video > div {
+      display: none;
+  }
+  
+  .produto-video.borda-alpha {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      margin: 0;
+      border-radius: 999px;
+      background: #f9f9f9;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      border: 1px solid rgba(0,0,0,.1);
+  }
+  
+  .produto-video a i {
+      font-size: 24px;
+  }
+  
+  .produto-video a span {
+      width: 50px;
+      text-wrap: wrap;
+      display: block;
+      text-align: center;
+  }
 
    .info-principal-produto .breadcrumbs {
       display: none;
