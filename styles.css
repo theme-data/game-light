@@ -2420,6 +2420,10 @@ div#exibirFormasPagamento .btn.btn-small {
 
 @media screen and (max-width: 768px) {
 
+   .info-principal-produto .breadcrumbs {
+      display: none;
+   }
+
    .conteiner-imagem, .conteiner-imagem > div {
       height: 260px;
   }
@@ -3162,6 +3166,10 @@ a.atalho-menu {
 
 
 @media screen and (min-width: 768px) {
+
+   .produto .conteiner-imagem img {
+      width: 100%;
+   }
 
    .logo a img {
       right: auto;
