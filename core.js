@@ -682,10 +682,10 @@ if (CONFIG.bannerVitrine) {
   var icon = conf.icon || "";
   var texto = conf.texto || "";
 
-  var $target = $('.pagina-produto .produto .info-principal-produto');
+  var $target = $('.pagina-produto .produto .cep');
 
   if ($target.length && !$('.alert-envio-digital').length) {
-    $target.after(`
+    $target.before(`
       <div class="alert-envio-digital">
         ${icon ? `<i><img src="${icon}" alt=""></i>` : ``}
         ${texto}

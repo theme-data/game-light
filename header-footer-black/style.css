@@ -59,6 +59,23 @@ div#cabecalho, #rodape {
     display: none;
 }
 
+.atendimento-rodape ul * {
+    font-size: 16px;
+    color: #fff;
+}
+
+.lista-redes i, button.whatsapp-btn, button.whatsapp-btn * {
+    color: #fff!important;
+}
+
+.atendimento-rodape ul li img {
+    display: none;
+}
+
+.icon-instagram::before {
+    background: url(https://cdn.awsli.com.br/2923/2923109/arquivos/instagram.svg) center no-repeat;
+}
+
 @media screen and (min-width: 768px) {
 
 .menu.superior .nivel-um li strong {

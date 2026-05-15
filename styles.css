@@ -692,8 +692,18 @@ span.bn-t-title {
 
 /* Página do produto */
 
+.acoes-produto .preco-produto * {
+   font-size: 18px!important;
+   color: var(--black);
+}
+
+.acoes-produto .preco-produto .desconto-a-vista > strong {
+   font-size: 26px!important;
+   color: var(--brand-color);
+}
+
 .produto .nome-produto {
-   font-size: 32px;
+   font-size: 24px;
    font-weight: 600;
 }
 
@@ -2409,6 +2419,14 @@ div#exibirFormasPagamento .btn.btn-small {
 }
 
 @media screen and (max-width: 768px) {
+
+   .conteiner-imagem, .conteiner-imagem > div {
+      height: 260px;
+  }
+  
+  .produto .conteiner-imagem img {
+      height: 100%;
+  }  
 
    #cabecalho .conteiner {
       padding: 16px;
