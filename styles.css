@@ -3198,7 +3198,7 @@ a.atalho-menu {
 @media screen and (min-width: 768px) {
 
    .produto .conteiner-imagem img {
-      width: 100%;
+      width: 70%;
    }
 
    .logo a img {
