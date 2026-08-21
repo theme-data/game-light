@@ -3771,3 +3771,10 @@ a.pixel-logo:before {
 .h-actions {
    margin: 0 0 0 auto;
 }
+
+.vitrine-com-banner-contador {
+   background: #f1f1f1;
+   padding: 21px 32px !important;
+   box-sizing: border-box;
+   border-radius: 16px;
+}
