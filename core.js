@@ -141,7 +141,7 @@ $(document).ready(function(){
   
   // Ativa o Slick Slider na lista de categorias
   $('.c-slide').slick({
-      slidesToShow: 6,
+      slidesToShow: 9,
       slidesToScroll: 1,
       arrows: true,
       dots: false,
