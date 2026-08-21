@@ -565,29 +565,6 @@ if (CONFIG.bannerVitrine) {
       
       });
       
-      var $menu = $('.menu.superior .nivel-um');
-      var $itens = $menu.children('li');
-    
-      // só executa se tiver mais de 5 itens
-      if ($itens.length > 5) {
-    
-        // cria o LI "Mais"
-        var $mais = $(`
-          <li class="categoria-mais borda-principal">
-            <a href="javascript:void(0)">Mais<i class="icon-chevron-down fundo-secundario"></i></a>
-            <ul class="submenu-mais"></ul>
-          </li>
-        `);
-    
-        // pega todos os itens a partir do 6º (index 5)
-        var $excedentes = $itens.slice(5);
-    
-        // move os itens para dentro do submenu
-        $mais.find('.submenu-mais').append($excedentes);
-    
-        // adiciona o "Mais" no final do menu
-        $menu.append($mais);
-      }
   
   //Fim desktop
   } else {
