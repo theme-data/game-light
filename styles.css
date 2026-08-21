@@ -3786,3 +3786,232 @@ a.pixel-logo:before {
    box-sizing: border-box;
    border-radius: 16px;
 }
+
+body.ofertas-destacadas-abertas {
+  overflow: hidden;
+}
+
+.ofertas-destacadas {
+  position: fixed;
+  z-index: 99999;
+}
+
+.ofertas-destacadas-aba {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 13px 10px 10px;
+  border: 0;
+  border-radius: 7px 0 0 7px;
+  background: var(--brand-color);
+  color: var(--black);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transition: transform .25s ease, filter .25s ease;
+}
+
+.ofertas-destacadas-aba:hover {
+  transform: translateY(-50%) translateX(-4px);
+  filter: brightness(1.08);
+}
+
+.ofertas-destacadas-aba-icone,
+.oferta-destaque-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ofertas-destacadas-aba-icone {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--black);
+}
+
+.ofertas-destacadas-aba svg {
+  width: 14px;
+  height: 14px;
+}
+
+.ofertas-destacadas svg {
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ofertas-destacadas-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
+}
+
+.ofertas-destacadas-painel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(100%, 510px);
+  height: 100vh;
+  background: var(--white);
+  color: var(--black);
+  transform: translateX(100%);
+  transition: transform .3s ease;
+  overflow-y: auto;
+  box-shadow: -12px 0 40px rgba(0, 0, 0, .18);
+}
+
+.ofertas-abertas .ofertas-destacadas-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ofertas-abertas .ofertas-destacadas-painel {
+  transform: translateX(0);
+}
+
+.ofertas-destacadas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 114px;
+  padding: 0 38px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.ofertas-destacadas-header h2 {
+  margin: 0;
+  color: var(--black) !important;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.ofertas-destacadas-fechar {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--black);
+  cursor: pointer;
+  font-size: 38px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.ofertas-destacadas-lista {
+  display: grid;
+  gap: 10px;
+  padding: 24px 38px 40px;
+}
+
+.oferta-destaque-item {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 13px;
+  border: 1px solid #dfdfdf;
+  border-radius: 10px;
+  background: #f7f7f7;
+}
+
+.oferta-destaque-icone {
+  color: var(--black);
+}
+
+.oferta-destaque-icone svg {
+  width: 22px;
+  height: 22px;
+}
+
+.oferta-destaque-textos {
+  display: grid;
+  gap: 5px;
+}
+
+.oferta-destaque-textos strong {
+  color: var(--black) !important;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.oferta-destaque-textos span {
+  color: #676767;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.oferta-destaque-botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 82px;
+  min-height: 40px;
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--black);
+  color: var(--white) !important;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none !important;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.oferta-destaque-botao:hover {
+  color: var(--white) !important;
+  opacity: .82;
+  transform: translateY(-1px);
+}
+
+.ofertas-destacadas-vazio {
+  margin: 0;
+  color: var(--black);
+  font-size: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .ofertas-destacadas-aba {
+    font-size: 11px;
+  }
+
+  .ofertas-destacadas-header {
+    min-height: 82px;
+    padding: 0 20px;
+  }
+
+  .ofertas-destacadas-header h2 {
+    font-size: 21px;
+  }
+
+  .ofertas-destacadas-lista {
+    padding: 18px 16px 32px;
+  }
+
+  .oferta-destaque-item {
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .oferta-destaque-botao {
+    grid-column: 2;
+    width: 100%;
+    margin-top: 3px;
+  }
+}

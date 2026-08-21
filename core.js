@@ -864,3 +864,149 @@ if (CONFIG.bannerVitrine) {
 
   
 });
+
+/* =========================
+  OFERTAS DESTACADAS
+========================== */
+(function () {
+  var configOfertas = CONFIG.ofertasDestacadas || {};
+
+  if (!configOfertas.ativo) return;
+
+  var ofertas = (configOfertas.ofertas || []).filter(function (oferta) {
+    return oferta && oferta.ativo;
+  });
+
+  if (!ofertas.length || $('#ofertas-destacadas').length) return;
+
+  function escaparHtml(valor) {
+    return String(valor || '').replace(/[&<>"']/g, function (caractere) {
+      return {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      }[caractere];
+    });
+  }
+
+  function iconeTag() {
+    return [
+      '<svg viewBox="0 0 24 24" aria-hidden="true">',
+        '<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3.4 13.4a2 2 0 0 1-.6-1.4V5a2 2 0 0 1 2-2h7a2 2 0 0 1 1.4.6l7.4 7a2 2 0 0 1 0 2.8Z"></path>',
+        '<circle cx="7.5" cy="7.5" r="1.1"></circle>',
+      '</svg>'
+    ].join('');
+  }
+
+  var ofertasHtml = ofertas.map(function (oferta, indice) {
+    var tipo = oferta.tipo || 'link';
+    var botao;
+
+    if (tipo === 'cupom') {
+      botao = [
+        '<button type="button" class="oferta-destaque-botao js-copiar-cupom" ',
+          'data-cupom="', escaparHtml(oferta.cupom), '">',
+          escaparHtml(oferta.textoBotao || 'COPIAR'),
+        '</button>'
+      ].join('');
+    } else {
+      botao = [
+        '<a class="oferta-destaque-botao" href="', escaparHtml(oferta.link || '#'), '">',
+          escaparHtml(oferta.textoBotao || 'VER OFERTAS'),
+        '</a>'
+      ].join('');
+    }
+
+    return [
+      '<article class="oferta-destaque-item" data-oferta="', indice, '">',
+        '<div class="oferta-destaque-icone">', iconeTag(), '</div>',
+        '<div class="oferta-destaque-textos">',
+          '<strong>', escaparHtml(oferta.titulo), '</strong>',
+          '<span>', escaparHtml(oferta.descricao), '</span>',
+        '</div>',
+        botao,
+      '</article>'
+    ].join('');
+  }).join('');
+
+  var html = [
+    '<div id="ofertas-destacadas" class="ofertas-destacadas">',
+      '<button type="button" class="ofertas-destacadas-aba" aria-label="Abrir ofertas especiais">',
+        '<span class="ofertas-destacadas-aba-icone">', iconeTag(), '</span>',
+        '<span>', escaparHtml(configOfertas.tituloAba || 'Ofertas para você'), '</span>',
+      '</button>',
+
+      '<div class="ofertas-destacadas-overlay"></div>',
+
+      '<aside class="ofertas-destacadas-painel" aria-hidden="true">',
+        '<header class="ofertas-destacadas-header">',
+          '<h2>', escaparHtml(configOfertas.tituloPainel || 'Ofertas especiais'), '</h2>',
+          '<button type="button" class="ofertas-destacadas-fechar" aria-label="Fechar ofertas">×</button>',
+        '</header>',
+
+        '<div class="ofertas-destacadas-lista">',
+          ofertasHtml || '<p class="ofertas-destacadas-vazio">' +
+            escaparHtml(configOfertas.textoVazio || 'Nenhuma oferta disponível no momento.') +
+          '</p>',
+        '</div>',
+      '</aside>',
+    '</div>'
+  ].join('');
+
+  $('body').append(html);
+
+  var $container = $('#ofertas-destacadas');
+
+  function abrirOfertas() {
+    $container.addClass('ofertas-abertas');
+    $container.find('.ofertas-destacadas-painel').attr('aria-hidden', 'false');
+    $('body').addClass('ofertas-destacadas-abertas');
+  }
+
+  function fecharOfertas() {
+    $container.removeClass('ofertas-abertas');
+    $container.find('.ofertas-destacadas-painel').attr('aria-hidden', 'true');
+    $('body').removeClass('ofertas-destacadas-abertas');
+  }
+
+  $container.on('click', '.ofertas-destacadas-aba', abrirOfertas);
+  $container.on('click', '.ofertas-destacadas-fechar, .ofertas-destacadas-overlay', fecharOfertas);
+
+  $(document).on('keydown', function (evento) {
+    if (evento.key === 'Escape') fecharOfertas();
+  });
+
+  $container.on('click', '.js-copiar-cupom', function () {
+    var $botao = $(this);
+    var cupom = $botao.attr('data-cupom') || '';
+    var textoOriginal = $botao.text();
+
+    function feedback() {
+      $botao.text('COPIADO!');
+      setTimeout(function () {
+        $botao.text(textoOriginal);
+      }, 1800);
+    }
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(cupom).then(feedback);
+      return;
+    }
+
+    var campo = document.createElement('textarea');
+    campo.value = cupom;
+    campo.style.position = 'fixed';
+    campo.style.opacity = '0';
+    document.body.appendChild(campo);
+    campo.select();
+    document.execCommand('copy');
+    document.body.removeChild(campo);
+    feedback();
+  });
+
+  if (configOfertas.abrirAutomaticamente) {
+    setTimeout(abrirOfertas, 800);
+  }
+})();

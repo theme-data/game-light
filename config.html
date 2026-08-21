@@ -38,6 +38,47 @@
   ====================================================== */
   
   window.THEME_CONFIG = {
+
+    /* =========================
+      OFERTAS DESTACADAS
+    ========================== */
+    ofertasDestacadas: {
+      ativo: true,
+
+      tituloAba: "Ofertas para você",
+      tituloPainel: "Ofertas especiais",
+      textoVazio: "Nenhuma oferta disponível no momento.",
+
+      /* true: o painel abre automaticamente na primeira visita */
+      abrirAutomaticamente: false,
+
+      ofertas: [
+        {
+          ativo: true,
+          titulo: "Economize 10% na sua compra",
+          descricao: "Use o cupom na finalização do pedido",
+          tipo: "cupom", // cupom | link
+          cupom: "GARA10",
+          textoBotao: "COPIAR"
+        },
+        {
+          ativo: true,
+          titulo: "Jogos selecionados com desconto",
+          descricao: "Ofertas válidas por tempo limitado",
+          tipo: "link",
+          link: "/promocoes",
+          textoBotao: "VER OFERTAS"
+        },
+        {
+          ativo: true,
+          titulo: "Frete grátis",
+          descricao: "Para pedidos acima de R$ 199",
+          tipo: "link",
+          link: "/frete-gratis",
+          textoBotao: "APROVEITAR"
+        }
+      ]
+    },
       
     /* =========================
       TEXTO BARRA INICIAL
@@ -52,6 +93,25 @@
     vitrineDestaque: {
       idVitrine: "24286696"
     },
+
+    /* =========================
+      ✨ BANNERS POR CATEGORIA (HOME)
+      Use o ID da vitrine/categoria exibido na home.
+      Para não mostrar um banner, remova o item ou use ativo: false.
+    ==========================*/
+    bannersCategoriasHome: [
+      {
+        ativo: true,
+        idCategoria: "24162844",
+        etiqueta: "PROMOÇÃO JOGOS XBOX",
+        titulo: "Ofertas especiais para você",
+        usarContador: true,
+        dataFim: "2026-12-31T23:59:59-03:00",
+        texto: "Jogos selecionados com desconto por tempo limitado.",
+        textoBotao: "VER JOGOS",
+        linkBotao: "/promocoes"
+      }
+    ],
   
     /* =========================
       MOVER TARJA
