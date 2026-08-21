@@ -132,7 +132,7 @@ input:focus {
 
 #cabecalho {
    background: var(--white);
-   border-bottom: 1px solid rgba(0, 0, 0, .1);
+   border-bottom: 1px solid rgba(0, 0, 0, .2);
    position: sticky;
    z-index: 10000;
    top: 0;
@@ -225,6 +225,23 @@ input:focus {
 
 .menu.superior .nivel-um li {
    border: 0;
+}
+
+.menu.superior .nivel-um>li:first-child {
+   padding-left: 0;
+}
+
+.menu.superior .nivel-um li strong:after {
+   content: "";
+   height: 1px;
+   width: 0;
+   display: block;
+   background: #000;
+   transition: all .3s;
+}
+
+.menu.superior .nivel-um li:hover strong:after {
+   width: 100%;
 }
 
 .menu.superior .nivel-um li strong {
@@ -345,7 +362,7 @@ span.bn-t-title {
 }
 
 #cabecalho .conteiner {
-   padding: 10px 32px;
+   padding: 10px 32px 0;
    box-sizing: border-box;
 }
 
