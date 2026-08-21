@@ -2423,7 +2423,7 @@ div#exibirFormasPagamento .btn.btn-small {
    width: 48px;
    height: 48px;
    background: var(--white);
-   border: 1px solid var(--brand-color);
+   border: 0;
    color: #fff;
    font-size: 0;
    position: absolute;
@@ -2434,7 +2434,8 @@ div#exibirFormasPagamento .btn.btn-small {
    align-items: center;
    justify-content: center;
    opacity: 1;
-   border-radius: 6px;
+   border-radius: 99px;
+   box-shadow: 0 10px 10px rgba(0, 0, 0, .1);
 }
 
 .listagem .flex-direction-nav .flex-next {
