@@ -231,8 +231,27 @@ input:focus {
 }
 
 #cabecalho .span8.busca-mobile {
-   max-width: 250px;
+   max-width: 500px;
    margin: 0;
+}
+
+.busca input {
+   width: 94%;
+   background: #f1f1f1 !important;
+   border-radius: 999px !important;
+   border: 0 !important;
+   box-shadow: none;
+   padding: 0 30px !important;
+}
+
+input:focus {
+   box-shadow: none !important;
+   border: 1px solid #000 !important;
+   background: #fff !important;
+}
+
+input:focus::placeholder {
+   color; #000;
 }
 
 .busca #form-buscar {
@@ -3667,4 +3686,8 @@ a.pixel-logo:before {
 #rodape > div:last-child .row-fluid > div:last-child {
    display: flex;
    flex-direction: column;
+}
+
+.h-actions {
+   margin: 0 0 0 auto;
 }
