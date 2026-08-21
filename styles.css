@@ -507,6 +507,14 @@ span.bn-t-title {
 .listagem .listagem-item {
    padding: 0;
    transition: all .4s;
+   background: var(--white);
+   border-radius: 10px !important;
+   overflow: hidden;
+}
+
+.listagem-item .preco-a-partir {
+   display: flex;
+   flex-direction: column;
 }
 
 .listagem .listagem-linha>ul {
@@ -523,7 +531,7 @@ span.bn-t-title {
    padding: 0 !important;
    display: flex;
    flex-direction: column;
-   align-items: center;
+   align-items: flex-start;
    justify-content: center;
    border: 0;
    margin: 48px 0 32px !important;
@@ -654,7 +662,7 @@ span.bn-t-title {
 /* Slide de categorias */
 
 .banner-categoria-home {
-   margin: 32px 0;
+   margin: 32px 0 0;
 }
 
 .banner-categoria-conteudo {
@@ -3774,7 +3782,7 @@ a.pixel-logo:before {
 
 .vitrine-com-banner-contador {
    background: #f1f1f1;
-   padding: 21px 32px !important;
+   padding: 32px !important;
    box-sizing: border-box;
    border-radius: 16px;
 }
