@@ -445,7 +445,7 @@ if (CONFIG.bannerVitrine) {
   
   if ($(window).width() > 768) {
   //Desktop
-      $('.conteudo-topo .inferior').prepend($('.menu.superior'));
+      //$('.conteudo-topo .inferior').prepend($('.menu.superior'));
   
       $('.produto')
       .children()
