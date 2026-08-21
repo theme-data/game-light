@@ -686,7 +686,7 @@ span.bn-t-title {
    width: 48px;
    height: 48px;
    background: var(--white);
-   border: 1px solid var(--brand-color);
+   border: 0;
    color: #fff;
    font-size: 0;
    position: absolute;
@@ -696,6 +696,22 @@ span.bn-t-title {
    display: flex !important;
    align-items: center;
    justify-content: center;
+   border-radius: 99px;
+   box-shadow: 0 10px 10px rgba(0, 0, 0, .1);
+   opacity: 0;
+   transition: all .3s;
+}
+
+.c-slide:hover .slick-arrow {
+   opacity: 1;
+}
+
+.c-slide:hover .slick-arrow.slick-next {
+   right: 0;
+}
+
+.c-slide:hover .slick-arrow.slick-prev {
+   left: 0;
 }
 
 .slick-arrow.slick-next:before {
