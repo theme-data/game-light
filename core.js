@@ -98,14 +98,15 @@ $(document).ready(function(){
   
   $('#rodape .sobre-loja-rodape').replaceWith(atendimentoHtml);
   
-  // Defina as variáveis das categorias (imagem, link e alt)
+  // Defina as variáveis das categorias (imagem, link, alt e titulo)
   var categorias = CONFIG.categorias || [];
   
-  // Montar os <li> dinamicamente usando as variáveis
+  // Montar os <li> dinamicamente usando as variáveis (inclui <span> com o título abaixo da imagem)
   var categoriaLis = categorias.map(function(c){
       return `<li class="c-item">
           <a href="${c.link}">
               <img src="${c.img}" alt="${c.alt}">
+              <span class="c-titulo-categoria">${c.titulo}</span>
           </a>
       </li>`;
   }).join('');
@@ -113,19 +114,30 @@ $(document).ready(function(){
   // Adiciona o bloco antes de #listagemProdutos
   $('.secao-banners').before(`
   <div class="c-slide-section">
-      <div class="c-slide-header">
-          <h2 class="c-slide-title">
-              Navegue por categoria
-          </h2>
-          <p class="c-slide-subtitle">
-              Escolha abaixo uma categoria para explorar nossos jogos
-          </p>
-      </div>
       <ul class="c-slide">
           ${categoriaLis}
       </ul>
   </div>    
   `);
+
+  /**
+   * Exemplo de objeto de configuração para CONFIG.categorias:
+   * 
+   * CONFIG.categorias = [
+   *   {
+   *     img: 'url/da/imagem1.jpg',
+   *     link: '/categoria1',
+   *     alt: 'Categoria 1',
+   *     titulo: 'Categoria 1'
+   *   },
+   *   {
+   *     img: 'url/da/imagem2.jpg',
+   *     link: '/categoria2',
+   *     alt: 'Categoria 2',
+   *     titulo: 'Categoria 2'
+   *   }
+   * ]
+   */
   
   // Ativa o Slick Slider na lista de categorias
   $('.c-slide').slick({

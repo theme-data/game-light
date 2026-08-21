@@ -738,6 +738,7 @@ span.bn-t-title {
    padding: 0 32px;
    max-width: 1500px;
    margin: 0 auto;
+   box-sizing: border-box;
 }
 
 /* Página do produto */
