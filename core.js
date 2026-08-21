@@ -483,60 +483,6 @@ if (CONFIG.bannerVitrine) {
     });
     
   
-    $(function () {
-  
-      /* =========================
-         🧩 BENEFÍCIOS EDITÁVEIS
-      ==========================*/
-      const beneficios = CONFIG.beneficios || [];
-    
-    
-      /* =========================
-         🧱 MONTA HTML
-      ==========================*/
-      let itensHTML = "";
-    
-      beneficios.forEach((item, index) => {
-    
-        itensHTML += `
-          <div class="beneficio-item">
-            <div class="beneficio-icone">${item.icone}</div>
-    
-            <div class="beneficio-texto">
-              <strong>${item.titulo}</strong>
-              <span>${item.texto}</span>
-            </div>
-          </div>
-        `;
-    
-        // divisória (menos no último)
-        if(index < beneficios.length - 1){
-          itensHTML += `<div class="beneficio-divider"></div>`;
-        }
-      });
-    
-    
-      const barraBeneficios = `
-        <section class="barra-beneficios">
-          <div class="beneficios-container">
-            ${itensHTML}
-          </div>
-        </section>
-      `;
-    
-    
-      /* =========================
-         📍 INSERÇÃO INTELIGENTE
-      ==========================*/
-    
-      if ($('#barraNewsletter').length) {
-        $('#barraNewsletter').before(barraBeneficios);
-      } else {
-        $('#rodape').before(barraBeneficios);
-      }
-    
-    });
-  
     // Remove texto da bandeira
   
     $(function () {
