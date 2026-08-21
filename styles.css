@@ -526,7 +526,7 @@ span.bn-t-title {
 }
 
 .listagem .titulo-categoria {
-   font-size: 24px;
+   font-size: 32px;
    background: none !important;
    padding: 0 !important;
    display: flex;
@@ -711,7 +711,7 @@ span.bn-t-title {
    padding: 16px 24px;
    border-radius: 999px;
    background: var(--black);
-   color: var(--black) !important;
+   color: var(--white) !important;
    font-size: 14px;
    font-weight: 800;
    text-align: center;
