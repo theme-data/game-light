@@ -156,6 +156,99 @@ $(document).ready(function(){
       ]
   });
   
+/* Banner opcional acima de uma vitrine/categoria da home */
+(function () {
+  var bannersCategoriasHome = CONFIG.bannersCategoriasHome || [];
+
+  function escaparHtml(valor) {
+    return String(valor || '').replace(/[&<>'"]/g, function (caractere) {
+      return {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#039;',
+        '"': '&quot;'
+      }[caractere];
+    });
+  }
+
+  function formatarTempo(totalSegundos) {
+    var dias = Math.floor(totalSegundos / 86400);
+    var horas = Math.floor((totalSegundos % 86400) / 3600);
+    var minutos = Math.floor((totalSegundos % 3600) / 60);
+    var segundos = totalSegundos % 60;
+
+    return [dias, horas, minutos, segundos]
+      .map(function (valor) {
+        return String(valor).padStart(2, '0');
+      })
+      .join(' : ');
+  }
+
+  bannersCategoriasHome.forEach(function (banner) {
+    if (!banner || !banner.ativo || !banner.idCategoria) return;
+
+    var $vitrine = $('.pagina-inicial .vitrine-' + banner.idCategoria).first();
+
+    if (!$vitrine.length || $('#banner-categoria-' + banner.idCategoria).length) {
+      return;
+    }
+
+    var contadorHtml = banner.usarContador
+      ? '<div class="banner-categoria-contador" data-data-fim="' +
+        escaparHtml(banner.dataFim) +
+        '">00 : 00 : 00 : 00</div>'
+      : '';
+
+    $vitrine.before([
+      '<section class="banner-categoria-home" id="banner-categoria-' +
+        escaparHtml(banner.idCategoria) + '">',
+        '<div class="banner-categoria-conteudo">',
+          '<strong class="banner-categoria-etiqueta">' +
+            escaparHtml(banner.etiqueta) +
+          '</strong>',
+          contadorHtml,
+          '<p class="banner-categoria-texto">' +
+            escaparHtml(banner.titulo || banner.texto) +
+          '</p>',
+          '<a class="banner-categoria-botao" href="' +
+            escaparHtml(banner.linkBotao || '#') +
+          '">' +
+            escaparHtml(banner.textoBotao || 'VER OFERTAS') +
+          '</a>',
+        '</div>',
+      '</section>'
+    ].join(''));
+  });
+
+  function atualizarContadoresCategoria() {
+    $('.banner-categoria-contador').each(function () {
+      var $contador = $(this);
+      var dataFim = new Date($contador.attr('data-data-fim')).getTime();
+      var diferenca = Math.max(
+        0,
+        Math.floor((dataFim - Date.now()) / 1000)
+      );
+
+      if (!dataFim || diferenca <= 0) {
+        $contador
+          .closest('.banner-categoria-home')
+          .addClass('banner-categoria-encerrado');
+
+        $contador.text('OFERTA ENCERRADA');
+        return;
+      }
+
+      $contador.text(formatarTempo(diferenca));
+    });
+  }
+
+  if ($('.banner-categoria-contador').length) {
+    atualizarContadoresCategoria();
+    setInterval(atualizarContadoresCategoria, 1000);
+  }
+})();
+
   // --------- SLIDER
   
     // remove comportamento antigo
