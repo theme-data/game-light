@@ -2190,6 +2190,21 @@ div#exibirFormasPagamento .btn.btn-small {
    font-size: 16px;
 }
 
+.menu.superior .nivel-um>li.categoria-id-24239165 {
+   order: 10;
+   margin-left: auto;
+   padding: 0;
+}
+
+.menu.superior .nivel-um>li.categoria-id-24239165 strong {
+   color: var(--brand-color);
+}
+
+.menu.superior .nivel-um>li:hover {
+   border-top-width: 0;
+   margin-top: 0;
+}
+
 .menu.superior .nivel-um > li > a {
 	display: flex;
 	align-items: center;
