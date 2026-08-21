@@ -219,6 +219,18 @@ $(document).ready(function(){
         '</div>',
       '</section>'
     ].join(''));
+    
+    /* Quando o contador estiver ativo:
+        - remove o título da categoria;
+        - adiciona classes na UL da vitrine. */
+    if (banner.usarContador) {
+      $vitrine
+        .next('ul')
+        .addClass('vitrine-com-banner-contador')
+        .addClass('vitrine-categoria-' + banner.idCategoria);
+    
+      $vitrine.remove();
+    }
   });
 
   function atualizarContadoresCategoria() {
