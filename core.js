@@ -111,7 +111,7 @@ $(document).ready(function(){
   }).join('');
   
   // Adiciona o bloco antes de #listagemProdutos
-  $('.pagina-inicial #listagemProdutos').before(`
+  $('.secao-banners').before(`
   <div class="c-slide-section">
       <div class="c-slide-header">
           <h2 class="c-slide-title">

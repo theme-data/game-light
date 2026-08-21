@@ -375,6 +375,10 @@ span.bn-t-title {
    position: relative;
 }
 
+.flexslider .slides img {
+   border-radius: 16px;
+}
+
 .banner .flex-control-paging li a.flex-active {
    width: 32px;
    height: 3px;
@@ -391,7 +395,8 @@ span.bn-t-title {
    background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/chevron-left.svg) center no-repeat;
    width: 40px;
    height: 40px;
-   background-color: var(--brand-color);
+   background-color: var(--white);
+   border-radius: 99px;
 }
 
 .banner .flex-direction-nav .flex-next {
@@ -402,7 +407,8 @@ span.bn-t-title {
    background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/chevron-right.svg) center no-repeat;
    width: 40px;
    height: 40px;
-   background-color: var(--brand-color);
+   background-color: var(--white);
+   border-radius: 99px;
 }
 
 .banner .flexslider:hover .flex-direction-nav .flex-prev {
