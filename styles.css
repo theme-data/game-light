@@ -681,7 +681,7 @@ span.bn-t-title {
 .banner-categoria-contador,
 .banner-categoria-texto,
 .banner-categoria-botao {
-   color: var(--black) !important;
+   color: var(--white) !important;
 }
 
 .banner-categoria-etiqueta {
@@ -711,7 +711,7 @@ span.bn-t-title {
    padding: 16px 24px;
    border-radius: 999px;
    background: var(--black);
-   color: var(--white) !important;
+   color: var(--black) !important;
    font-size: 14px;
    font-weight: 800;
    text-align: center;
