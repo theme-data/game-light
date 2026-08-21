@@ -869,7 +869,7 @@ if (CONFIG.bannerVitrine) {
   OFERTAS DESTACADAS
 ========================== */
 (function () {
-  var configOfertas = CONFIG.ofertasDestacadas || {};
+  var configOfertas = (window.THEME_CONFIG && window.THEME_CONFIG.ofertasDestacadas) || {};
 
   if (!configOfertas.ativo) return;
 
