@@ -4019,8 +4019,6 @@ body.ofertas-destacadas-abertas {
 }
 
 .tema-cabecalho-dark #cabecalho .icon-shopping-cart::before,
-.tema-cabecalho-dark #cabecalho .icon-search::before,
-.tema-cabecalho-dark #cabecalho [class*="icon-"]::before,
 .tema-cabecalho-dark .cabecalho [class*="icon-"]::before,
 .tema-cabecalho-dark .header-principal [class*="icon-"]::before,
 .tema-cabecalho-dark .h-user::before {
