@@ -2392,6 +2392,7 @@ div#exibirFormasPagamento .btn.btn-small {
 
 #barraNewsletter .componente .botao {
    padding: 20px;
+   border-radius: 99px;
 }
 
 #barraNewsletter .componente div.newsletter-cadastro {
@@ -2405,7 +2406,14 @@ div#exibirFormasPagamento .btn.btn-small {
 }
 
 #barraNewsletter .componente input[type="text"] {
-    width: 100%;
+   width: 100%;
+   height: 48px !important;
+   box-sizing: border-box;
+   border-radius: 99px !important;
+   background: #f1f1f1 !important;
+   border: 0 !important;
+   box-shadow: none;
+   padding: 0 30px !important;
 }
 
 #barraNewsletter {
@@ -4164,6 +4172,7 @@ body.ofertas-destacadas-abertas {
  
  .avaliacoes-home-slider .slick-track {
    display: flex !important;
+   gap: 20px;
  }
  
  .avaliacoes-home-slider .slick-slide {
