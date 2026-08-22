@@ -704,109 +704,88 @@ if (CONFIG.bannerVitrine) {
     ]
   });
 
-  // MOVE TARJA
+  /* ======================================================
+      VITRINE DESTAQUE
+    ====================================================== */
+    var vitrineDestaque = CONFIG.vitrineDestaque || {};
+    var id = vitrineDestaque.idVitrine;
 
+    if (id) {
+      var $tituloVitrine = $('.pagina-inicial .vitrine-' + id).first();
+      var $listaVitrine = $tituloVitrine.next('ul');
 
-  var vitrineTarja = CONFIG.vitrineTarja || {};
+      function converterPreco(texto) {
+        if (!texto) return 0;
 
-  if (vitrineTarja.idVitrine) {
-    $(`.pagina-inicial .vitrine-${vitrineTarja.idVitrine}`)
-      .before($('.banner.tarja'));
-  }
+        var valor = String(texto)
+          .replace(/[^\d,]/g, '')
+          .replace(',', '.');
 
-  //ALERTA DIGITAL 
-
-  if (typeof CONFIG === "undefined") return;
-
-  var conf = CONFIG.alertaProduto || {};
-  var icon = conf.icon || "";
-  var texto = conf.texto || "";
-
-  var $target = $('.pagina-produto .produto .cep');
-
-  if ($target.length && !$('.alert-envio-digital').length) {
-    $target.before(`
-      <div class="alert-envio-digital">
-        ${icon ? `<i><img src="${icon}" alt=""></i>` : ``}
-        ${texto}
-      </div>
-    `);
-  }
-
-  var textoAlertBar = CONFIG.alertBar || {};
-
-  if (textoAlertBar.mensagem) {
-    $('.barra-inicial')
-      .replaceWith(`
-        <div class="alert-bar">
-          <span>${textoAlertBar.mensagem}</span>
-        </div>
-      `);
-  }
-
-  var vitrineDestaque = CONFIG.vitrineDestaque || {};
-  var id = vitrineDestaque.idVitrine;
-  
-  if (id) {
-    var css = `
-      .vitrine-${id} + ul .listagem-linha li .listagem-item {
-        display: flex;
-      }
-  
-      .vitrine-${id} + ul .listagem-linha > div > ul {
-        display: grid;
-        width: 100% !important;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-      }
-  
-      .vitrine-${id} + ul .listagem-linha {
-        width: 100% !important;
-      }
-  
-      .vitrine-${id} + ul .listagem-linha li {
-        width: 100% !important;
-        border-radius: 8px;
-        border: 1px solid #d8d8d8 !important;
-        box-sizing: border-box;
-      }
-  
-      .vitrine-${id} + ul .listagem-linha li .listagem-item .imagem-produto {
-        max-width: 120px;
-      }
-  
-      .vitrine-${id} + ul .listagem-linha li .listagem-item .info-produto {
-        width: 100%;
-      }
-  
-      .vitrine-${id} + ul .flex-direction-nav {
-        display: none;
-      }
-  
-      .vitrine-${id} + ul .listagem-linha > div > ul .bandeiras-produto {
-        display: none;
+        return parseFloat(valor) || 0;
       }
 
-      .vitrine-${id} + ul .flex-direction-nav {
-        display: none!important;
-      }
-  
-      @media screen and (max-width: 768px) {
-        .pagina-inicial .vitrine-${id} + ul .listagem-linha {
-          width: 100% !important;
+      function obterDesconto($produto) {
+        var precoAntigo = converterPreco(
+          $produto.find(
+            '.preco-produto .preco-antigo, .preco-produto del, .preco-produto .preco-base'
+          ).first().text()
+        );
+
+        var precoAtual = converterPreco(
+          $produto.find(
+            '.preco-produto strong.titulo, .preco-produto .preco-promocional'
+          ).last().text()
+        );
+
+        if (precoAntigo > precoAtual && precoAtual > 0) {
+          return Math.round((1 - precoAtual / precoAntigo) * 100);
         }
-  
-        .vitrine-${id} + ul .listagem-linha > div > ul {
-          grid-template-columns: 1fr;
-        }
+
+        return 0;
       }
-    `;
-  
-    $('<style>')
-      .prop('type', 'text/css')
-      .html(css)
-      .appendTo('head');
-  }
+
+      if ($listaVitrine.length) {
+        $listaVitrine.addClass('vitrine-destaque-produtos');
+
+        $listaVitrine.find('.listagem-item').each(function () {
+          var $produto = $(this);
+
+          if ($produto.hasClass('vitrine-destaque-pronto')) return;
+
+          $produto.addClass('vitrine-destaque-pronto');
+
+          var $imagem = $produto.find('.imagem-produto').first();
+          var $nome = $produto.find('.nome-produto a').first();
+          var linkProduto =
+            $nome.attr('href') ||
+            $produto.find('a').first().attr('href') ||
+            '#';
+
+          var percentualDesconto = vitrineDestaque.mostrarDesconto !== false
+            ? obterDesconto($produto)
+            : 0;
+
+          var textoSelo = percentualDesconto > 0
+            ? '-' + percentualDesconto + '% OFF'
+            : (vitrineDestaque.seloPadrao || 'OFERTA EM DESTAQUE');
+
+          if ($imagem.length && !$imagem.find('.vitrine-destaque-selo').length) {
+            $imagem.append(
+              '<span class="vitrine-destaque-selo">' + textoSelo + '</span>'
+            );
+          }
+
+          if (!$produto.find('.vitrine-destaque-cta').length) {
+            $produto.find('.info-produto').append(
+              '<a class="vitrine-destaque-cta" href="' + linkProduto + '">' +
+                (vitrineDestaque.textoBotao || 'VER OFERTA') +
+                '<span>→</span>' +
+              '</a>'
+            );
+          }
+        });
+      }
+    }
 
   
 });

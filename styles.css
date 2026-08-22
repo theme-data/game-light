@@ -4377,3 +4377,228 @@ body.ofertas-destacadas-abertas {
      display: none !important;
    }
  }
+
+ /* ======================================================
+   VITRINE DESTAQUE
+====================================================== */
+.vitrine-destaque-produtos {
+   padding: 8px !important;
+   border-radius: 16px;
+   background: #f4f6f8;
+   box-sizing: border-box;
+ }
+ 
+ .vitrine-destaque-produtos .listagem-linha {
+   width: 100% !important;
+ }
+ 
+ .vitrine-destaque-produtos .listagem-linha > div > ul {
+   display: grid;
+   width: 100% !important;
+   grid-template-columns: repeat(2, minmax(0, 1fr));
+   gap: 12px;
+ }
+ 
+ .vitrine-destaque-produtos .listagem-linha li {
+   width: 100% !important;
+   margin: 0 !important;
+   border: 0 !important;
+ }
+ 
+ /* Card */
+ .vitrine-destaque-produtos .listagem-item {
+   position: relative;
+   display: grid !important;
+   grid-template-columns: 118px minmax(0, 1fr);
+   min-height: 154px;
+   border: 1px solid rgba(0, 0, 0, 0.1) !important;
+   border-radius: 11px !important;
+   background: var(--white) !important;
+   overflow: hidden;
+   transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+ }
+ 
+ .vitrine-destaque-produtos .listagem-item:hover {
+   border-color: var(--brand-color) !important;
+   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+   transform: translateY(-3px);
+ }
+ 
+ /* Capa */
+ .vitrine-destaque-produtos .listagem-item .imagem-produto {
+   position: relative;
+   display: flex;
+   max-width: none !important;
+   min-height: 154px;
+   height: 100%;
+   align-items: center;
+   justify-content: center;
+   padding: 12px;
+   background: #f5f5f5;
+   box-sizing: border-box;
+ }
+ 
+ .vitrine-destaque-produtos .listagem-item .imagem-produto img {
+   width: auto !important;
+   max-width: 100%;
+   max-height: 128px;
+   object-fit: contain;
+   mix-blend-mode: multiply;
+   transition: transform 0.3s ease;
+ }
+ 
+ .vitrine-destaque-produtos .listagem-item:hover .imagem-produto img {
+   transform: scale(1.06);
+ }
+ 
+ .vitrine-destaque-selo {
+   position: absolute;
+   top: 8px;
+   left: 8px;
+   z-index: 2;
+   padding: 4px 6px;
+   border-radius: 4px;
+   background: var(--brand-color);
+   color: var(--white) !important;
+   font-size: 9px;
+   font-weight: 800;
+   letter-spacing: 0.02em;
+   line-height: 1;
+ }
+ 
+ /* Informações */
+ .vitrine-destaque-produtos .listagem-item .info-produto {
+   display: flex;
+   width: 100% !important;
+   min-width: 0;
+   flex-direction: column;
+   align-items: flex-start;
+   padding: 17px 18px !important;
+   box-sizing: border-box;
+ }
+ 
+ .vitrine-destaque-produtos .nome-produto {
+   display: -webkit-box;
+   min-height: 34px;
+   max-height: 34px;
+   margin: 0 0 8px !important;
+   overflow: hidden;
+   color: var(--black) !important;
+   font-size: 14px;
+   font-weight: 600;
+   line-height: 17px;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2;
+ }
+ 
+ .vitrine-destaque-produtos .nome-produto a {
+   color: inherit !important;
+ }
+ 
+ .vitrine-destaque-produtos .preco-produto {
+   margin-top: auto;
+ }
+ 
+ .vitrine-destaque-produtos .preco-produto > div {
+   display: flex;
+   flex-direction: column;
+ }
+ 
+ .vitrine-destaque-produtos .preco-produto .preco-antigo,
+ .vitrine-destaque-produtos .preco-produto del {
+   margin-bottom: 1px;
+   color: #777;
+   font-size: 12px;
+ }
+ 
+ .vitrine-destaque-produtos .preco-produto > div .titulo {
+   margin: 0;
+   color: #666;
+   font-size: 11px;
+   opacity: 1;
+ }
+ 
+ .vitrine-destaque-produtos .preco-produto > div strong.titulo {
+   margin: 1px 0 3px;
+   color: var(--brand-color) !important;
+   font-size: 23px;
+   font-weight: 800;
+   line-height: 1;
+ }
+ 
+ .vitrine-destaque-produtos .preco-parcela,
+ .vitrine-destaque-produtos .desconto-a-vista {
+   color: #555;
+   font-size: 11px;
+   line-height: 1.2;
+ }
+ 
+ /* CTA */
+ .vitrine-destaque-produtos .vitrine-destaque-cta {
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+   margin-top: 11px;
+   color: var(--black) !important;
+   font-size: 11px;
+   font-weight: 800;
+   letter-spacing: 0.02em;
+   text-decoration: none !important;
+ }
+ 
+ .vitrine-destaque-produtos .vitrine-destaque-cta span {
+   display: inline-flex;
+   width: 18px;
+   height: 18px;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50%;
+   background: var(--brand-color);
+   color: var(--white);
+   font-size: 14px;
+   transition: transform 0.2s ease;
+ }
+ 
+ .vitrine-destaque-produtos .listagem-item:hover .vitrine-destaque-cta span {
+   transform: translateX(3px);
+ }
+ 
+ /* Remove ações nativas apenas desta vitrine */
+ .vitrine-destaque-produtos .flex-direction-nav,
+ .vitrine-destaque-produtos .bandeiras-produto,
+ .vitrine-destaque-produtos .acoes-produto {
+   display: none !important;
+ }
+ 
+ @media screen and (max-width: 768px) {
+   .vitrine-destaque-produtos {
+     padding: 6px !important;
+   }
+ 
+   .vitrine-destaque-produtos .listagem-linha > div > ul {
+     grid-template-columns: 1fr;
+     gap: 9px;
+   }
+ 
+   .vitrine-destaque-produtos .listagem-item {
+     grid-template-columns: 100px minmax(0, 1fr);
+     min-height: 138px;
+   }
+ 
+   .vitrine-destaque-produtos .listagem-item .imagem-produto {
+     min-height: 138px;
+     padding: 10px;
+   }
+ 
+   .vitrine-destaque-produtos .listagem-item .imagem-produto img {
+     max-height: 112px;
+   }
+ 
+   .vitrine-destaque-produtos .listagem-item .info-produto {
+     padding: 14px !important;
+   }
+ 
+   .vitrine-destaque-produtos .preco-produto > div strong.titulo {
+     font-size: 20px;
+   }
+ }
