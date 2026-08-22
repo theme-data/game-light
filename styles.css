@@ -3952,3 +3952,91 @@ body.ofertas-destacadas-abertas {
     margin-top: 3px;
   }
 }
+
+/* Header dark light */
+
+/* =========================
+   CABEÇALHO — TEMA LIGHT
+========================== */
+.tema-cabecalho-light #cabecalho,
+.tema-cabecalho-light .cabecalho,
+.tema-cabecalho-light .header-principal,
+.tema-cabecalho-light .header-central {
+  background: var(--white) !important;
+  color: var(--black) !important;
+}
+
+.tema-cabecalho-light #cabecalho *,
+.tema-cabecalho-light .cabecalho *,
+.tema-cabecalho-light .header-principal *,
+.tema-cabecalho-light .header-central * {
+  border-color: currentColor;
+}
+
+.tema-cabecalho-light #cabecalho a,
+.tema-cabecalho-light .cabecalho a,
+.tema-cabecalho-light .header-principal a,
+.tema-cabecalho-light .header-central a {
+  color: var(--black) !important;
+}
+
+
+/* =========================
+   CABEÇALHO — TEMA DARK
+========================== */
+.tema-cabecalho-dark #cabecalho,
+.tema-cabecalho-dark .cabecalho,
+.tema-cabecalho-dark .header-principal,
+.tema-cabecalho-dark .header-central {
+  background: var(--black) !important;
+  color: var(--white) !important;
+}
+
+.tema-cabecalho-dark #cabecalho a,
+.tema-cabecalho-dark #cabecalho span,
+.tema-cabecalho-dark #cabecalho strong,
+.tema-cabecalho-dark #cabecalho p,
+.tema-cabecalho-dark .cabecalho a,
+.tema-cabecalho-dark .cabecalho span,
+.tema-cabecalho-dark .cabecalho strong,
+.tema-cabecalho-dark .header-principal a,
+.tema-cabecalho-dark .header-principal span,
+.tema-cabecalho-dark .header-central a,
+.tema-cabecalho-dark .header-central span {
+  color: var(--white) !important;
+}
+
+.tema-cabecalho-dark #cabecalho svg,
+.tema-cabecalho-dark #cabecalho svg *,
+.tema-cabecalho-dark .cabecalho svg,
+.tema-cabecalho-dark .cabecalho svg *,
+.tema-cabecalho-dark .header-principal svg,
+.tema-cabecalho-dark .header-principal svg *,
+.tema-cabecalho-dark .header-central svg,
+.tema-cabecalho-dark .header-central svg * {
+  stroke: var(--white) !important;
+  fill: currentColor;
+}
+
+.tema-cabecalho-dark #cabecalho .icon-shopping-cart::before,
+.tema-cabecalho-dark #cabecalho .icon-search::before,
+.tema-cabecalho-dark #cabecalho [class*="icon-"]::before,
+.tema-cabecalho-dark .cabecalho [class*="icon-"]::before,
+.tema-cabecalho-dark .header-principal [class*="icon-"]::before {
+  filter: brightness(0) invert(1);
+}
+
+.tema-cabecalho-dark #cabecalho input,
+.tema-cabecalho-dark #cabecalho .search input,
+.tema-cabecalho-dark .cabecalho input,
+.tema-cabecalho-dark .header-principal input {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, .45) !important;
+  color: var(--white) !important;
+}
+
+.tema-cabecalho-dark #cabecalho input::placeholder,
+.tema-cabecalho-dark .cabecalho input::placeholder,
+.tema-cabecalho-dark .header-principal input::placeholder {
+  color: rgba(255, 255, 255, .62) !important;
+}

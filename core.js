@@ -120,24 +120,25 @@ $(document).ready(function(){
   </div>    
   `);
 
-  /**
-   * Exemplo de objeto de configuração para CONFIG.categorias:
-   * 
-   * CONFIG.categorias = [
-   *   {
-   *     img: 'url/da/imagem1.jpg',
-   *     link: '/categoria1',
-   *     alt: 'Categoria 1',
-   *     titulo: 'Categoria 1'
-   *   },
-   *   {
-   *     img: 'url/da/imagem2.jpg',
-   *     link: '/categoria2',
-   *     alt: 'Categoria 2',
-   *     titulo: 'Categoria 2'
-   *   }
-   * ]
-   */
+  /* =========================
+    TEMA DO CABEÇALHO
+  ========================== */
+  (function () {
+    var temaCabecalho = (
+      window.THEME_CONFIG &&
+      window.THEME_CONFIG.temaCabecalho
+    ) || 'light';
+
+    temaCabecalho = String(temaCabecalho).toLowerCase();
+
+    if (temaCabecalho !== 'dark' && temaCabecalho !== 'light') {
+      temaCabecalho = 'light';
+    }
+
+    $('body')
+      .removeClass('tema-cabecalho-dark tema-cabecalho-light')
+      .addClass('tema-cabecalho-' + temaCabecalho);
+  })();
   
   // Ativa o Slick Slider na lista de categorias
   $('.c-slide').slick({
