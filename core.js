@@ -1158,18 +1158,42 @@ if (CONFIG.bannerVitrine) {
     $('.pagina-inicial').append(html);
   }
 
-  var $secao = $('#reviews-cards-home');
-  var $lista = $secao.find('.reviews-cards-home-lista');
+  var $lista = $('#reviews-cards-home .reviews-cards-home-lista');
 
-  $secao.on('click', '.reviews-cards-home-proximo', function () {
-    $lista.animate({
-      scrollLeft: $lista.scrollLeft() + 330
-    }, 350);
-  });
-
-  $secao.on('click', '.reviews-cards-home-anterior', function () {
-    $lista.animate({
-      scrollLeft: $lista.scrollLeft() - 330
-    }, 350);
-  });
-})();
+  if ($lista.length && typeof $lista.slick === 'function') {
+    $lista.slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      infinite: reviews.length > 4,
+      arrows: true,
+      dots: false,
+      autoplay: false,
+      prevArrow:
+        '<button type="button" class="reviews-cards-home-seta reviews-cards-home-anterior" aria-label="Review anterior">‹</button>',
+      nextArrow:
+        '<button type="button" class="reviews-cards-home-seta reviews-cards-home-proximo" aria-label="Próximo review">›</button>',
+  
+      responsive: [
+        {
+          breakpoint: 1100,
+          settings: {
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 800,
+          settings: {
+            slidesToShow: 2
+          }
+        },
+        {
+          breakpoint: 560,
+          settings: {
+            slidesToShow: 1,
+            arrows: false,
+            dots: true
+          }
+        }
+      ]
+    });
+  }

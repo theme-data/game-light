@@ -4122,149 +4122,32 @@ body.ofertas-destacadas-abertas {
  /* =========================
    REVIEWS EM CARDS — HOME
 ========================== */
-.reviews-cards-home {
-   margin-top: 56px;
-   padding: 72px 0;
-   background: #f5f5f5;
- }
- 
- .reviews-cards-home-header {
-   margin-bottom: 30px;
-   text-align: center;
- }
- 
- .reviews-cards-home-header > span {
-   display: block;
-   margin-bottom: 8px;
-   color: var(--brand-color);
-   font-size: 12px;
-   font-weight: 800;
-   letter-spacing: .1em;
- }
- 
- .reviews-cards-home-header h2 {
-   margin: 0;
-   color: var(--black) !important;
-   font-size: clamp(26px, 3vw, 38px);
-   font-weight: 900;
-   line-height: 1.1;
-   text-transform: uppercase;
- }
- 
- .reviews-cards-home-wrapper {
+.reviews-cards-home-wrapper {
    position: relative;
+   padding: 0 24px;
  }
  
  .reviews-cards-home-lista {
-   display: flex;
-   gap: 18px;
-   overflow-x: auto;
-   padding: 4px 2px 10px;
-   scroll-behavior: smooth;
-   scrollbar-width: none;
+   margin: 0 -9px;
  }
  
- .reviews-cards-home-lista::-webkit-scrollbar {
-   display: none;
- }
- 
- .review-card-home {
-   display: flex;
-   width: calc((100% - 54px) / 4);
-   min-width: 250px;
-   min-height: 286px;
-   flex-direction: column;
-   align-items: center;
-   padding: 26px 22px 22px;
-   border-radius: 10px;
-   background: var(--white);
-   color: var(--black);
-   text-align: center;
+ .reviews-cards-home-lista .slick-slide {
+   height: auto;
+   padding: 4px 9px 10px;
    box-sizing: border-box;
  }
  
- .review-card-home-nota {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   gap: 7px;
-   font-size: 11px;
+ .reviews-cards-home-lista .slick-track {
+   display: flex !important;
  }
  
- .review-card-home-nota strong {
-   color: var(--black) !important;
-   font-size: 11px;
-   font-weight: 800;
-   white-space: nowrap;
+ .reviews-cards-home-lista .slick-slide {
+   height: inherit !important;
  }
  
- .review-card-home-estrelas {
-   display: flex;
-   gap: 2px;
-   color: #ffb52e;
- }
- 
- .review-card-home-estrelas svg {
-   width: 16px;
-   height: 16px;
-   fill: currentColor;
-   opacity: .35;
- }
- 
- .review-card-home-estrelas svg.ativa {
-   opacity: 1;
- }
- 
- .review-card-home-texto {
-   margin: 22px 0;
-   color: var(--black) !important;
-   font-size: 14px;
-   font-weight: 600;
-   line-height: 1.45;
- }
- 
- .review-card-home-cliente {
-   display: grid;
-   justify-items: center;
-   gap: 9px;
-   margin-top: auto;
- }
- 
- .review-card-home-foto {
-   display: flex;
-   width: 58px;
-   height: 58px;
-   align-items: center;
-   justify-content: center;
-   overflow: hidden;
-   border-radius: 9px;
-   background: var(--brand-color);
-   color: var(--black);
-   font-size: 22px;
-   font-weight: 900;
- }
- 
- .review-card-home-foto img {
-   width: 100%;
+ .reviews-cards-home-lista .slick-slide > div,
+ .reviews-cards-home-lista .slick-slide .review-card-home {
    height: 100%;
-   object-fit: cover;
- }
- 
- .review-card-home-cliente strong,
- .review-card-home-cliente span {
-   display: block;
- }
- 
- .review-card-home-cliente strong {
-   color: var(--black) !important;
-   font-size: 15px;
-   font-weight: 800;
- }
- 
- .review-card-home-cliente span {
-   margin-top: 3px;
-   color: #666;
-   font-size: 12px;
  }
  
  .reviews-cards-home-seta {
@@ -4276,6 +4159,7 @@ body.ofertas-destacadas-abertas {
    height: 40px;
    align-items: center;
    justify-content: center;
+   padding: 0;
    border: 0;
    border-radius: 7px;
    background: var(--brand-color);
@@ -4284,33 +4168,61 @@ body.ofertas-destacadas-abertas {
    font-size: 32px;
    line-height: 1;
    transform: translateY(-50%);
+   transition: filter .2s ease, transform .2s ease;
  }
  
  .reviews-cards-home-seta:hover {
-   filter: brightness(1.06);
+   filter: brightness(1.08);
+   transform: translateY(-50%) scale(1.04);
  }
  
  .reviews-cards-home-anterior {
-   left: -18px;
+   left: -20px;
  }
  
  .reviews-cards-home-proximo {
-   right: -18px;
+   right: -20px;
+ }
+ 
+ .reviews-cards-home-lista .slick-dots {
+   position: static;
+   display: flex !important;
+   justify-content: center;
+   gap: 6px;
+   margin: 20px 0 0;
+   padding: 0;
+   list-style: none;
+ }
+ 
+ .reviews-cards-home-lista .slick-dots li {
+   width: auto;
+   height: auto;
+   margin: 0;
+ }
+ 
+ .reviews-cards-home-lista .slick-dots button {
+   width: 7px;
+   height: 7px;
+   padding: 0;
+   border: 0;
+   border-radius: 50%;
+   background: rgba(0, 0, 0, .2);
+   color: transparent;
+   font-size: 0;
+ }
+ 
+ .reviews-cards-home-lista .slick-dots .slick-active button {
+   width: 22px;
+   border-radius: 10px;
+   background: var(--brand-color);
  }
  
  @media screen and (max-width: 767px) {
-   .reviews-cards-home {
-     margin-top: 34px;
-     padding: 48px 0;
-   }
- 
-   .review-card-home {
-     width: 82vw;
-     min-width: 82vw;
-     min-height: 270px;
+   .reviews-cards-home-wrapper {
+     padding: 0;
    }
  
    .reviews-cards-home-seta {
-     display: none;
+     display: none !important;
    }
  }
