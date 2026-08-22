@@ -106,7 +106,7 @@ input:focus {
    height: 24px;
 }
 
-.icon-user::before {
+.h-user::before {
    content: "";
    background: url(https://cdn.awsli.com.br/2942/2942234/arquivos/user.svg) center no-repeat;
    background-size: 100%;
@@ -4022,7 +4022,8 @@ body.ofertas-destacadas-abertas {
 .tema-cabecalho-dark #cabecalho .icon-search::before,
 .tema-cabecalho-dark #cabecalho [class*="icon-"]::before,
 .tema-cabecalho-dark .cabecalho [class*="icon-"]::before,
-.tema-cabecalho-dark .header-principal [class*="icon-"]::before {
+.tema-cabecalho-dark .header-principal [class*="icon-"]::before,
+.tema-cabecalho-dark .h-user::before {
   filter: brightness(0) invert(1);
 }
 
@@ -4030,13 +4031,17 @@ body.ofertas-destacadas-abertas {
 .tema-cabecalho-dark #cabecalho .search input,
 .tema-cabecalho-dark .cabecalho input,
 .tema-cabecalho-dark .header-principal input {
-  background: transparent !important;
+  background: #fff !important;
   border-color: rgba(255, 255, 255, .45) !important;
-  color: var(--white) !important;
+  color: var(--black) !important;
 }
 
 .tema-cabecalho-dark #cabecalho input::placeholder,
 .tema-cabecalho-dark .cabecalho input::placeholder,
 .tema-cabecalho-dark .header-principal input::placeholder {
-  color: rgba(255, 255, 255, .62) !important;
+  color: rgba(0, 0, 0, .62) !important;
+}
+
+.tema-cabecalho-dark .carrinho {
+   background: rgba(255, 255, 255, .1);
 }
