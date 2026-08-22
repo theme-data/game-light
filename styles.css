@@ -4045,3 +4045,7 @@ body.ofertas-destacadas-abertas {
 .tema-cabecalho-dark .carrinho {
    background: rgba(255, 255, 255, .1);
 }
+
+.tema-cabecalho-dark .carrinho .carrinho-interno {
+   background: var(--black);
+}
