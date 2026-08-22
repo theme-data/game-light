@@ -3602,7 +3602,7 @@ div#_trustvox_colt .review-card {
    gap: 10px;
    align-items: center;
    padding: 16px;
-   background: rgba(0, 0, 0, .05);
+   /* background: rgba(0, 0, 0, .05); */
    margin: 0 5px;
    border-radius: 10px;
 }
