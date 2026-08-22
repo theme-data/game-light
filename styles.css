@@ -3761,7 +3761,7 @@ body.ofertas-destacadas-abertas {
   align-items: center;
   gap: 10px;
   min-height: 48px;
-  padding: 10px 13px 10px 10px;
+  padding: 20px 10px;
   border: 0;
   border-radius: 7px 0 0 7px;
   background: var(--brand-color);
@@ -3772,6 +3772,10 @@ body.ofertas-destacadas-abertas {
   text-transform: uppercase;
   writing-mode: vertical-rl;
   transition: transform .25s ease, filter .25s ease;
+}
+
+.ofertas-destacadas-aba span:not(.ofertas-destacadas-aba-icone) {
+   color: #fff;
 }
 
 .ofertas-destacadas-aba:hover {
