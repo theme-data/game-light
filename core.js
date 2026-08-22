@@ -6,6 +6,7 @@ $(document).ready(function(){
   $('#cabecalho .span8.busca-mobile').after(`
       <div class="h-actions hidden-phone">
           <a href="/conta/login" class="h-user">
+              <img src="https://cdn.awsli.com.br/2942/2942234/arquivos/user.svg" alt="Minha conta">
               <span>Entrar</span>
           </a>
       </div>
@@ -97,51 +98,38 @@ $(document).ready(function(){
   
   $('#rodape .sobre-loja-rodape').replaceWith(atendimentoHtml);
   
-  // Defina as variáveis das categorias (imagem, link, alt e titulo)
+  // Defina as variáveis das categorias (imagem, link e alt)
   var categorias = CONFIG.categorias || [];
   
-  // Montar os <li> dinamicamente usando as variáveis (inclui <span> com o título abaixo da imagem)
+  // Montar os <li> dinamicamente usando as variáveis
   var categoriaLis = categorias.map(function(c){
       return `<li class="c-item">
           <a href="${c.link}">
               <img src="${c.img}" alt="${c.alt}">
-              <span class="c-titulo-categoria">${c.titulo}</span>
           </a>
       </li>`;
   }).join('');
   
   // Adiciona o bloco antes de #listagemProdutos
-  $('.secao-banners').before(`
+  $('.pagina-inicial #listagemProdutos').before(`
   <div class="c-slide-section">
+      <div class="c-slide-header">
+          <h2 class="c-slide-title">
+              Navegue por categoria
+          </h2>
+          <p class="c-slide-subtitle">
+              Escolha abaixo uma categoria para explorar nossos jogos
+          </p>
+      </div>
       <ul class="c-slide">
           ${categoriaLis}
       </ul>
   </div>    
   `);
-
-  /* =========================
-    TEMA DO CABEÇALHO
-  ========================== */
-  (function () {
-    var temaCabecalho = (
-      window.THEME_CONFIG &&
-      window.THEME_CONFIG.temaCabecalho
-    ) || 'light';
-
-    temaCabecalho = String(temaCabecalho).toLowerCase();
-
-    if (temaCabecalho !== 'dark' && temaCabecalho !== 'light') {
-      temaCabecalho = 'light';
-    }
-
-    $('body')
-      .removeClass('tema-cabecalho-dark tema-cabecalho-light')
-      .addClass('tema-cabecalho-' + temaCabecalho);
-  })();
   
   // Ativa o Slick Slider na lista de categorias
   $('.c-slide').slick({
-      slidesToShow: 9,
+      slidesToShow: 6,
       slidesToScroll: 1,
       arrows: true,
       dots: false,
@@ -156,111 +144,6 @@ $(document).ready(function(){
       ]
   });
   
-/* Banner opcional acima de uma vitrine/categoria da home */
-(function () {
-  var bannersCategoriasHome = CONFIG.bannersCategoriasHome || [];
-
-  function escaparHtml(valor) {
-    return String(valor || '').replace(/[&<>'"]/g, function (caractere) {
-      return {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        "'": '&#039;',
-        '"': '&quot;'
-      }[caractere];
-    });
-  }
-
-  function formatarTempo(totalSegundos) {
-    var dias = Math.floor(totalSegundos / 86400);
-    var horas = Math.floor((totalSegundos % 86400) / 3600);
-    var minutos = Math.floor((totalSegundos % 3600) / 60);
-    var segundos = totalSegundos % 60;
-
-    return [dias, horas, minutos, segundos]
-      .map(function (valor) {
-        return String(valor).padStart(2, '0');
-      })
-      .join(' : ');
-  }
-
-  bannersCategoriasHome.forEach(function (banner) {
-    if (!banner || !banner.ativo || !banner.idCategoria) return;
-
-    var $vitrine = $('.pagina-inicial .vitrine-' + banner.idCategoria).first();
-
-    if (!$vitrine.length || $('#banner-categoria-' + banner.idCategoria).length) {
-      return;
-    }
-
-    var contadorHtml = banner.usarContador
-      ? '<div class="banner-categoria-contador" data-data-fim="' +
-        escaparHtml(banner.dataFim) +
-        '">00 : 00 : 00 : 00</div>'
-      : '';
-
-    $vitrine.before([
-      '<section class="banner-categoria-home" id="banner-categoria-' +
-        escaparHtml(banner.idCategoria) + '">',
-        '<div class="banner-categoria-conteudo">',
-          '<strong class="banner-categoria-etiqueta">' +
-            escaparHtml(banner.etiqueta) +
-          '</strong>',
-          contadorHtml,
-          '<p class="banner-categoria-texto">' +
-            escaparHtml(banner.titulo || banner.texto) +
-          '</p>',
-          '<a class="banner-categoria-botao" href="' +
-            escaparHtml(banner.linkBotao || '#') +
-          '">' +
-            escaparHtml(banner.textoBotao || 'VER OFERTAS') +
-          '</a>',
-        '</div>',
-      '</section>'
-    ].join(''));
-    
-    /* Quando o contador estiver ativo:
-        - remove o título da categoria;
-        - adiciona classes na UL da vitrine. */
-    if (banner.usarContador) {
-      $vitrine
-        .next('ul')
-        .addClass('vitrine-com-banner-contador')
-        .addClass('vitrine-categoria-' + banner.idCategoria);
-    
-      $vitrine.remove();
-    }
-  });
-
-  function atualizarContadoresCategoria() {
-    $('.banner-categoria-contador').each(function () {
-      var $contador = $(this);
-      var dataFim = new Date($contador.attr('data-data-fim')).getTime();
-      var diferenca = Math.max(
-        0,
-        Math.floor((dataFim - Date.now()) / 1000)
-      );
-
-      if (!dataFim || diferenca <= 0) {
-        $contador
-          .closest('.banner-categoria-home')
-          .addClass('banner-categoria-encerrado');
-
-        $contador.text('OFERTA ENCERRADA');
-        return;
-      }
-
-      $contador.text(formatarTempo(diferenca));
-    });
-  }
-
-  if ($('.banner-categoria-contador').length) {
-    atualizarContadoresCategoria();
-    setInterval(atualizarContadoresCategoria, 1000);
-  }
-})();
-
   // --------- SLIDER
   
     // remove comportamento antigo
@@ -483,6 +366,60 @@ if (CONFIG.bannerVitrine) {
     });
     
   
+    $(function () {
+  
+      /* =========================
+         🧩 BENEFÍCIOS EDITÁVEIS
+      ==========================*/
+      const beneficios = CONFIG.beneficios || [];
+    
+    
+      /* =========================
+         🧱 MONTA HTML
+      ==========================*/
+      let itensHTML = "";
+    
+      beneficios.forEach((item, index) => {
+    
+        itensHTML += `
+          <div class="beneficio-item">
+            <div class="beneficio-icone">${item.icone}</div>
+    
+            <div class="beneficio-texto">
+              <strong>${item.titulo}</strong>
+              <span>${item.texto}</span>
+            </div>
+          </div>
+        `;
+    
+        // divisória (menos no último)
+        if(index < beneficios.length - 1){
+          itensHTML += `<div class="beneficio-divider"></div>`;
+        }
+      });
+    
+    
+      const barraBeneficios = `
+        <section class="barra-beneficios">
+          <div class="beneficios-container">
+            ${itensHTML}
+          </div>
+        </section>
+      `;
+    
+    
+      /* =========================
+         📍 INSERÇÃO INTELIGENTE
+      ==========================*/
+    
+      if ($('#barraNewsletter').length) {
+        $('#barraNewsletter').before(barraBeneficios);
+      } else {
+        $('#rodape').before(barraBeneficios);
+      }
+    
+    });
+  
     // Remove texto da bandeira
   
     $(function () {
@@ -508,7 +445,7 @@ if (CONFIG.bannerVitrine) {
   
   if ($(window).width() > 768) {
   //Desktop
-      //$('.conteudo-topo .inferior').prepend($('.menu.superior'));
+      $('.conteudo-topo .inferior').prepend($('.menu.superior'));
   
       $('.produto')
       .children()
@@ -616,6 +553,29 @@ if (CONFIG.bannerVitrine) {
       
       });
       
+      var $menu = $('.menu.superior .nivel-um');
+      var $itens = $menu.children('li');
+    
+      // só executa se tiver mais de 5 itens
+      if ($itens.length > 5) {
+    
+        // cria o LI "Mais"
+        var $mais = $(`
+          <li class="categoria-mais borda-principal">
+            <a href="javascript:void(0)">Mais<i class="icon-chevron-down fundo-secundario"></i></a>
+            <ul class="submenu-mais"></ul>
+          </li>
+        `);
+    
+        // pega todos os itens a partir do 6º (index 5)
+        var $excedentes = $itens.slice(5);
+    
+        // move os itens para dentro do submenu
+        $mais.find('.submenu-mais').append($excedentes);
+    
+        // adiciona o "Mais" no final do menu
+        $menu.append($mais);
+      }
   
   //Fim desktop
   } else {
@@ -744,633 +704,69 @@ if (CONFIG.bannerVitrine) {
       `);
   }
 
-  /* ======================================================
-      VITRINE DESTAQUE
-    ====================================================== */
-    var vitrineDestaque = CONFIG.vitrineDestaque || {};
-    var id = vitrineDestaque.idVitrine;
-
-    if (id) {
-      var $tituloVitrine = $('.pagina-inicial .vitrine-' + id).first();
-      var $listaVitrine = $tituloVitrine.next('ul');
-
-      function converterPreco(texto) {
-        if (!texto) return 0;
-
-        var valor = String(texto)
-          .replace(/[^\d,]/g, '')
-          .replace(',', '.');
-
-        return parseFloat(valor) || 0;
+  var vitrineDestaque = CONFIG.vitrineDestaque || {};
+  var id = vitrineDestaque.idVitrine;
+  
+  if (id) {
+    var css = `
+      .vitrine-${id} + ul .listagem-linha li .listagem-item {
+        display: flex;
+      }
+  
+      .vitrine-${id} + ul .listagem-linha > div > ul {
+        display: grid;
+        width: 100% !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+  
+      .vitrine-${id} + ul .listagem-linha {
+        width: 100% !important;
+      }
+  
+      .vitrine-${id} + ul .listagem-linha li {
+        width: 100% !important;
+        border-radius: 8px;
+        border: 1px solid #d8d8d8 !important;
+        box-sizing: border-box;
+      }
+  
+      .vitrine-${id} + ul .listagem-linha li .listagem-item .imagem-produto {
+        max-width: 120px;
+      }
+  
+      .vitrine-${id} + ul .listagem-linha li .listagem-item .info-produto {
+        width: 100%;
+      }
+  
+      .vitrine-${id} + ul .flex-direction-nav {
+        display: none;
+      }
+  
+      .vitrine-${id} + ul .listagem-linha > div > ul .bandeiras-produto {
+        display: none;
       }
 
-      function obterDesconto($produto) {
-        var precoAntigo = converterPreco(
-          $produto.find(
-            '.preco-produto .preco-antigo, .preco-produto del, .preco-produto .preco-base'
-          ).first().text()
-        );
-
-        var precoAtual = converterPreco(
-          $produto.find(
-            '.preco-produto strong.titulo, .preco-produto .preco-promocional'
-          ).last().text()
-        );
-
-        if (precoAntigo > precoAtual && precoAtual > 0) {
-          return Math.round((1 - precoAtual / precoAntigo) * 100);
+      .vitrine-${id} + ul .flex-direction-nav {
+        display: none!important;
+      }
+  
+      @media screen and (max-width: 768px) {
+        .pagina-inicial .vitrine-${id} + ul .listagem-linha {
+          width: 100% !important;
         }
-
-        return 0;
+  
+        .vitrine-${id} + ul .listagem-linha > div > ul {
+          grid-template-columns: 1fr;
+        }
       }
-
-      if ($listaVitrine.length) {
-        $listaVitrine.addClass('vitrine-destaque-produtos');
-
-        $listaVitrine.find('.listagem-item').each(function () {
-          var $produto = $(this);
-
-          if ($produto.hasClass('vitrine-destaque-pronto')) return;
-
-          $produto.addClass('vitrine-destaque-pronto');
-
-          var $imagem = $produto.find('.imagem-produto').first();
-          var $nome = $produto.find('.nome-produto a').first();
-          var linkProduto =
-            $nome.attr('href') ||
-            $produto.find('a').first().attr('href') ||
-            '#';
-
-          var percentualDesconto = vitrineDestaque.mostrarDesconto !== false
-            ? obterDesconto($produto)
-            : 0;
-
-          var textoSelo = percentualDesconto > 0
-            ? '-' + percentualDesconto + '% OFF'
-            : (vitrineDestaque.seloPadrao || 'OFERTA EM DESTAQUE');
-
-          if ($imagem.length && !$imagem.find('.vitrine-destaque-selo').length) {
-            $imagem.append(
-              '<span class="vitrine-destaque-selo">' + textoSelo + '</span>'
-            );
-          }
-
-          if (!$produto.find('.vitrine-destaque-cta').length) {
-            $produto.find('.info-produto').append(
-              '<a class="vitrine-destaque-cta" href="' + linkProduto + '">' +
-                (vitrineDestaque.textoBotao || 'VER OFERTA') +
-                '<span>→</span>' +
-              '</a>'
-            );
-          }
-        });
-      }
-    }
+    `;
+  
+    $('<style>')
+      .prop('type', 'text/css')
+      .html(css)
+      .appendTo('head');
+  }
 
   
 });
-
-/* =========================
-  OFERTAS DESTACADAS
-========================== */
-(function () {
-  var configOfertas = (window.THEME_CONFIG && window.THEME_CONFIG.ofertasDestacadas) || {};
-
-  if (!configOfertas.ativo) return;
-
-  var ofertas = (configOfertas.ofertas || []).filter(function (oferta) {
-    return oferta && oferta.ativo;
-  });
-
-  if (!ofertas.length || $('#ofertas-destacadas').length) return;
-
-  function escaparHtml(valor) {
-    return String(valor || '').replace(/[&<>"']/g, function (caractere) {
-      return {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-      }[caractere];
-    });
-  }
-
-  function iconeTag() {
-    return [
-      '<svg viewBox="0 0 24 24" aria-hidden="true">',
-        '<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3.4 13.4a2 2 0 0 1-.6-1.4V5a2 2 0 0 1 2-2h7a2 2 0 0 1 1.4.6l7.4 7a2 2 0 0 1 0 2.8Z"></path>',
-        '<circle cx="7.5" cy="7.5" r="1.1"></circle>',
-      '</svg>'
-    ].join('');
-  }
-
-  var ofertasHtml = ofertas.map(function (oferta, indice) {
-    var tipo = oferta.tipo || 'link';
-    var botao;
-
-    if (tipo === 'cupom') {
-      botao = [
-        '<button type="button" class="oferta-destaque-botao js-copiar-cupom" ',
-          'data-cupom="', escaparHtml(oferta.cupom), '">',
-          escaparHtml(oferta.textoBotao || 'COPIAR'),
-        '</button>'
-      ].join('');
-    } else {
-      botao = [
-        '<a class="oferta-destaque-botao" href="', escaparHtml(oferta.link || '#'), '">',
-          escaparHtml(oferta.textoBotao || 'VER OFERTAS'),
-        '</a>'
-      ].join('');
-    }
-
-    return [
-      '<article class="oferta-destaque-item" data-oferta="', indice, '">',
-        '<div class="oferta-destaque-icone">', iconeTag(), '</div>',
-        '<div class="oferta-destaque-textos">',
-          '<strong>', escaparHtml(oferta.titulo), '</strong>',
-          '<span>', escaparHtml(oferta.descricao), '</span>',
-        '</div>',
-        botao,
-      '</article>'
-    ].join('');
-  }).join('');
-
-  var html = [
-    '<div id="ofertas-destacadas" class="ofertas-destacadas">',
-      '<button type="button" class="ofertas-destacadas-aba" aria-label="Abrir ofertas especiais">',
-        '<span class="ofertas-destacadas-aba-icone">', iconeTag(), '</span>',
-        '<span>', escaparHtml(configOfertas.tituloAba || 'Ofertas para você'), '</span>',
-      '</button>',
-
-      '<div class="ofertas-destacadas-overlay"></div>',
-
-      '<aside class="ofertas-destacadas-painel" aria-hidden="true">',
-        '<header class="ofertas-destacadas-header">',
-          '<h2>', escaparHtml(configOfertas.tituloPainel || 'Ofertas especiais'), '</h2>',
-          '<button type="button" class="ofertas-destacadas-fechar" aria-label="Fechar ofertas">×</button>',
-        '</header>',
-
-        '<div class="ofertas-destacadas-lista">',
-          ofertasHtml || '<p class="ofertas-destacadas-vazio">' +
-            escaparHtml(configOfertas.textoVazio || 'Nenhuma oferta disponível no momento.') +
-          '</p>',
-        '</div>',
-      '</aside>',
-    '</div>'
-  ].join('');
-
-  $('body').append(html);
-
-  var $container = $('#ofertas-destacadas');
-
-  function abrirOfertas() {
-    $container.addClass('ofertas-abertas');
-    $container.find('.ofertas-destacadas-painel').attr('aria-hidden', 'false');
-    $('body').addClass('ofertas-destacadas-abertas');
-  }
-
-  function fecharOfertas() {
-    $container.removeClass('ofertas-abertas');
-    $container.find('.ofertas-destacadas-painel').attr('aria-hidden', 'true');
-    $('body').removeClass('ofertas-destacadas-abertas');
-  }
-
-  $container.on('click', '.ofertas-destacadas-aba', abrirOfertas);
-  $container.on('click', '.ofertas-destacadas-fechar, .ofertas-destacadas-overlay', fecharOfertas);
-
-  $(document).on('keydown', function (evento) {
-    if (evento.key === 'Escape') fecharOfertas();
-  });
-
-  $container.on('click', '.js-copiar-cupom', function () {
-    var $botao = $(this);
-    var cupom = $botao.attr('data-cupom') || '';
-    var textoOriginal = $botao.text();
-
-    function feedback() {
-      $botao.text('COPIADO!');
-      setTimeout(function () {
-        $botao.text(textoOriginal);
-      }, 1800);
-    }
-
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(cupom).then(feedback);
-      return;
-    }
-
-    var campo = document.createElement('textarea');
-    campo.value = cupom;
-    campo.style.position = 'fixed';
-    campo.style.opacity = '0';
-    document.body.appendChild(campo);
-    campo.select();
-    document.execCommand('copy');
-    document.body.removeChild(campo);
-    feedback();
-  });
-
-  if (configOfertas.abrirAutomaticamente) {
-    setTimeout(abrirOfertas, 800);
-  }
-})();
-
-/* =========================
-  BOTÃO WHATSAPP — LISTAGEM
-========================== */
-(function () {
-  var configWhatsapp = (
-    window.THEME_CONFIG &&
-    window.THEME_CONFIG.whatsappListagem
-  ) || {};
-
-  if (!configWhatsapp.ativo || !configWhatsapp.telefone) return;
-
-  function obterNomeProduto($produto) {
-    return (
-      $produto.find('.nome-produto').first().text() ||
-      $produto.find('.produto-nome').first().text() ||
-      $produto.find('a[data-produto-id]').first().attr('title') ||
-      $produto.find('img').first().attr('alt') ||
-      'Produto da loja'
-    ).trim();
-  }
-
-  function obterLinkProduto($produto) {
-    var link = (
-      $produto.find('.nome-produto a').first().attr('href') ||
-      $produto.find('.produto-nome a').first().attr('href') ||
-      $produto.find('a[href*="/produto/"]').first().attr('href') ||
-      $produto.find('a').first().attr('href') ||
-      ''
-    );
-
-    if (link && link.indexOf('http') !== 0) {
-      link = window.location.origin + link;
-    }
-
-    return link || window.location.href;
-  }
-
-  function criarBotaoWhatsapp($produto) {
-    if ($produto.find('.botao-comprar-whatsapp').length) return;
-
-    var nomeProduto = obterNomeProduto($produto);
-    var linkProduto = obterLinkProduto($produto);
-
-    var mensagem = String(
-      configWhatsapp.mensagem ||
-      'Olá! Tenho interesse neste produto:\n\n{produto}\n{link}'
-    )
-      .replace(/\{produto\}/gi, nomeProduto)
-      .replace(/\{link\}/gi, linkProduto);
-
-    var urlWhatsapp =
-      'https://wa.me/' +
-      String(configWhatsapp.telefone).replace(/\D/g, '') +
-      '?text=' +
-      encodeURIComponent(mensagem);
-
-    var target = configWhatsapp.novaAba !== false
-      ? ' target="_blank" rel="noopener noreferrer"'
-      : '';
-
-    var html = [
-      '<a class="botao-comprar-whatsapp" href="', urlWhatsapp, '"', target, '>',
-        '<img src="https://cdn.awsli.com.br/2942/2942234/arquivos/whatsapp.png" alt="Whatsapp"/>',
-        '<span>', configWhatsapp.textoBotao || 'COMPRE PELO WHATSAPP', '</span>',
-      '</a>'
-    ].join('');
-
-    /* Insere abaixo do botão de comprar de cada produto */
-    var $acoes = $produto.find('.acoes-produto').first();
-
-    if ($acoes.length) {
-      $acoes.append(html);
-    } else {
-      $produto.find('.produto-info, .info-produto').first().append(html);
-    }
-  }
-
-  function adicionarBotoesWhatsapp() {
-    $('.listagem .listagem-item, .vitrine .listagem-item').each(function () {
-      criarBotaoWhatsapp($(this));
-    });
-  }
-
-  adicionarBotoesWhatsapp();
-
-  var observer = new MutationObserver(function () {
-    adicionarBotoesWhatsapp();
-  });
-
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
-})();
-
-/* ======================================================
-   AVALIAÇÕES — HOME | Slick Carousel
-====================================================== */
-(function () {
-  var config = (
-    window.THEME_CONFIG &&
-    window.THEME_CONFIG.avaliacoesHome
-  ) || {};
-
-  if (!config.ativo || $('#avaliacoes-home').length) return;
-
-  /* Exibe apenas na home, salvo se somenteHome for false */
-  if (
-    config.somenteHome !== false &&
-    !$('body').hasClass('pagina-inicial') &&
-    !$('.pagina-inicial').length
-  ) {
-    return;
-  }
-
-  function escaparHtml(valor) {
-    return String(valor || '').replace(/[&<>"']/g, function (caractere) {
-      return {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-      }[caractere];
-    });
-  }
-
-  function criarEstrelas(nota) {
-    var notaFinal = Math.min(5, Math.max(0, parseFloat(nota) || 5));
-    var html = '';
-
-    for (var i = 1; i <= 5; i++) {
-      var classe = i <= Math.ceil(notaFinal)
-        ? 'avaliacoes-home-estrela ativa'
-        : 'avaliacoes-home-estrela';
-
-      html += [
-        '<svg class="', classe, '" viewBox="0 0 24 24" aria-hidden="true">',
-          '<path d="m12 2.5 2.95 5.98 6.6.96-4.77 4.65 1.13 6.57L12 17.57l-5.91 3.1 1.13-6.57-4.77-4.65 6.6-.96L12 2.5Z"></path>',
-        '</svg>'
-      ].join('');
-    }
-
-    return html;
-  }
-
-  var reviews = (config.reviews || []).filter(function (review) {
-    return review && review.ativo;
-  });
-
-  if (!reviews.length) return;
-
-  var cardsHtml = reviews.map(function (review) {
-    var nome = review.nome || 'Cliente';
-    var inicial = nome.charAt(0).toUpperCase();
-
-    var fotoHtml = review.foto
-      ? '<img src="' + escaparHtml(review.foto) + '" alt="' + escaparHtml(nome) + '" loading="lazy">'
-      : '<span>' + escaparHtml(inicial) + '</span>';
-
-    return [
-      '<article class="avaliacoes-home-card">',
-        '<div class="avaliacoes-home-nota">',
-          '<div class="avaliacoes-home-estrelas">',
-            criarEstrelas(review.nota),
-          '</div>',
-          '<span>', escaparHtml(review.nota || 5), ' / 5</span>',
-        '</div>',
-
-        '<p class="avaliacoes-home-texto">“',
-          escaparHtml(review.texto),
-        '”</p>',
-
-        '<footer class="avaliacoes-home-cliente">',
-          '<div class="avaliacoes-home-foto">',
-            fotoHtml,
-          '</div>',
-          '<div class="avaliacoes-home-cliente-info">',
-            '<strong>', escaparHtml(nome), '</strong>',
-            review.cargo
-              ? '<span>' + escaparHtml(review.cargo) + '</span>'
-              : '',
-          '</div>',
-        '</footer>',
-      '</article>'
-    ].join('');
-  }).join('');
-
-  var html = [
-    '<section id="avaliacoes-home" class="avaliacoes-home">',
-      '<div class="conteiner">',
-        '<header class="avaliacoes-home-cabecalho">',
-          config.etiqueta
-            ? '<span class="avaliacoes-home-etiqueta">' +
-              escaparHtml(config.etiqueta) +
-              '</span>'
-            : '',
-          '<h2>', escaparHtml(config.titulo || 'Quem compra, recomenda'), '</h2>',
-        '</header>',
-
-        '<div class="avaliacoes-home-slider">',
-          cardsHtml,
-        '</div>',
-      '</div>',
-    '</section>'
-  ].join('');
-
-  var seletorInsercao = config.seletorInsercao || '#rodape';
-  var $destino = $(seletorInsercao).first();
-
-  if ($destino.length) {
-    $destino.before(html);
-  } else {
-    $('.pagina-inicial').append(html);
-  }
-
-  var $slider = $('#avaliacoes-home .avaliacoes-home-slider');
-
-  if (typeof $slider.slick !== 'function') {
-    console.warn('Slick não foi encontrado para inicializar as avaliações.');
-    return;
-  }
-
-  $slider.slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    infinite: reviews.length > 4,
-    arrows: true,
-    dots: false,
-    autoplay: false,
-    adaptiveHeight: false,
-
-    prevArrow:
-      '<button type="button" class="avaliacoes-home-seta avaliacoes-home-anterior" aria-label="Avaliação anterior">‹</button>',
-
-    nextArrow:
-      '<button type="button" class="avaliacoes-home-seta avaliacoes-home-proximo" aria-label="Próxima avaliação">›</button>',
-
-    responsive: [
-      {
-        breakpoint: 1100,
-        settings: {
-          slidesToShow: 3
-        }
-      },
-      {
-        breakpoint: 800,
-        settings: {
-          slidesToShow: 2
-        }
-      },
-      {
-        breakpoint: 560,
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-          dots: true
-        }
-      }
-    ]
-  });
-})();
-
-/* ======================================================
-   VÍDEO EM DESTAQUE — HOME
-====================================================== */
-(function () {
-  var configVideo = (
-    window.THEME_CONFIG &&
-    window.THEME_CONFIG.videoDestaqueHome
-  ) || {};
-
-  if (!configVideo.ativo || $('#video-destaque-home').length) return;
-
-  if (
-    configVideo.somenteHome !== false &&
-    !$('body').hasClass('pagina-inicial') &&
-    !$('.pagina-inicial').length
-  ) {
-    return;
-  }
-
-  var youtubeId = String(configVideo.youtubeId || '').trim();
-
-  if (!youtubeId) return;
-
-  function escaparHtml(valor) {
-    return String(valor || '').replace(/[&<>"']/g, function (caractere) {
-      return {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-      }[caractere];
-    });
-  }
-
-  var imagemFundo = configVideo.imagemFundo ||
-    'https://img.youtube.com/vi/' + youtubeId + '/maxresdefault.jpg';
-
-  var alinhamento = configVideo.alinhamentoTexto === 'centro'
-    ? ' video-destaque-home-centro'
-    : '';
-
-  var html = [
-    '<section id="video-destaque-home" class="video-destaque-home', alinhamento, '">',
-      '<div class="conteiner">',
-        '<div class="video-destaque-home-capa" style="background-image: url(\'', escaparHtml(imagemFundo), '\');">',
-          '<div class="video-destaque-home-overlay"></div>',
-
-          '<div class="video-destaque-home-conteudo">',
-            configVideo.etiqueta
-              ? '<span class="video-destaque-home-etiqueta">' +
-                escaparHtml(configVideo.etiqueta) +
-                '</span>'
-              : '',
-            '<h2>', escaparHtml(configVideo.titulo || 'Assista ao nosso vídeo'), '</h2>',
-            configVideo.descricao
-              ? '<p>' + escaparHtml(configVideo.descricao) + '</p>'
-              : '',
-            '<button type="button" class="video-destaque-home-botao" aria-label="Assistir vídeo">',
-              '<span class="video-destaque-home-play-menor">▶</span>',
-              escaparHtml(configVideo.textoBotao || 'ASSISTIR AGORA'),
-            '</button>',
-          '</div>',
-
-          '<button type="button" class="video-destaque-home-play" aria-label="Assistir vídeo">',
-            '<span>▶</span>',
-          '</button>',
-        '</div>',
-      '</div>',
-    '</section>',
-
-    '<div id="video-destaque-modal" class="video-destaque-modal" aria-hidden="true">',
-      '<div class="video-destaque-modal-fundo"></div>',
-      '<div class="video-destaque-modal-conteudo" role="dialog" aria-modal="true" aria-label="Vídeo">',
-        '<button type="button" class="video-destaque-modal-fechar" aria-label="Fechar vídeo">×</button>',
-        '<div class="video-destaque-modal-player"></div>',
-      '</div>',
-    '</div>'
-  ].join('');
-
-  var $destino = $(configVideo.seletorInsercao || '#rodape').first();
-
-  if ($destino.length) {
-    $destino.before(html);
-  } else {
-    $('.pagina-inicial').append(html);
-  }
-
-  function abrirVideo() {
-    var $modal = $('#video-destaque-modal');
-
-    $modal
-      .addClass('video-destaque-modal-aberto')
-      .attr('aria-hidden', 'false');
-
-    $modal.find('.video-destaque-modal-player').html(
-      '<iframe ' +
-        'src="https://www.youtube-nocookie.com/embed/' + youtubeId + '?autoplay=1&rel=0" ' +
-        'title="Vídeo em destaque" ' +
-        'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
-        'allowfullscreen>' +
-      '</iframe>'
-    );
-
-    $('body').addClass('video-destaque-modal-ativo');
-  }
-
-  function fecharVideo() {
-    $('#video-destaque-modal')
-      .removeClass('video-destaque-modal-aberto')
-      .attr('aria-hidden', 'true')
-      .find('.video-destaque-modal-player')
-      .empty();
-
-    $('body').removeClass('video-destaque-modal-ativo');
-  }
-
-  $(document).on(
-    'click',
-    '#video-destaque-home .video-destaque-home-play, #video-destaque-home .video-destaque-home-botao',
-    abrirVideo
-  );
-
-  $(document).on(
-    'click',
-    '.video-destaque-modal-fechar, .video-destaque-modal-fundo',
-    fecharVideo
-  );
-
-  $(document).on('keydown', function (evento) {
-    if (evento.key === 'Escape') {
-      fecharVideo();
-    }
-  });
-})();
