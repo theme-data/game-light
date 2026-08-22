@@ -497,11 +497,14 @@ span.bn-t-title {
 .listagem .span3 .imagem-produto, .listagem .produtos-carrossel[data-produtos-linha="4"] .imagem-produto {
    height: fit-content;
    width: 100%;
+   background: #f7f7f7;
+   border-radius: 10px;
 }
 
 .listagem .imagem-produto img {
    position: relative;
    width: 100%;
+   mix-blend-mode: multiply;
 }
 
 .listagem .listagem-item {
@@ -4163,14 +4166,11 @@ body.ofertas-destacadas-abertas {
  
  .avaliacoes-home-slider .slick-slide {
    height: inherit !important;
-   padding: 5px 9px 12px;
    box-sizing: border-box;
- }
- 
- .avaliacoes-home-slider .slick-slide > div,
- .avaliacoes-home-slider .slick-slide .avaliacoes-home-card {
-   height: 100%;
- }
+   align-items: center;
+   display: flex;
+   padding: 30px 40px;
+}
  
  .avaliacoes-home-card {
    display: flex;
