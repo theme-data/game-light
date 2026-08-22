@@ -2696,10 +2696,6 @@ div#exibirFormasPagamento .btn.btn-small {
       border-radius: 8px;
    }
 
-   .pagina-inicial .listagem .listagem-linha {
-      width: 50%!important;
-   }
-
    .pagina-busca .ordenar-listagem.topo {
       padding: 0 0 20px;
   }
@@ -4130,7 +4126,7 @@ body.ofertas-destacadas-abertas {
    AVALIAÇÕES — HOME
 ====================================================== */
 .avaliacoes-home {
-   margin-top: 56px;
+   margin-top: 0px;
    padding: 70px 0;
    background: #f4f4f4;
    overflow: hidden;
