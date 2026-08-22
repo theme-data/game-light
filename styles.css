@@ -4476,6 +4476,7 @@ body.ofertas-destacadas-abertas {
    align-items: flex-start;
    padding: 17px 18px !important;
    box-sizing: border-box;
+   justify-content: center;
  }
  
  .vitrine-destaque-produtos .nome-produto {
