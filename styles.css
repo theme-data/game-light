@@ -4153,6 +4153,11 @@ body.ofertas-destacadas-abertas {
    line-height: 1.05;
  }
  
+ #avaliacoes-home .conteiner {
+   padding: 10px 32px;
+   box-sizing: border-box;
+}
+
  .avaliacoes-home-slider {
    margin: 0 -9px;
  }
