@@ -1053,15 +1053,15 @@ if (CONFIG.bannerVitrine) {
 })();
 
 /* =========================
-  REVIEWS — HOME
+  REVIEWS EM CARDS — HOME
 ========================== */
 (function () {
   var configReviews = (
     window.THEME_CONFIG &&
-    window.THEME_CONFIG.reviewsHome
+    window.THEME_CONFIG.reviewsCardsHome
   ) || {};
 
-  if (!configReviews.ativo || $('#reviews-home').length) return;
+  if (!configReviews.ativo || $('#reviews-cards-home').length) return;
 
   if (
     configReviews.somenteHome !== false &&
@@ -1083,14 +1083,19 @@ if (CONFIG.bannerVitrine) {
     });
   }
 
-  function criarEstrelas(nota) {
-    var total = Math.min(5, Math.max(1, parseInt(nota, 10) || 5));
+  function estrelas(nota) {
+    var notaNumerica = Math.min(5, Math.max(0, parseFloat(nota) || 5));
+    var estrelasHtml = '';
 
-    return Array(total + 1).join(
-      '<svg viewBox="0 0 24 24" aria-hidden="true">' +
-        '<path d="m12 2.8 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.4l6.2-.9L12 2.8Z"></path>' +
-      '</svg>'
-    );
+    for (var i = 1; i <= 5; i++) {
+      estrelasHtml += [
+        '<svg class="', i <= Math.ceil(notaNumerica) ? 'ativa' : '', '" viewBox="0 0 24 24">',
+          '<path d="m12 2.8 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.4l6.2-.9L12 2.8Z"></path>',
+        '</svg>'
+      ].join('');
+    }
+
+    return estrelasHtml;
   }
 
   var reviews = (configReviews.reviews || []).filter(function (review) {
@@ -1100,73 +1105,71 @@ if (CONFIG.bannerVitrine) {
   if (!reviews.length) return;
 
   var cardsHtml = reviews.map(function (review) {
+    var foto = review.foto
+      ? '<img src="' + escaparHtml(review.foto) + '" alt="' + escaparHtml(review.nome) + '" loading="lazy">'
+      : '<span>' + escaparHtml((review.nome || '?').charAt(0)) + '</span>';
+
     return [
-      '<article class="reviews-home-card">',
-        '<div class="reviews-home-stars">',
-          criarEstrelas(review.nota),
+      '<article class="review-card-home">',
+        '<div class="review-card-home-nota">',
+          '<span class="review-card-home-estrelas">', estrelas(review.nota), '</span>',
+          '<strong>', escaparHtml(review.nota || 5), ' | 5 avaliações</strong>',
         '</div>',
-        '<p>', escaparHtml(review.texto), '</p>',
-        '<footer>',
-          '<strong>', escaparHtml(review.nome), '</strong>',
-          review.compra
-            ? '<span>' + escaparHtml(review.compra) + '</span>'
-            : '',
-        '</footer>',
+
+        '<p class="review-card-home-texto">“', escaparHtml(review.texto), '”</p>',
+
+        '<div class="review-card-home-cliente">',
+          '<div class="review-card-home-foto">', foto, '</div>',
+          '<div>',
+            '<strong>', escaparHtml(review.nome), '</strong>',
+            review.cargo
+              ? '<span>' + escaparHtml(review.cargo) + '</span>'
+              : '',
+          '</div>',
+        '</div>',
       '</article>'
     ].join('');
   }).join('');
 
-  var imagemPrincipal = configReviews.imagemPrincipal
-    ? [
-        '<div class="reviews-home-imagem reviews-home-imagem-principal">',
-          '<img src="', escaparHtml(configReviews.imagemPrincipal), '" alt="Clientes da loja" loading="lazy">',
-        '</div>'
-      ].join('')
-    : '';
-
-  var imagemSecundaria = configReviews.imagemSecundaria
-    ? [
-        '<div class="reviews-home-imagem reviews-home-imagem-secundaria">',
-          '<img src="', escaparHtml(configReviews.imagemSecundaria), '" alt="Clientes da loja" loading="lazy">',
-        '</div>'
-      ].join('')
-    : '';
-
   var html = [
-    '<section id="reviews-home" class="reviews-home">',
+    '<section id="reviews-cards-home" class="reviews-cards-home">',
       '<div class="conteiner">',
-        '<header class="reviews-home-header">',
+        '<header class="reviews-cards-home-header">',
           configReviews.etiqueta
-            ? '<span class="reviews-home-etiqueta">' +
-              escaparHtml(configReviews.etiqueta) +
-              '</span>'
+            ? '<span>' + escaparHtml(configReviews.etiqueta) + '</span>'
             : '',
-          '<h2>', escaparHtml(configReviews.titulo || 'Jogadores reais. Opiniões reais.'), '</h2>',
-          configReviews.subtitulo
-            ? '<p>' + escaparHtml(configReviews.subtitulo) + '</p>'
-            : '',
+          '<h2>', escaparHtml(configReviews.titulo || 'O que nossos clientes dizem'), '</h2>',
         '</header>',
 
-        '<div class="reviews-home-mosaico">',
-          imagemPrincipal,
-          '<div class="reviews-home-coluna reviews-home-coluna-1">',
-            cardsHtml.slice(0, 2),
-          '</div>',
-          '<div class="reviews-home-coluna reviews-home-coluna-2">',
-            imagemSecundaria,
-            cardsHtml.slice(2),
-          '</div>',
+        '<div class="reviews-cards-home-wrapper">',
+          '<button class="reviews-cards-home-seta reviews-cards-home-anterior" type="button" aria-label="Review anterior">‹</button>',
+          '<div class="reviews-cards-home-lista">', cardsHtml, '</div>',
+          '<button class="reviews-cards-home-seta reviews-cards-home-proximo" type="button" aria-label="Próximo review">›</button>',
         '</div>',
       '</div>',
     '</section>'
   ].join('');
 
-  var seletor = configReviews.seletorInsercao || '#rodape';
-  var $destino = $(seletor).first();
+  var $destino = $(configReviews.seletorInsercao || '#rodape').first();
 
   if ($destino.length) {
     $destino.before(html);
   } else {
     $('.pagina-inicial').append(html);
   }
+
+  var $secao = $('#reviews-cards-home');
+  var $lista = $secao.find('.reviews-cards-home-lista');
+
+  $secao.on('click', '.reviews-cards-home-proximo', function () {
+    $lista.animate({
+      scrollLeft: $lista.scrollLeft() + 330
+    }, 350);
+  });
+
+  $secao.on('click', '.reviews-cards-home-anterior', function () {
+    $lista.animate({
+      scrollLeft: $lista.scrollLeft() - 330
+    }, 350);
+  });
 })();

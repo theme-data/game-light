@@ -4120,191 +4120,197 @@ body.ofertas-destacadas-abertas {
  }
 
  /* =========================
-   REVIEWS — HOME
+   REVIEWS EM CARDS — HOME
 ========================== */
-.reviews-home {
+.reviews-cards-home {
    margin-top: 56px;
-   padding: 84px 0;
-   background: var(--black);
-   color: var(--white);
-   overflow: hidden;
+   padding: 72px 0;
+   background: #f5f5f5;
  }
  
- .reviews-home-header {
-   max-width: 680px;
-   margin: 0 auto 46px;
+ .reviews-cards-home-header {
+   margin-bottom: 30px;
    text-align: center;
  }
  
- .reviews-home-etiqueta {
-   display: inline-flex;
-   margin-bottom: 14px;
+ .reviews-cards-home-header > span {
+   display: block;
+   margin-bottom: 8px;
    color: var(--brand-color);
    font-size: 12px;
    font-weight: 800;
-   letter-spacing: .12em;
+   letter-spacing: .1em;
  }
  
- .reviews-home-header h2 {
+ .reviews-cards-home-header h2 {
    margin: 0;
-   color: var(--white) !important;
-   font-size: clamp(30px, 4vw, 52px);
+   color: var(--black) !important;
+   font-size: clamp(26px, 3vw, 38px);
    font-weight: 900;
-   line-height: 1.04;
-   letter-spacing: -.04em;
+   line-height: 1.1;
    text-transform: uppercase;
  }
  
- .reviews-home-header p {
-   margin: 18px auto 0;
-   color: rgba(255, 255, 255, .72);
-   font-size: 16px;
-   line-height: 1.5;
+ .reviews-cards-home-wrapper {
+   position: relative;
  }
  
- .reviews-home-mosaico {
-   display: grid;
-   grid-template-columns: minmax(260px, 1.35fr) minmax(230px, .65fr) minmax(230px, .65fr);
+ .reviews-cards-home-lista {
+   display: flex;
    gap: 18px;
-   align-items: start;
+   overflow-x: auto;
+   padding: 4px 2px 10px;
+   scroll-behavior: smooth;
+   scrollbar-width: none;
  }
  
- .reviews-home-coluna {
-   display: grid;
-   gap: 18px;
+ .reviews-cards-home-lista::-webkit-scrollbar {
+   display: none;
  }
  
- .reviews-home-imagem {
-   overflow: hidden;
-   border-radius: 12px;
-   background: rgba(255, 255, 255, .07);
- }
- 
- .reviews-home-imagem img {
-   display: block;
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
-   transition: transform .45s ease;
- }
- 
- .reviews-home-imagem:hover img {
-   transform: scale(1.04);
- }
- 
- .reviews-home-imagem-principal {
-   min-height: 610px;
- }
- 
- .reviews-home-imagem-secundaria {
-   height: 255px;
- }
- 
- .reviews-home-card {
-   min-height: 166px;
-   padding: 22px;
-   border: 1px solid rgba(255, 255, 255, .12);
-   border-radius: 12px;
-   background: rgba(255, 255, 255, .035);
+ .review-card-home {
+   display: flex;
+   width: calc((100% - 54px) / 4);
+   min-width: 250px;
+   min-height: 286px;
+   flex-direction: column;
+   align-items: center;
+   padding: 26px 22px 22px;
+   border-radius: 10px;
+   background: var(--white);
+   color: var(--black);
+   text-align: center;
    box-sizing: border-box;
  }
  
- .reviews-home-stars {
+ .review-card-home-nota {
    display: flex;
-   gap: 4px;
-   margin-bottom: 16px;
-   color: var(--brand-color);
+   align-items: center;
+   justify-content: center;
+   gap: 7px;
+   font-size: 11px;
  }
  
- .reviews-home-stars svg {
-   width: 18px;
-   height: 18px;
+ .review-card-home-nota strong {
+   color: var(--black) !important;
+   font-size: 11px;
+   font-weight: 800;
+   white-space: nowrap;
+ }
+ 
+ .review-card-home-estrelas {
+   display: flex;
+   gap: 2px;
+   color: #ffb52e;
+ }
+ 
+ .review-card-home-estrelas svg {
+   width: 16px;
+   height: 16px;
    fill: currentColor;
+   opacity: .35;
  }
  
- .reviews-home-card p {
-   margin: 0;
-   color: var(--white) !important;
-   font-size: 16px;
+ .review-card-home-estrelas svg.ativa {
+   opacity: 1;
+ }
+ 
+ .review-card-home-texto {
+   margin: 22px 0;
+   color: var(--black) !important;
+   font-size: 14px;
    font-weight: 600;
-   line-height: 1.2;
+   line-height: 1.45;
  }
  
- .reviews-home-card footer {
+ .review-card-home-cliente {
    display: grid;
-   gap: 3px;
-   margin-top: 18px;
+   justify-items: center;
+   gap: 9px;
+   margin-top: auto;
  }
  
- .reviews-home-card footer strong {
-   color: var(--white) !important;
-   font-size: 13px;
+ .review-card-home-foto {
+   display: flex;
+   width: 58px;
+   height: 58px;
+   align-items: center;
+   justify-content: center;
+   overflow: hidden;
+   border-radius: 9px;
+   background: var(--brand-color);
+   color: var(--black);
+   font-size: 22px;
+   font-weight: 900;
+ }
+ 
+ .review-card-home-foto img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+ }
+ 
+ .review-card-home-cliente strong,
+ .review-card-home-cliente span {
+   display: block;
+ }
+ 
+ .review-card-home-cliente strong {
+   color: var(--black) !important;
+   font-size: 15px;
    font-weight: 800;
  }
  
- .reviews-home-card footer span {
-   color: rgba(255, 255, 255, .55);
+ .review-card-home-cliente span {
+   margin-top: 3px;
+   color: #666;
    font-size: 12px;
  }
  
- @media screen and (max-width: 900px) {
-   .reviews-home {
-     padding: 62px 0;
-   }
- 
-   .reviews-home-mosaico {
-     grid-template-columns: 1fr 1fr;
-   }
- 
-   .reviews-home-imagem-principal {
-     grid-row: span 2;
-     min-height: 500px;
-   }
- 
-   .reviews-home-coluna-2 {
-     grid-column: 1 / -1;
-     grid-template-columns: 1fr 1fr;
-   }
- 
-   .reviews-home-imagem-secundaria {
-     height: auto;
-     min-height: 220px;
-   }
+ .reviews-cards-home-seta {
+   position: absolute;
+   top: 50%;
+   z-index: 2;
+   display: flex;
+   width: 40px;
+   height: 40px;
+   align-items: center;
+   justify-content: center;
+   border: 0;
+   border-radius: 7px;
+   background: var(--brand-color);
+   color: var(--black);
+   cursor: pointer;
+   font-size: 32px;
+   line-height: 1;
+   transform: translateY(-50%);
  }
  
- @media screen and (max-width: 600px) {
-   .reviews-home {
+ .reviews-cards-home-seta:hover {
+   filter: brightness(1.06);
+ }
+ 
+ .reviews-cards-home-anterior {
+   left: -18px;
+ }
+ 
+ .reviews-cards-home-proximo {
+   right: -18px;
+ }
+ 
+ @media screen and (max-width: 767px) {
+   .reviews-cards-home {
      margin-top: 34px;
      padding: 48px 0;
    }
  
-   .reviews-home-header {
-     margin-bottom: 30px;
+   .review-card-home {
+     width: 82vw;
+     min-width: 82vw;
+     min-height: 270px;
    }
  
-   .reviews-home-header p {
-     font-size: 14px;
-   }
- 
-   .reviews-home-mosaico,
-   .reviews-home-coluna-2 {
-     grid-template-columns: 1fr;
-   }
- 
-   .reviews-home-imagem-principal {
-     min-height: 360px;
-   }
- 
-   .reviews-home-imagem-secundaria {
-     min-height: 220px;
-   }
- 
-   .reviews-home-card {
-     min-height: 0;
-     padding: 18px;
-   }
- 
-   .reviews-home-card p {
-     font-size: 15px;
+   .reviews-cards-home-seta {
+     display: none;
    }
  }
