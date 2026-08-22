@@ -4119,38 +4119,166 @@ body.ofertas-destacadas-abertas {
    }
  }
 
- /* =========================
-   REVIEWS EM CARDS — HOME
-========================== */
-.reviews-cards-home-wrapper {
-   position: relative;
-   padding: 0 24px;
+/* ======================================================
+   AVALIAÇÕES — HOME
+====================================================== */
+.avaliacoes-home {
+   margin-top: 56px;
+   padding: 70px 0;
+   background: #f4f4f4;
+   overflow: hidden;
  }
  
- .reviews-cards-home-lista {
+ .avaliacoes-home-cabecalho {
+   margin-bottom: 32px;
+   text-align: center;
+ }
+ 
+ .avaliacoes-home-etiqueta {
+   display: block;
+   margin-bottom: 9px;
+   color: var(--brand-color);
+   font-size: 11px;
+   font-weight: 800;
+   letter-spacing: .13em;
+ }
+ 
+ .avaliacoes-home-cabecalho h2 {
+   margin: 0;
+   color: var(--black) !important;
+   font-size: clamp(28px, 3.2vw, 42px);
+   font-weight: 900;
+   letter-spacing: -.04em;
+   line-height: 1.05;
+   text-transform: uppercase;
+ }
+ 
+ .avaliacoes-home-slider {
    margin: 0 -9px;
  }
  
- .reviews-cards-home-lista .slick-slide {
-   height: auto;
-   padding: 4px 9px 10px;
-   box-sizing: border-box;
- }
- 
- .reviews-cards-home-lista .slick-track {
+ .avaliacoes-home-slider .slick-track {
    display: flex !important;
  }
  
- .reviews-cards-home-lista .slick-slide {
+ .avaliacoes-home-slider .slick-slide {
    height: inherit !important;
+   padding: 5px 9px 12px;
+   box-sizing: border-box;
  }
  
- .reviews-cards-home-lista .slick-slide > div,
- .reviews-cards-home-lista .slick-slide .review-card-home {
+ .avaliacoes-home-slider .slick-slide > div,
+ .avaliacoes-home-slider .slick-slide .avaliacoes-home-card {
    height: 100%;
  }
  
- .reviews-cards-home-seta {
+ .avaliacoes-home-card {
+   display: flex;
+   min-height: 285px;
+   height: 100%;
+   flex-direction: column;
+   align-items: center;
+   padding: 25px 20px 22px;
+   border: 1px solid rgba(0, 0, 0, .035);
+   border-radius: 10px;
+   background: var(--white);
+   color: var(--black);
+   text-align: center;
+   box-sizing: border-box;
+   transition: transform .25s ease, box-shadow .25s ease;
+ }
+ 
+ .avaliacoes-home-card:hover {
+   box-shadow: 0 12px 28px rgba(0, 0, 0, .09);
+   transform: translateY(-4px);
+ }
+ 
+ .avaliacoes-home-nota {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 7px;
+ }
+ 
+ .avaliacoes-home-estrelas {
+   display: flex;
+   gap: 2px;
+   color: #ffb52e;
+ }
+ 
+ .avaliacoes-home-estrela {
+   width: 16px;
+   height: 16px;
+   fill: currentColor;
+   opacity: .3;
+ }
+ 
+ .avaliacoes-home-estrela.ativa {
+   opacity: 1;
+ }
+ 
+ .avaliacoes-home-nota > span {
+   color: var(--black);
+   font-size: 11px;
+   font-weight: 800;
+   white-space: nowrap;
+ }
+ 
+ .avaliacoes-home-texto {
+   margin: 23px 0;
+   color: var(--black) !important;
+   font-size: 14px;
+   font-weight: 600;
+   line-height: 1.48;
+ }
+ 
+ .avaliacoes-home-cliente {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 11px;
+   margin-top: auto;
+ }
+ 
+ .avaliacoes-home-foto {
+   display: flex;
+   width: 54px;
+   height: 54px;
+   flex: 0 0 54px;
+   align-items: center;
+   justify-content: center;
+   overflow: hidden;
+   border-radius: 9px;
+   background: var(--brand-color);
+   color: var(--black);
+   font-size: 20px;
+   font-weight: 900;
+ }
+ 
+ .avaliacoes-home-foto img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+ }
+ 
+ .avaliacoes-home-cliente-info {
+   display: grid;
+   gap: 4px;
+   text-align: left;
+ }
+ 
+ .avaliacoes-home-cliente-info strong {
+   color: var(--black) !important;
+   font-size: 14px;
+   font-weight: 800;
+ }
+ 
+ .avaliacoes-home-cliente-info span {
+   color: #737373;
+   font-size: 12px;
+ }
+ 
+ .avaliacoes-home .avaliacoes-home-seta {
    position: absolute;
    top: 50%;
    z-index: 2;
@@ -4165,26 +4293,26 @@ body.ofertas-destacadas-abertas {
    background: var(--brand-color);
    color: var(--black);
    cursor: pointer;
-   font-size: 32px;
+   font-size: 31px;
    line-height: 1;
    transform: translateY(-50%);
    transition: filter .2s ease, transform .2s ease;
  }
  
- .reviews-cards-home-seta:hover {
-   filter: brightness(1.08);
-   transform: translateY(-50%) scale(1.04);
+ .avaliacoes-home .avaliacoes-home-seta:hover {
+   filter: brightness(1.07);
+   transform: translateY(-50%) scale(1.05);
  }
  
- .reviews-cards-home-anterior {
-   left: -20px;
+ .avaliacoes-home .avaliacoes-home-anterior {
+   left: -12px;
  }
  
- .reviews-cards-home-proximo {
-   right: -20px;
+ .avaliacoes-home .avaliacoes-home-proximo {
+   right: -12px;
  }
  
- .reviews-cards-home-lista .slick-dots {
+ .avaliacoes-home .slick-dots {
    position: static;
    display: flex !important;
    justify-content: center;
@@ -4194,35 +4322,47 @@ body.ofertas-destacadas-abertas {
    list-style: none;
  }
  
- .reviews-cards-home-lista .slick-dots li {
+ .avaliacoes-home .slick-dots li {
    width: auto;
    height: auto;
    margin: 0;
  }
  
- .reviews-cards-home-lista .slick-dots button {
+ .avaliacoes-home .slick-dots button {
    width: 7px;
    height: 7px;
    padding: 0;
    border: 0;
-   border-radius: 50%;
+   border-radius: 99px;
    background: rgba(0, 0, 0, .2);
    color: transparent;
    font-size: 0;
  }
  
- .reviews-cards-home-lista .slick-dots .slick-active button {
+ .avaliacoes-home .slick-dots .slick-active button {
    width: 22px;
-   border-radius: 10px;
    background: var(--brand-color);
  }
  
  @media screen and (max-width: 767px) {
-   .reviews-cards-home-wrapper {
-     padding: 0;
+   .avaliacoes-home {
+     margin-top: 34px;
+     padding: 50px 0;
    }
  
-   .reviews-cards-home-seta {
+   .avaliacoes-home-slider {
+     margin: 0 -6px;
+   }
+ 
+   .avaliacoes-home-slider .slick-slide {
+     padding: 5px 6px 12px;
+   }
+ 
+   .avaliacoes-home-card {
+     min-height: 265px;
+   }
+ 
+   .avaliacoes-home .avaliacoes-home-seta {
      display: none !important;
    }
  }

@@ -1052,21 +1052,22 @@ if (CONFIG.bannerVitrine) {
   });
 })();
 
-/* =========================
-  REVIEWS EM CARDS — HOME
-========================== */
+/* ======================================================
+   AVALIAÇÕES — HOME | Slick Carousel
+====================================================== */
 (function () {
-  var configReviews = (
+  var config = (
     window.THEME_CONFIG &&
-    window.THEME_CONFIG.reviewsCardsHome
+    window.THEME_CONFIG.avaliacoesHome
   ) || {};
 
-  if (!configReviews.ativo || $('#reviews-cards-home').length) return;
+  if (!config.ativo || $('#avaliacoes-home').length) return;
 
+  /* Exibe apenas na home, salvo se somenteHome for false */
   if (
-    configReviews.somenteHome !== false &&
-    !$('.pagina-inicial').length &&
-    !$('body').hasClass('pagina-inicial')
+    config.somenteHome !== false &&
+    !$('body').hasClass('pagina-inicial') &&
+    !$('.pagina-inicial').length
   ) {
     return;
   }
@@ -1083,74 +1084,88 @@ if (CONFIG.bannerVitrine) {
     });
   }
 
-  function estrelas(nota) {
-    var notaNumerica = Math.min(5, Math.max(0, parseFloat(nota) || 5));
-    var estrelasHtml = '';
+  function criarEstrelas(nota) {
+    var notaFinal = Math.min(5, Math.max(0, parseFloat(nota) || 5));
+    var html = '';
 
     for (var i = 1; i <= 5; i++) {
-      estrelasHtml += [
-        '<svg class="', i <= Math.ceil(notaNumerica) ? 'ativa' : '', '" viewBox="0 0 24 24">',
-          '<path d="m12 2.8 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.4l6.2-.9L12 2.8Z"></path>',
+      var classe = i <= Math.ceil(notaFinal)
+        ? 'avaliacoes-home-estrela ativa'
+        : 'avaliacoes-home-estrela';
+
+      html += [
+        '<svg class="', classe, '" viewBox="0 0 24 24" aria-hidden="true">',
+          '<path d="m12 2.5 2.95 5.98 6.6.96-4.77 4.65 1.13 6.57L12 17.57l-5.91 3.1 1.13-6.57-4.77-4.65 6.6-.96L12 2.5Z"></path>',
         '</svg>'
       ].join('');
     }
 
-    return estrelasHtml;
+    return html;
   }
 
-  var reviews = (configReviews.reviews || []).filter(function (review) {
+  var reviews = (config.reviews || []).filter(function (review) {
     return review && review.ativo;
   });
 
   if (!reviews.length) return;
 
   var cardsHtml = reviews.map(function (review) {
-    var foto = review.foto
-      ? '<img src="' + escaparHtml(review.foto) + '" alt="' + escaparHtml(review.nome) + '" loading="lazy">'
-      : '<span>' + escaparHtml((review.nome || '?').charAt(0)) + '</span>';
+    var nome = review.nome || 'Cliente';
+    var inicial = nome.charAt(0).toUpperCase();
+
+    var fotoHtml = review.foto
+      ? '<img src="' + escaparHtml(review.foto) + '" alt="' + escaparHtml(nome) + '" loading="lazy">'
+      : '<span>' + escaparHtml(inicial) + '</span>';
 
     return [
-      '<article class="review-card-home">',
-        '<div class="review-card-home-nota">',
-          '<span class="review-card-home-estrelas">', estrelas(review.nota), '</span>',
-          '<strong>', escaparHtml(review.nota || 5), ' | 5 avaliações</strong>',
+      '<article class="avaliacoes-home-card">',
+        '<div class="avaliacoes-home-nota">',
+          '<div class="avaliacoes-home-estrelas">',
+            criarEstrelas(review.nota),
+          '</div>',
+          '<span>', escaparHtml(review.nota || 5), ' / 5</span>',
         '</div>',
 
-        '<p class="review-card-home-texto">“', escaparHtml(review.texto), '”</p>',
+        '<p class="avaliacoes-home-texto">“',
+          escaparHtml(review.texto),
+        '”</p>',
 
-        '<div class="review-card-home-cliente">',
-          '<div class="review-card-home-foto">', foto, '</div>',
-          '<div>',
-            '<strong>', escaparHtml(review.nome), '</strong>',
+        '<footer class="avaliacoes-home-cliente">',
+          '<div class="avaliacoes-home-foto">',
+            fotoHtml,
+          '</div>',
+          '<div class="avaliacoes-home-cliente-info">',
+            '<strong>', escaparHtml(nome), '</strong>',
             review.cargo
               ? '<span>' + escaparHtml(review.cargo) + '</span>'
               : '',
           '</div>',
-        '</div>',
+        '</footer>',
       '</article>'
     ].join('');
   }).join('');
 
   var html = [
-    '<section id="reviews-cards-home" class="reviews-cards-home">',
+    '<section id="avaliacoes-home" class="avaliacoes-home">',
       '<div class="conteiner">',
-        '<header class="reviews-cards-home-header">',
-          configReviews.etiqueta
-            ? '<span>' + escaparHtml(configReviews.etiqueta) + '</span>'
+        '<header class="avaliacoes-home-cabecalho">',
+          config.etiqueta
+            ? '<span class="avaliacoes-home-etiqueta">' +
+              escaparHtml(config.etiqueta) +
+              '</span>'
             : '',
-          '<h2>', escaparHtml(configReviews.titulo || 'O que nossos clientes dizem'), '</h2>',
+          '<h2>', escaparHtml(config.titulo || 'Quem compra, recomenda'), '</h2>',
         '</header>',
 
-        '<div class="reviews-cards-home-wrapper">',
-          '<button class="reviews-cards-home-seta reviews-cards-home-anterior" type="button" aria-label="Review anterior">‹</button>',
-          '<div class="reviews-cards-home-lista">', cardsHtml, '</div>',
-          '<button class="reviews-cards-home-seta reviews-cards-home-proximo" type="button" aria-label="Próximo review">›</button>',
+        '<div class="avaliacoes-home-slider">',
+          cardsHtml,
         '</div>',
       '</div>',
     '</section>'
   ].join('');
 
-  var $destino = $(configReviews.seletorInsercao || '#rodape').first();
+  var seletorInsercao = config.seletorInsercao || '#rodape';
+  var $destino = $(seletorInsercao).first();
 
   if ($destino.length) {
     $destino.before(html);
@@ -1158,20 +1173,27 @@ if (CONFIG.bannerVitrine) {
     $('.pagina-inicial').append(html);
   }
 
-  var $lista = $('#reviews-cards-home .reviews-cards-home-lista');
+  var $slider = $('#avaliacoes-home .avaliacoes-home-slider');
 
-if ($lista.length && typeof $lista.slick === 'function') {
-  $lista.slick({
+  if (typeof $slider.slick !== 'function') {
+    console.warn('Slick não foi encontrado para inicializar as avaliações.');
+    return;
+  }
+
+  $slider.slick({
     slidesToShow: 4,
     slidesToScroll: 1,
     infinite: reviews.length > 4,
     arrows: true,
     dots: false,
     autoplay: false,
+    adaptiveHeight: false,
+
     prevArrow:
-      '<button type="button" class="reviews-cards-home-seta reviews-cards-home-anterior" aria-label="Review anterior">‹</button>',
+      '<button type="button" class="avaliacoes-home-seta avaliacoes-home-anterior" aria-label="Avaliação anterior">‹</button>',
+
     nextArrow:
-      '<button type="button" class="reviews-cards-home-seta reviews-cards-home-proximo" aria-label="Próximo review">›</button>',
+      '<button type="button" class="avaliacoes-home-seta avaliacoes-home-proximo" aria-label="Próxima avaliação">›</button>',
 
     responsive: [
       {
@@ -1196,5 +1218,4 @@ if ($lista.length && typeof $lista.slick === 'function') {
       }
     ]
   });
-}
 })();
