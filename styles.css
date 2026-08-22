@@ -631,7 +631,9 @@ span.bn-t-title {
    width: 100%;
    font-size: 0 !important;
    align-items: center;
-   display: block;
+   display: flex;
+   height: 40px !important;
+   justify-content: center;
 }
 
 .listagem .acoes-produto .botao-comprar i:before {
@@ -650,7 +652,7 @@ span.bn-t-title {
    font-size: 14px !important;
    font-weight: 600;
    position: relative;
-   bottom: -2px;
+   bottom: 0px;
 }
 
 .listagem-item .acoes-produto {
