@@ -6,7 +6,6 @@ $(document).ready(function(){
   $('#cabecalho .span8.busca-mobile').after(`
       <div class="h-actions hidden-phone">
           <a href="/conta/login" class="h-user">
-              <img src="https://cdn.awsli.com.br/2942/2942234/arquivos/user.svg" alt="Minha conta">
               <span>Entrar</span>
           </a>
       </div>
