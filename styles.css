@@ -585,7 +585,7 @@ span.bn-t-title {
 
 .listagem .span3 .listagem-item .nome-produto, .listagem .produtos-carrossel[data-produtos-linha="4"] .listagem-item .nome-produto {
    max-height: 47px;
-   min-height: 40px;
+   min-height: 20px;
    display: -webkit-box;
    -webkit-box-orient: vertical;
    -webkit-line-clamp: 2;
@@ -4382,7 +4382,7 @@ body.ofertas-destacadas-abertas {
    VITRINE DESTAQUE
 ====================================================== */
 .vitrine-destaque-produtos {
-   padding: 8px !important;
+   padding: 24px !important;
    border-radius: 16px;
    background: #f4f6f8;
    box-sizing: border-box;
@@ -4396,7 +4396,11 @@ body.ofertas-destacadas-abertas {
    display: grid;
    width: 100% !important;
    grid-template-columns: repeat(2, minmax(0, 1fr));
-   gap: 12px;
+   gap: 24px;
+ }
+
+ .vitrine-destaque-produtos .listagem-linha > div > ul:after {
+   display: none;
  }
  
  .vitrine-destaque-produtos .listagem-linha li {
@@ -4416,6 +4420,7 @@ body.ofertas-destacadas-abertas {
    background: var(--white) !important;
    overflow: hidden;
    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+   margin: 0 !important;
  }
  
  .vitrine-destaque-produtos .listagem-item:hover {
@@ -4544,6 +4549,9 @@ body.ofertas-destacadas-abertas {
    font-weight: 800;
    letter-spacing: 0.02em;
    text-decoration: none !important;
+   position: absolute;
+   right: 20px;
+   bottom: 20px;
  }
  
  .vitrine-destaque-produtos .vitrine-destaque-cta span {
