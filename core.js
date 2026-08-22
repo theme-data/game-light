@@ -956,3 +956,100 @@ if (CONFIG.bannerVitrine) {
     setTimeout(abrirOfertas, 800);
   }
 })();
+
+/* =========================
+  BOTÃO WHATSAPP — LISTAGEM
+========================== */
+(function () {
+  var configWhatsapp = (
+    window.THEME_CONFIG &&
+    window.THEME_CONFIG.whatsappListagem
+  ) || {};
+
+  if (!configWhatsapp.ativo || !configWhatsapp.telefone) return;
+
+  function obterNomeProduto($produto) {
+    return (
+      $produto.find('.nome-produto').first().text() ||
+      $produto.find('.produto-nome').first().text() ||
+      $produto.find('a[data-produto-id]').first().attr('title') ||
+      $produto.find('img').first().attr('alt') ||
+      'Produto da loja'
+    ).trim();
+  }
+
+  function obterLinkProduto($produto) {
+    var link = (
+      $produto.find('.nome-produto a').first().attr('href') ||
+      $produto.find('.produto-nome a').first().attr('href') ||
+      $produto.find('a[href*="/produto/"]').first().attr('href') ||
+      $produto.find('a').first().attr('href') ||
+      ''
+    );
+
+    if (link && link.indexOf('http') !== 0) {
+      link = window.location.origin + link;
+    }
+
+    return link || window.location.href;
+  }
+
+  function criarBotaoWhatsapp($produto) {
+    if ($produto.find('.botao-comprar-whatsapp').length) return;
+
+    var nomeProduto = obterNomeProduto($produto);
+    var linkProduto = obterLinkProduto($produto);
+
+    var mensagem = String(
+      configWhatsapp.mensagem ||
+      'Olá! Tenho interesse neste produto:\n\n{produto}\n{link}'
+    )
+      .replace(/\{produto\}/gi, nomeProduto)
+      .replace(/\{link\}/gi, linkProduto);
+
+    var urlWhatsapp =
+      'https://wa.me/' +
+      String(configWhatsapp.telefone).replace(/\D/g, '') +
+      '?text=' +
+      encodeURIComponent(mensagem);
+
+    var target = configWhatsapp.novaAba !== false
+      ? ' target="_blank" rel="noopener noreferrer"'
+      : '';
+
+    var html = [
+      '<a class="botao-comprar-whatsapp" href="', urlWhatsapp, '"', target, '>',
+        '<svg viewBox="0 0 24 24" aria-hidden="true">',
+          '<path d="M20.5 3.5A11.9 11.9 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.1 1.5 5.9L.2 24l6.5-1.7a11.8 11.8 0 0 0 5.4 1.3h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.3-6.1-3.5-8.3ZM12.1 21.6c-1.7 0-3.4-.5-4.8-1.4l-.3-.2-3.9 1 1-3.8-.2-.4a9.7 9.7 0 0 1-1.5-5.1c0-5.3 4.3-9.7 9.7-9.7 2.6 0 5 .9 6.8 2.8a9.6 9.6 0 0 1 2.8 6.8c0 5.3-4.3 9.7-9.6 9.7Zm5.3-7.2c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.8-.9-3-1.6-4.2-3.7-.3-.5.3-.5.9-1.5.1-.2.1-.4 0-.6l-1-2.3c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.4 1.4 3.6c.2.2 2.3 3.6 5.7 5 .8.4 1.5.6 2 .7.9.3 1.7.2 2.4.1.7-.1 1.8-.7 2.1-1.4.3-.6.3-1.2.2-1.4-.1-.1-.3-.2-.6-.4Z"></path>',
+        '</svg>',
+        '<span>', configWhatsapp.textoBotao || 'COMPRE PELO WHATSAPP', '</span>',
+      '</a>'
+    ].join('');
+
+    /* Insere abaixo do botão de comprar de cada produto */
+    var $acoes = $produto.find('.acoes-produto').first();
+
+    if ($acoes.length) {
+      $acoes.append(html);
+    } else {
+      $produto.find('.produto-info, .info-produto').first().append(html);
+    }
+  }
+
+  function adicionarBotoesWhatsapp() {
+    $('.listagem .listagem-item, .vitrine .listagem-item').each(function () {
+      criarBotaoWhatsapp($(this));
+    });
+  }
+
+  adicionarBotoesWhatsapp();
+
+  var observer = new MutationObserver(function () {
+    adicionarBotoesWhatsapp();
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+})();

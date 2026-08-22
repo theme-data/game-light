@@ -40,6 +40,25 @@
   window.THEME_CONFIG = {
 
     /* =========================
+      BOTÃO "COMPRE PELO WHATSAPP"
+      NA LISTAGEM DE PRODUTOS
+    ========================== */
+    whatsappListagem: {
+      ativo: true,
+
+      /* Somente números, com DDI e DDD */
+      telefone: "5511999999999",
+
+      textoBotao: "COMPRE PELO WHATSAPP",
+
+      mensagem: "Olá! Tenho interesse neste produto:\n\n{produto}\n{link}",
+
+      /* Exibe somente nas vitrines/listagens.
+        Não adiciona na página individual do produto. */
+      novaAba: true
+    },
+
+    /* =========================
       TEMA DO CABEÇALHO
       Opções: "dark" | "light"
     ========================== */
@@ -123,7 +142,7 @@
       MOVER TARJA
     ==========================*/
     vitrineTarja: {
-      idVitrine: "24162843"
+      idVitrine: "24162844"
     },
   
     /* =========================
