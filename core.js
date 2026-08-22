@@ -704,6 +704,46 @@ if (CONFIG.bannerVitrine) {
     ]
   });
 
+  // MOVE TARJA
+
+
+  var vitrineTarja = CONFIG.vitrineTarja || {};
+
+  if (vitrineTarja.idVitrine) {
+    $(`.pagina-inicial .vitrine-${vitrineTarja.idVitrine}`)
+      .before($('.banner.tarja'));
+  }
+
+  //ALERTA DIGITAL 
+
+  if (typeof CONFIG === "undefined") return;
+
+  var conf = CONFIG.alertaProduto || {};
+  var icon = conf.icon || "";
+  var texto = conf.texto || "";
+
+  var $target = $('.pagina-produto .produto .cep');
+
+  if ($target.length && !$('.alert-envio-digital').length) {
+    $target.before(`
+      <div class="alert-envio-digital">
+        ${icon ? `<i><img src="${icon}" alt=""></i>` : ``}
+        ${texto}
+      </div>
+    `);
+  }
+
+  var textoAlertBar = CONFIG.alertBar || {};
+
+  if (textoAlertBar.mensagem) {
+    $('.barra-inicial')
+      .replaceWith(`
+        <div class="alert-bar">
+          <span>${textoAlertBar.mensagem}</span>
+        </div>
+      `);
+  }
+
   /* ======================================================
       VITRINE DESTAQUE
     ====================================================== */
