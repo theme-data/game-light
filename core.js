@@ -1238,3 +1238,139 @@ if (CONFIG.bannerVitrine) {
     ]
   });
 })();
+
+/* ======================================================
+   VÍDEO EM DESTAQUE — HOME
+====================================================== */
+(function () {
+  var configVideo = (
+    window.THEME_CONFIG &&
+    window.THEME_CONFIG.videoDestaqueHome
+  ) || {};
+
+  if (!configVideo.ativo || $('#video-destaque-home').length) return;
+
+  if (
+    configVideo.somenteHome !== false &&
+    !$('body').hasClass('pagina-inicial') &&
+    !$('.pagina-inicial').length
+  ) {
+    return;
+  }
+
+  var youtubeId = String(configVideo.youtubeId || '').trim();
+
+  if (!youtubeId) return;
+
+  function escaparHtml(valor) {
+    return String(valor || '').replace(/[&<>"']/g, function (caractere) {
+      return {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      }[caractere];
+    });
+  }
+
+  var imagemFundo = configVideo.imagemFundo ||
+    'https://img.youtube.com/vi/' + youtubeId + '/maxresdefault.jpg';
+
+  var alinhamento = configVideo.alinhamentoTexto === 'centro'
+    ? ' video-destaque-home-centro'
+    : '';
+
+  var html = [
+    '<section id="video-destaque-home" class="video-destaque-home', alinhamento, '">',
+      '<div class="conteiner">',
+        '<div class="video-destaque-home-capa" style="background-image: url(\'', escaparHtml(imagemFundo), '\');">',
+          '<div class="video-destaque-home-overlay"></div>',
+
+          '<div class="video-destaque-home-conteudo">',
+            configVideo.etiqueta
+              ? '<span class="video-destaque-home-etiqueta">' +
+                escaparHtml(configVideo.etiqueta) +
+                '</span>'
+              : '',
+            '<h2>', escaparHtml(configVideo.titulo || 'Assista ao nosso vídeo'), '</h2>',
+            configVideo.descricao
+              ? '<p>' + escaparHtml(configVideo.descricao) + '</p>'
+              : '',
+            '<button type="button" class="video-destaque-home-botao" aria-label="Assistir vídeo">',
+              '<span class="video-destaque-home-play-menor">▶</span>',
+              escaparHtml(configVideo.textoBotao || 'ASSISTIR AGORA'),
+            '</button>',
+          '</div>',
+
+          '<button type="button" class="video-destaque-home-play" aria-label="Assistir vídeo">',
+            '<span>▶</span>',
+          '</button>',
+        '</div>',
+      '</div>',
+    '</section>',
+
+    '<div id="video-destaque-modal" class="video-destaque-modal" aria-hidden="true">',
+      '<div class="video-destaque-modal-fundo"></div>',
+      '<div class="video-destaque-modal-conteudo" role="dialog" aria-modal="true" aria-label="Vídeo">',
+        '<button type="button" class="video-destaque-modal-fechar" aria-label="Fechar vídeo">×</button>',
+        '<div class="video-destaque-modal-player"></div>',
+      '</div>',
+    '</div>'
+  ].join('');
+
+  var $destino = $(configVideo.seletorInsercao || '#rodape').first();
+
+  if ($destino.length) {
+    $destino.before(html);
+  } else {
+    $('.pagina-inicial').append(html);
+  }
+
+  function abrirVideo() {
+    var $modal = $('#video-destaque-modal');
+
+    $modal
+      .addClass('video-destaque-modal-aberto')
+      .attr('aria-hidden', 'false');
+
+    $modal.find('.video-destaque-modal-player').html(
+      '<iframe ' +
+        'src="https://www.youtube-nocookie.com/embed/' + youtubeId + '?autoplay=1&rel=0" ' +
+        'title="Vídeo em destaque" ' +
+        'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
+        'allowfullscreen>' +
+      '</iframe>'
+    );
+
+    $('body').addClass('video-destaque-modal-ativo');
+  }
+
+  function fecharVideo() {
+    $('#video-destaque-modal')
+      .removeClass('video-destaque-modal-aberto')
+      .attr('aria-hidden', 'true')
+      .find('.video-destaque-modal-player')
+      .empty();
+
+    $('body').removeClass('video-destaque-modal-ativo');
+  }
+
+  $(document).on(
+    'click',
+    '#video-destaque-home .video-destaque-home-play, #video-destaque-home .video-destaque-home-botao',
+    abrirVideo
+  );
+
+  $(document).on(
+    'click',
+    '.video-destaque-modal-fechar, .video-destaque-modal-fundo',
+    fecharVideo
+  );
+
+  $(document).on('keydown', function (evento) {
+    if (evento.key === 'Escape') {
+      fecharVideo();
+    }
+  });
+})();
