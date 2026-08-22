@@ -4808,6 +4808,10 @@ body.ofertas-destacadas-abertas {
    line-height: 1;
  }
  
+ .video-destaque-home .conteiner {
+   padding: 0 !important;
+}
+ 
  @media screen and (max-width: 768px) {
    .video-destaque-home {
      margin: 34px 0;
