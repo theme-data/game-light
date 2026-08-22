@@ -621,18 +621,17 @@ span.bn-t-title {
 
 
 .listagem-item:hover .acoes-produto {
-   bottom: 24px;
-   right: 24px;
-   padding: 0;
+   bottom: 0;
+   right: 0;
    border: 0;
-   width: fit-content;
-   left: auto;
+   left: 0;
 }
 
 .listagem .acoes-produto .botao-comprar {
-   width: 48px;
-   height: 48px;
-   font-size: 0;
+   width: 100%;
+   font-size: 0 !important;
+   align-items: center;
+   display: block;
 }
 
 .listagem .acoes-produto .botao-comprar i:before {
@@ -643,14 +642,27 @@ span.bn-t-title {
 
 .listagem .acoes-produto .botao-comprar i {
    margin: 0;
+   display: none;
+}
+
+.listagem .acoes-produto .botao-comprar:after {
+   content: "Comprar agora";
+   font-size: 14px !important;
+   font-weight: 600;
+   position: relative;
+   bottom: -2px;
 }
 
 .listagem-item .acoes-produto {
-   right: 24px;
-   bottom: 44px;
-   left: auto;
+   right: 0;
+   bottom: 40px;
+   left: 0;
    padding: 0;
    border: 0;
+   opacity: 0;
+   box-sizing: border-box;
+   padding: 0 24px;
+   transition: all .3s;
 }
 
 .listagem .preco-produto>div .titulo {
@@ -4057,12 +4069,13 @@ body.ofertas-destacadas-abertas {
    justify-content: center;
    gap: 8px;
    width: 100%;
-   min-height: 40px;
+   min-height: 30px;
    margin-top: 8px;
-   padding: 10px 12px;
+   padding: 6px 12px;
    border-radius: 6px;
-   background: #25d366;
-   color: #fff !important;
+   background: #fff;
+   border: 1px solid #25d366;
+   color: #000 !important;
    font-size: 11px;
    font-weight: 800;
    line-height: 1;
